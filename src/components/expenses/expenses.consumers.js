@@ -6,4 +6,5 @@ const fetchExpenses = async () => {
   return result.expenses
 }
 
+// eslint-disable-next-line import/prefer-default-export
 export {fetchExpenses}
