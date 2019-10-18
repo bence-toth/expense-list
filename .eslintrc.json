@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "react-app",
+    "@agillic/eslint-config"
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
+  }
+}

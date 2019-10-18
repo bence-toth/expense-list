@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* stylelint-disable unit-blacklist */
+  font-size: 16px;
+  /* stylelint-enable unit-blacklist */
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+html, body, #root {
+  height: 100%;
+}
