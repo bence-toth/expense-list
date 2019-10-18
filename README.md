@@ -1,5 +1,5 @@
 # Expense list
-A possible solution to (a technical assignment)[https://github.com/pleo-io/frontend-challenge] from Pleo.
+A possible solution to [a technical assignment](https://github.com/pleo-io/frontend-challenge) from Pleo.
 
 
 
