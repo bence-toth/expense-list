@@ -7,16 +7,16 @@ const ExpensesPresenter = ({expenses}) => (
   <div className='expenses'>
     {expenses && (
       <ul>
-        {expenses.map(expense => (
-          <li>
+        {expenses.map(({id, amount, merchant, user}) => (
+          <li key={id}>
             <div>
-              {`${expense.amount.value} ${expense.amount.currency}`}
+              {`${amount.value} ${amount.currency}`}
             </div>
             <div>
-              {expense.merchant}
+              {merchant}
             </div>
             <div>
-              {`${expense.user.first} ${expense.user.last}`}
+              {`${user.first} ${user.last}`}
             </div>
             <hr />
           </li>
