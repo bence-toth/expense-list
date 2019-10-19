@@ -8,8 +8,8 @@ body {
   /* stylelint-disable unit-blacklist */
   font-size: 16px;
   /* stylelint-enable unit-blacklist */
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: hsl(0, 0%, 97.5%);
+  color: hsl(0, 0%, 10%);
   overflow: hidden;
 }
 

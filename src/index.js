@@ -1,14 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import ExpensesContainer from './components/expenses/expenses.container'
+import App from './components/app/app.presenter'
 import * as serviceWorker from './serviceWorker'
 
 import './index.css'
 import './common.css'
 
 ReactDOM.render(
-  <ExpensesContainer />,
+  <App />,
   document.getElementById('root')
 )
 

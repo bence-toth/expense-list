@@ -8,12 +8,13 @@
 .expenses .expenseGroupHeading {
   position: sticky;
   top: 0;
-  border-bottom: var(--border-width-thin) solid hsl(0, 0%, 50%);
   padding: 0.5rem 1rem;
-  background-color: hsl(0, 0%, 100%);
+  background-color: hsl(0, 0%, 90%);
+  font-weight: 600;
+  color: hsl(0, 0%, 40%);
 }
 
 .expenses .expense {
-  border-bottom: var(--border-width-thin) solid hsl(0, 0%, 50%);
-  padding: 0.5rem 1rem;
+  border-bottom: var(--border-width-thin) solid hsl(0, 0%, 90%);
+  padding: 1rem;
 }

@@ -1,11 +1,11 @@
 import React from 'react'
 import {instanceOf, arrayOf, shape, string} from 'prop-types'
 
-import {formatDate, generateGroupKey} from './expenses.presenter.utility'
+import {formatDate, generateGroupKey} from './expenseList.presenter.utility'
 
-import './expenses.styles.css'
+import './expenseList.styles.css'
 
-const ExpensesPresenter = ({expenses}) => console.log(expenses) || (
+const ExpenseListPresenter = ({expenses}) => (
   <div className='expenses'>
     {expenses && (
       <ul className='expenseGroup'>
@@ -39,7 +39,7 @@ const ExpensesPresenter = ({expenses}) => console.log(expenses) || (
   </div>
 )
 
-ExpensesPresenter.propTypes = {
+ExpenseListPresenter.propTypes = {
   expenses: arrayOf(shape({
     groupStart: instanceOf(Date).isRequired,
     expenseItems: arrayOf(shape({
@@ -57,4 +57,4 @@ ExpensesPresenter.propTypes = {
   }))
 }
 
-export default ExpensesPresenter
+export default ExpenseListPresenter

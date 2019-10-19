@@ -1,4 +1,4 @@
-import {prepareExpenses} from './expenses.consumers.utility'
+import {prepareExpenses} from './expenseList.consumers.utility'
 
 const api = 'http://localhost:3000'
 

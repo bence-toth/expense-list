@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 
-import {fetchExpenses} from './expenses.consumers'
+import {fetchExpenses} from './expenseList.consumers'
 
 const loadExpenses = async ({setExpenses}) => {
   const expenses = await fetchExpenses()
