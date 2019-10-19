@@ -5,7 +5,7 @@ import ExpensesPresenter from './expenses.presenter'
 
 const ExpensesContainer = () => {
   const expenses = useExpenses()
-  return (
+  return expenses && (
     <ExpensesPresenter
       expenses={expenses}
     />

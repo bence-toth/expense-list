@@ -1,5 +1,5 @@
 import React from 'react'
-import {shape, number, string} from 'prop-types'
+import {arrayOf, shape, string} from 'prop-types'
 
 import './expenses.styles.css'
 
@@ -27,9 +27,9 @@ const ExpensesPresenter = ({expenses}) => (
 )
 
 ExpensesPresenter.propTypes = {
-  expenses: shape({
+  expenses: arrayOf(shape({
     amount: shape({
-      value: number.isRequired,
+      value: string.isRequired,
       currency: string.isRequired
     }).isRequired,
     merchant: string.isRequired,
@@ -37,7 +37,7 @@ ExpensesPresenter.propTypes = {
       first: string.isRequired,
       last: string.isRequired
     }).isRequired
-  }).isRequired
+  }).isRequired).isRequired
 }
 
 export default ExpensesPresenter
