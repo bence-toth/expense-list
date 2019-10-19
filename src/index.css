@@ -10,6 +10,7 @@ body {
   /* stylelint-enable unit-blacklist */
   background-color: var(--color-white);
   color: var(--color-black);
+  overflow: hidden;
 }
 
 html, body, #root {

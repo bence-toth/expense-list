@@ -1,24 +1,37 @@
 import React from 'react'
-import {arrayOf, shape, string} from 'prop-types'
+import {instanceOf, arrayOf, shape, string} from 'prop-types'
+
+import {formatDate, generateGroupKey} from './expenses.presenter.utility'
 
 import './expenses.styles.css'
 
-const ExpensesPresenter = ({expenses}) => (
+const ExpensesPresenter = ({expenses}) => console.log(expenses) || (
   <div className='expenses'>
     {expenses && (
-      <ul>
-        {expenses.map(({id, amount, merchant, user}) => (
-          <li key={id}>
-            <div>
-              {`${amount.value} ${amount.currency}`}
+      <ul className='expenseGroup'>
+        {expenses.map(({groupStart, expenseItems}) => (
+          <li key={generateGroupKey(groupStart)}>
+            <div className='expenseGroupHeading'>
+              {formatDate(({date: groupStart, locale: 'en-GB'}))}
             </div>
-            <div>
-              {merchant}
-            </div>
-            <div>
-              {`${user.first} ${user.last}`}
-            </div>
-            <hr />
+            <ul>
+              {expenseItems.map(({id, amount, merchant, user}) => (
+                <li
+                  key={id}
+                  className='expense'
+                >
+                  <div>
+                    {`${amount.value} ${amount.currency}`}
+                  </div>
+                  <div>
+                    {merchant}
+                  </div>
+                  <div>
+                    {`${user.first} ${user.last}`}
+                  </div>
+                </li>
+              ))}
+            </ul>
           </li>
         ))}
       </ul>
@@ -28,16 +41,20 @@ const ExpensesPresenter = ({expenses}) => (
 
 ExpensesPresenter.propTypes = {
   expenses: arrayOf(shape({
-    amount: shape({
-      value: string.isRequired,
-      currency: string.isRequired
-    }).isRequired,
-    merchant: string.isRequired,
-    user: shape({
-      first: string.isRequired,
-      last: string.isRequired
-    }).isRequired
-  }).isRequired).isRequired
+    groupStart: instanceOf(Date).isRequired,
+    expenseItems: arrayOf(shape({
+      amount: shape({
+        value: string.isRequired,
+        currency: string.isRequired
+      }).isRequired,
+      merchant: string.isRequired,
+      user: shape({
+        first: string.isRequired,
+        last: string.isRequired,
+        avatar: string
+      }).isRequired
+    }).isRequired).isRequired
+  }))
 }
 
 export default ExpensesPresenter

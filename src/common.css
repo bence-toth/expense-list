@@ -1,0 +1,5 @@
+html {
+  /* stylelint-disable unit-blacklist */
+  --border-width-thin: 1px;
+  /* stylelint-enable unit-blacklist */
+}

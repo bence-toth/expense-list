@@ -5,7 +5,7 @@ import ExpensesContainer from './components/expenses/expenses.container'
 import * as serviceWorker from './serviceWorker'
 
 import './index.css'
-import './colors.css'
+import './common.css'
 
 ReactDOM.render(
   <ExpensesContainer />,
