@@ -141,3 +141,10 @@
   font-size: 1.15rem;
   color: hsl(0, 0%, 60%);
 }
+
+.expenses .expense .date {
+  margin-top: 0.3rem;
+  font-size: 1rem;
+  color: hsl(0, 0%, 60%);
+  font-family: 'Roboto Condensed', sans-serif;
+}

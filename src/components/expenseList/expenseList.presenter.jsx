@@ -2,7 +2,7 @@ import React from 'react'
 import {instanceOf, arrayOf, shape, string} from 'prop-types'
 import classNames from 'classnames'
 
-import {formatDate, generateGroupKey} from './expenseList.presenter.utility'
+import {formatMonth, formatFullDate, generateGroupKeyFromDate} from './expenseList.presenter.utility'
 
 import './expenseList.styles.css'
 
@@ -18,12 +18,12 @@ const ExpenseListPresenter = ({expenses}) => (
     {expenses && (
       <ul className='expenseGroup'>
         {expenses.map(({groupStart, expenseItems}) => (
-          <li key={generateGroupKey(groupStart)}>
+          <li key={generateGroupKeyFromDate(groupStart)}>
             <div className='expenseGroupHeading'>
-              {formatDate(({date: groupStart, locale: 'en-GB'}))}
+              {formatMonth(({date: groupStart, locale: 'en-GB'}))}
             </div>
             <ul className='expenseList'>
-              {expenseItems.map(({id, amount, merchant, user, category}) => (
+              {expenseItems.map(({id, amount, merchant, user, category, date}) => (
                 <li
                   key={id}
                   className={classNames('expense', category)}
@@ -41,6 +41,9 @@ const ExpenseListPresenter = ({expenses}) => (
                       </div>
                       <div className='user'>
                         {`${user.first} ${user.last}`}
+                      </div>
+                      <div className='date'>
+                        {formatFullDate(({date, locale: 'en-GB'}))}
                       </div>
                     </div>
                   </div>

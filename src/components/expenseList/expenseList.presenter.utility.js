@@ -1,4 +1,4 @@
-const formatDate = ({date, locale}) => {
+const formatMonth = ({date, locale}) => {
   const options = {
     year: 'numeric',
     month: 'long'
@@ -7,7 +7,16 @@ const formatDate = ({date, locale}) => {
   return formatter.format(date)
 }
 
-const generateGroupKey = date =>
+const formatFullDate = ({date, locale}) => {
+  const options = {
+    dateStyle: 'short',
+    timeStyle: 'short'
+  }
+  const formatter = new Intl.DateTimeFormat(locale, options)
+  return formatter.format(new Date(date))
+}
+
+const generateGroupKeyFromDate = date =>
   `${date.getFullYear()}${date.getMonth()}`
 
-export {formatDate, generateGroupKey}
+export {formatMonth, formatFullDate, generateGroupKeyFromDate}
