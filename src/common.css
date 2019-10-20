@@ -1,11 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed&display=swap');
 
 html {
   /* stylelint-disable unit-blacklist */
   --border-width-thin: 1px;
   /* stylelint-enable unit-blacklist */
+  --color-brand: hsl(345, 100%, 60%);
+  --color-category-transport: hsl(0, 58%, 68%);
+  --color-category-hotel: hsl(187, 48%, 68%);
+  --color-category-plane: hsl(214, 67%, 65%);
+  --color-category-food: hsl(36, 67%, 65%);
 }
 
 body {
-  font-family: Montserrat, sans-serif;
+  font-family: Roboto, sans-serif;
 }
