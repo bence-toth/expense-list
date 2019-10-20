@@ -16,7 +16,16 @@ const formatFullDate = ({date, locale}) => {
   return formatter.format(new Date(date))
 }
 
+const formatCurrency = ({amount, currency, locale}) => {
+  const options = {
+    style: 'currency',
+    currency
+  }
+  const formatter = new Intl.NumberFormat(locale, options)
+  return formatter.format(Number(amount))
+}
+
 const generateGroupKeyFromDate = date =>
   `${date.getFullYear()}${date.getMonth()}`
 
-export {formatMonth, formatFullDate, generateGroupKeyFromDate}
+export {formatMonth, formatFullDate, formatCurrency, generateGroupKeyFromDate}

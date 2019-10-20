@@ -2,7 +2,7 @@ import React from 'react'
 import {instanceOf, arrayOf, shape, string} from 'prop-types'
 import classNames from 'classnames'
 
-import {formatMonth, formatFullDate, generateGroupKeyFromDate} from './expenseList.presenter.utility'
+import {formatMonth, formatFullDate, formatCurrency, generateGroupKeyFromDate} from './expenseList.presenter.utility'
 
 import './expenseList.styles.css'
 
@@ -49,7 +49,11 @@ const ExpenseListPresenter = ({expenses}) => (
                   </div>
                   <div className='right'>
                     <div className='amount'>
-                      {`${Number(amount.value).toFixed(2)} ${amount.currency}`}
+                      {formatCurrency({
+                        amount: amount.value,
+                        currency: amount.currency,
+                        locale: 'en-GB'
+                      })}
                     </div>
                   </div>
                 </li>
