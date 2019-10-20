@@ -2,10 +2,10 @@
 const getMagicNumber = ({id}) => parseInt(id.slice(-4), 16)
 
 // Add mock categories, use `null` sometimes
-const categories = ['transport', 'plane', 'hotel', 'food', null]
+const categories = ['transport', 'transport', 'transport', 'transport', 'plane', 'hotel', 'hotel', 'hotel', 'food', 'food', null]
 const addMockCategories = expense => ({
   ...expense,
-  category: categories[getMagicNumber(expense) % 5]
+  category: categories[getMagicNumber(expense) % categories.length]
 })
 
 // Add mock user avatars, use `null` sometimes
