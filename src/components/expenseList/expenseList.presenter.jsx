@@ -1,6 +1,8 @@
 import React from 'react'
-import {instanceOf, arrayOf, shape, string} from 'prop-types'
+import {instanceOf, arrayOf, shape, string, bool, func} from 'prop-types'
 import classNames from 'classnames'
+
+import Modal from 'components/modal/modal.presenter'
 
 import {formatMonth, formatFullDate, formatCurrency, generateGroupKeyFromDate} from './expenseList.presenter.utility'
 
@@ -13,20 +15,30 @@ const getIconNameByCategory = category => ({
   food: 'fas fa-utensils'
 })[category] || 'fas fa-question'
 
-const ExpenseListPresenter = ({expenses}) => (
+const ExpenseListPresenter = ({
+  expenses,
+  selectedExpenseRef,
+  isModalVisible,
+  onSetModalVisibility
+}) => (
   <div className='expenses'>
     {expenses && (
       <ul className='expenseGroup'>
-        {expenses.map(({groupStart, expenseItems}) => (
-          <li key={generateGroupKeyFromDate(groupStart)}>
+        {expenses.map(({groupStart, expenseItems}, expenseGroupIndex) => (
+          <li
+            key={generateGroupKeyFromDate(groupStart)}
+          >
             <div className='expenseGroupHeading'>
               {formatMonth(({date: groupStart, locale: 'en-GB'}))}
             </div>
             <ul className='expenseList'>
-              {expenseItems.map(({id, amount, merchant, user, category, date}) => (
+              {expenseItems.map(({id, amount, merchant, user, category, date}, expenseIndex) => (
                 <li
                   key={id}
                   className={classNames('expense', category)}
+                  {...((expenseGroupIndex === 0) && (expenseIndex === 0) && {
+                    ref: selectedExpenseRef
+                  })}
                 >
                   <div className='left'>
                     <div className='category'>
@@ -38,6 +50,14 @@ const ExpenseListPresenter = ({expenses}) => (
                     <div className='merchantAndUser'>
                       <div className='merchant'>
                         {merchant}
+                        <button
+                          type='button'
+                          onClick={() => {
+                            onSetModalVisibility(true)
+                          }}
+                        >
+                          Click me
+                        </button>
                       </div>
                       <div className='user'>
                         {`${user.first} ${user.last}`}
@@ -63,6 +83,14 @@ const ExpenseListPresenter = ({expenses}) => (
         ))}
       </ul>
     )}
+    {isModalVisible && (
+      <Modal
+        animationTargetElement={selectedExpenseRef}
+        onModalHasClosed={() => {
+          onSetModalVisibility(false)
+        }}
+      />
+    )}
   </div>
 )
 
@@ -81,7 +109,12 @@ ExpenseListPresenter.propTypes = {
         avatar: string
       }).isRequired
     }).isRequired).isRequired
-  }))
+  })),
+  selectedExpenseRef: shape({
+    current: instanceOf(Element)
+  }).isRequired,
+  isModalVisible: bool,
+  onSetModalVisibility: func.isRequired
 }
 
 export default ExpenseListPresenter
