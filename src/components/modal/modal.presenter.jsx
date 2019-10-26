@@ -11,8 +11,8 @@ const {unmounted, transitioningIn, open, transitioningOut} = modalStates
 
 const Modal = ({
   children,
-  animationDurationIn = 500,
-  animationDurationOut = 350,
+  animationDurationIn = 350,
+  animationDurationOut = 300,
   animationTargetElement: {current: animationTargetElement},
   onModalHasClosed
 }) => {
