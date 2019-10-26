@@ -1,5 +1,5 @@
 import React from 'react'
-import {shape, string} from 'prop-types'
+import {shape, string, bool} from 'prop-types'
 
 import {formatFullDate, formatCurrency, getIconNameByCategory} from './expenseSummary.presenter.utility'
 
@@ -10,7 +10,8 @@ const ExpenseSummary = ({
   merchant,
   user,
   date,
-  amount
+  amount,
+  isUserDisplayed = true
 }) => (
   <div className='expenseSummary'>
     <div className='left'>
@@ -24,9 +25,11 @@ const ExpenseSummary = ({
         <div className='merchant'>
           {merchant}
         </div>
-        <div className='user'>
-          {`${user.first} ${user.last}`}
-        </div>
+        {isUserDisplayed && (
+          <div className='user'>
+            {`${user.first} ${user.last}`}
+          </div>
+        )}
         <div className='date'>
           {formatFullDate(({date, locale: 'en-GB'}))}
         </div>
@@ -56,7 +59,8 @@ ExpenseSummary.propTypes = {
     avatar: string
   }).isRequired,
   category: string,
-  date: string.isRequired
+  date: string.isRequired,
+  isUserDisplayed: bool
 }
 
 export default ExpenseSummary

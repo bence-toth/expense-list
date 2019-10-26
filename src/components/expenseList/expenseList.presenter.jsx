@@ -82,6 +82,7 @@ const ExpenseListPresenter = ({
           )}
         >
           <ExpenseSummary
+            isUserDisplayed={false}
             {...getSelectedExpenseData({expenses, selectedExpenseId})}
           />
         </div>

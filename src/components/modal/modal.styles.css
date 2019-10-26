@@ -26,6 +26,7 @@
   background-color: hsl(0, 0%, 100%);
   transition-property: top, left, width, height, opacity;
   opacity: 0;
+  box-shadow: 0 0.1rem 0.2rem hsla(0, 0%, 0%, 4%), 0 0.1rem 0.2rem hsla(0, 0%, 0%, 8%);
 }
 
 .modal.open {
