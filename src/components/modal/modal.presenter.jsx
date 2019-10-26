@@ -56,7 +56,9 @@ const Modal = ({
           }
         }}
       >
-        {children}
+        <div className='expense'>
+          {children}
+        </div>
         <button
           type='button'
           onClick={() => {

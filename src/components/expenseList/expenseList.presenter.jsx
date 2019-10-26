@@ -4,16 +4,10 @@ import classNames from 'classnames'
 
 import Modal from 'components/modal/modal.presenter'
 
-import {formatMonth, formatFullDate, formatCurrency, generateGroupKeyFromDate} from './expenseList.presenter.utility'
+import ExpenseSummary from './expenseSummary/expenseSummary.presenter'
+import {formatMonth, generateGroupKeyFromDate, getSelectedExpenseData} from './expenseList.presenter.utility'
 
 import './expenseList.styles.css'
-
-const getIconNameByCategory = category => ({
-  plane: 'fas fa-plane',
-  transport: 'fas fa-taxi',
-  hotel: 'fas fa-hotel',
-  food: 'fas fa-utensils'
-})[category] || 'fas fa-question'
 
 const ExpenseListPresenter = ({
   expenses,
@@ -58,34 +52,13 @@ const ExpenseListPresenter = ({
                       })
                     }}
                   >
-                    <div className='left'>
-                      <div className='category'>
-                        <div className='categoryIcon'>
-                          <i className={getIconNameByCategory(category)} />
-                        </div>
-                        <div className='categoryName'>{category || 'Unknown'}</div>
-                      </div>
-                      <div className='merchantAndUser'>
-                        <div className='merchant'>
-                          {merchant}
-                        </div>
-                        <div className='user'>
-                          {`${user.first} ${user.last}`}
-                        </div>
-                        <div className='date'>
-                          {formatFullDate(({date, locale: 'en-GB'}))}
-                        </div>
-                      </div>
-                    </div>
-                    <div className='right'>
-                      <div className='amount'>
-                        {formatCurrency({
-                          amount: amount.value,
-                          currency: amount.currency,
-                          locale: 'en-GB'
-                        })}
-                      </div>
-                    </div>
+                    <ExpenseSummary
+                      category={category}
+                      merchant={merchant}
+                      user={user}
+                      date={date}
+                      amount={amount}
+                    />
                   </button>
                 </li>
               ))}
@@ -98,7 +71,21 @@ const ExpenseListPresenter = ({
       <Modal
         animationTargetElement={selectedExpenseRef}
         onModalHasClosed={onUnselectExpense}
-      />
+      >
+        <div
+          className={classNames(
+            'expense',
+            getSelectedExpenseData({
+              expenses,
+              selectedExpenseId
+            }).category
+          )}
+        >
+          <ExpenseSummary
+            {...getSelectedExpenseData({expenses, selectedExpenseId})}
+          />
+        </div>
+      </Modal>
     )}
   </div>
 )
@@ -116,7 +103,10 @@ ExpenseListPresenter.propTypes = {
         first: string.isRequired,
         last: string.isRequired,
         avatar: string
-      }).isRequired
+      }).isRequired,
+      category: string,
+      date: string.isRequired,
+      id: string.isRequired
     }).isRequired).isRequired
   })),
   selectedExpenseRef: shape({

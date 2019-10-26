@@ -7,25 +7,18 @@ const formatMonth = ({date, locale}) => {
   return formatter.format(date)
 }
 
-const formatFullDate = ({date, locale}) => {
-  const options = {
-    dateStyle: 'short',
-    timeStyle: 'short'
-  }
-  const formatter = new Intl.DateTimeFormat(locale, options)
-  return formatter.format(new Date(date))
-}
-
-const formatCurrency = ({amount, currency, locale}) => {
-  const options = {
-    style: 'currency',
-    currency
-  }
-  const formatter = new Intl.NumberFormat(locale, options)
-  return formatter.format(Number(amount))
-}
-
 const generateGroupKeyFromDate = date =>
   `${date.getFullYear()}${date.getMonth()}`
 
-export {formatMonth, formatFullDate, formatCurrency, generateGroupKeyFromDate}
+const getSelectedExpenseData = ({expenses, selectedExpenseId}) => {
+  const {amount, category, date, merchant, user} = expenses
+    .flatMap(({expenseItems}) => expenseItems)
+    .find(({id}) => (id === selectedExpenseId))
+  return {amount, category, date, merchant, user}
+}
+
+export {
+  formatMonth,
+  generateGroupKeyFromDate,
+  getSelectedExpenseData
+}
