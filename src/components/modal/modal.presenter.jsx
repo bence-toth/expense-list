@@ -56,16 +56,15 @@ const Modal = ({
           }
         }}
       >
-        <div className='expense'>
-          {children}
-        </div>
+        {children}
         <button
+          className='closeModalButton'
           type='button'
           onClick={() => {
             onSetModalState(transitioningOut)
           }}
         >
-          Then click me
+          <i className='far fa-times-circle' />
         </button>
       </div>
     </div>

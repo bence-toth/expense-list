@@ -5,7 +5,8 @@ import classNames from 'classnames'
 import Modal from 'components/modal/modal.presenter'
 
 import ExpenseSummary from './expenseSummary/expenseSummary.presenter'
-import {formatMonth, generateGroupKeyFromDate, getSelectedExpenseData} from './expenseList.presenter.utility'
+import ExpenseDetails from './expenseDetails/expenseDetails.presenter'
+import {formatMonth, generateGroupKeyFromDate, getSelectedExpense} from './expenseList.presenter.utility'
 
 import './expenseList.styles.css'
 
@@ -72,20 +73,12 @@ const ExpenseListPresenter = ({
         animationTargetElement={selectedExpenseRef}
         onModalHasClosed={onUnselectExpense}
       >
-        <div
-          className={classNames(
-            'expense',
-            getSelectedExpenseData({
-              expenses,
-              selectedExpenseId
-            }).category
-          )}
-        >
-          <ExpenseSummary
-            isUserDisplayed={false}
-            {...getSelectedExpenseData({expenses, selectedExpenseId})}
-          />
-        </div>
+        <ExpenseDetails
+          selectedExpense={getSelectedExpense({
+            expenses,
+            selectedExpenseId
+          })}
+        />
       </Modal>
     )}
   </div>

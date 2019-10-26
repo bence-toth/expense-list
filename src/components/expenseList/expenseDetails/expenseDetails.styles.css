@@ -1,0 +1,36 @@
+.expenseDetails {
+  height: 100%;
+  overflow: hidden;
+}
+
+.expenseDetails .expense .expenseSummary {
+  height: 6.5rem;
+}
+
+.expenseDetails .expense .expenseSummary .left {
+  border-left-width: 0;
+}
+
+.expenseDetails .userSection {
+  height: 5rem;
+  background-color: red;
+}
+
+.expenseDetails .attachmentSection {
+  height: 5rem;
+  background-color: green;
+}
+
+.expenseDetails .commentsSection {
+  height: calc(100% - 6.5rem - 5rem - 5rem);
+}
+
+.expenseDetails .commentsSection .comments {
+  height: calc(100% - 7.5rem);
+  background-color: blue;
+}
+
+.expenseDetails .commentsSection .addComment {
+  height: 7.5rem;
+  background-color: yellow;
+}
