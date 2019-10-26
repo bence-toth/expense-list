@@ -1,6 +1,7 @@
-import {useState, useEffect} from 'react'
+import {useState, useRef, useReducer, useEffect} from 'react'
 
 import {fetchExpenses} from './expenseList.consumers'
+import {selectionReducer, initialSelectionState} from './expenseList.reducer'
 
 const loadExpenses = async ({setExpenses}) => {
   const expenses = await fetchExpenses()
@@ -15,5 +16,21 @@ const useExpenses = () => {
   return expenses
 }
 
-// eslint-disable-next-line import/prefer-default-export
-export {useExpenses}
+const useExpenseSelection = () => {
+  const selectedExpenseRef = useRef(null)
+  const [{
+    preselectedExpenseId,
+    selectedExpenseId
+  }, dispatchSelectionAction] = useReducer(
+    selectionReducer,
+    initialSelectionState
+  )
+  return {
+    preselectedExpenseId,
+    selectedExpenseId,
+    selectedExpenseRef,
+    dispatchSelectionAction
+  }
+}
+
+export {useExpenses, useExpenseSelection}

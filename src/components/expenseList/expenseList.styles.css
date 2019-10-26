@@ -20,8 +20,15 @@
 
 .expenses .expense {
   border-bottom: var(--border-width-thin) solid hsl(0, 0%, 90%);
+}
+
+.expenses .expenseButton {
+  width: 100%;
   display: flex;
   justify-content: space-between;
+  border: 0;
+  background-color: transparent;
+  text-align: left;
 }
 
 .expenses .expense .left {

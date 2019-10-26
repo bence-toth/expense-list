@@ -1,52 +1,22 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React from 'react'
 import {node, number, instanceOf, shape, func} from 'prop-types'
 import classNames from 'classnames'
 
+import {useModalState, modalStates} from './modal.hooks'
+import {getInitialModalPosition} from './modal.presenter.utility'
+
 import './modal.styles.css'
 
-const modalStates = {
-  unmounted: 'unmounted',
-  mounted: 'mounted',
-  transitioningIn: 'transitioningIn',
-  open: 'open',
-  transitioningOut: 'transitioningOut'
-}
-
-const {unmounted, mounted, transitioningIn, open, transitioningOut} = modalStates
-
-const getInitialPosition = ({animationTargetElement}) => {
-  if (!animationTargetElement) {
-    return {
-      left: '200%',
-      top: '200%'
-    }
-  }
-  const {width, height, top, left} = animationTargetElement.getBoundingClientRect()
-  return {width, height, top, left}
-}
+const {unmounted, transitioningIn, open, transitioningOut} = modalStates
 
 const Modal = ({
   children,
-  animationDurationIn = 5000,
-  animationDurationOut = 3500,
+  animationDurationIn = 500,
+  animationDurationOut = 350,
   animationTargetElement: {current: animationTargetElement},
   onModalHasClosed
 }) => {
-  const [modalState, onSetModalState] = useState(unmounted)
-  useEffect(() => {
-    if (modalState === mounted) {
-      requestAnimationFrame(() => {
-        onSetModalState(transitioningIn)
-      })
-    }
-  }, [modalState])
-  useEffect(() => {
-    onSetModalState(mounted)
-  }, [])
-  const onCloseModal = () => {
-    onSetModalState(transitioningOut)
-  }
-  const modalRef = useRef()
+  const {modalState, modalRef, onSetModalState} = useModalState({animationTargetElement})
   return (modalState !== unmounted) && (
     <div className='modalContainer'>
       <div
@@ -71,7 +41,7 @@ const Modal = ({
             }
             : {
               transitionDuration: `${animationDurationOut}ms`,
-              ...getInitialPosition({animationTargetElement})
+              ...getInitialModalPosition({animationTargetElement})
             }
         }
         onTransitionEnd={({target, propertyName}) => {
@@ -89,7 +59,9 @@ const Modal = ({
         {children}
         <button
           type='button'
-          onClick={onCloseModal}
+          onClick={() => {
+            onSetModalState(transitioningOut)
+          }}
         >
           Then click me
         </button>

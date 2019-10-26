@@ -1,18 +1,32 @@
-import React, {useRef, useState} from 'react'
+import React from 'react'
 
-import {useExpenses} from './expenseList.hooks'
+import {useExpenses, useExpenseSelection} from './expenseList.hooks'
+import {onPreselectExpense, onSelectExpense, onUnselectExpense} from './expenseList.actionCreators'
 import ExpensesPresenter from './expenseList.presenter'
 
 const ExpenseListContainer = () => {
   const expenses = useExpenses()
-  const selectedExpenseRef = useRef(null)
-  const [isModalVisible, onSetModalVisibility] = useState(false)
+  const {
+    preselectedExpenseId,
+    selectedExpenseId,
+    selectedExpenseRef,
+    dispatchSelectionAction
+  } = useExpenseSelection()
   return expenses && (
     <ExpensesPresenter
       expenses={expenses}
       selectedExpenseRef={selectedExpenseRef}
-      isModalVisible={isModalVisible}
-      onSetModalVisibility={onSetModalVisibility}
+      preselectedExpenseId={preselectedExpenseId}
+      selectedExpenseId={selectedExpenseId}
+      onPreselectExpense={({id}) => {
+        dispatchSelectionAction(onPreselectExpense({id}))
+      }}
+      onSelectExpense={({id}) => {
+        dispatchSelectionAction(onSelectExpense({id}))
+      }}
+      onUnselectExpense={() => {
+        dispatchSelectionAction(onUnselectExpense())
+      }}
     />
   )
 }
