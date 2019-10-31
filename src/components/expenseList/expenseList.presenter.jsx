@@ -72,6 +72,7 @@ const ExpenseListPresenter = ({
       <Modal
         animationTargetElement={selectedExpenseRef}
         onModalHasClosed={onUnselectExpense}
+        shouldCloseOnOverlayClick
       >
         <ExpenseDetails
           selectedExpense={getSelectedExpense({

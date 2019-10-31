@@ -21,6 +21,10 @@
   opacity: 1;
 }
 
+.overlay.interactive {
+  cursor: pointer;
+}
+
 .modal {
   position: absolute;
   background-color: hsl(0, 0%, 100%);

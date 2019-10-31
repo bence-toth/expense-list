@@ -1,5 +1,5 @@
 import React from 'react'
-import {node, number, instanceOf, shape, func} from 'prop-types'
+import {node, number, instanceOf, shape, func, bool} from 'prop-types'
 import classNames from 'classnames'
 
 import {useModalState, modalStates} from './modal.hooks'
@@ -14,20 +14,31 @@ const Modal = ({
   animationDurationIn = 350,
   animationDurationOut = 300,
   animationTargetElement: {current: animationTargetElement},
-  onModalHasClosed
+  onModalHasClosed,
+  shouldCloseOnOverlayClick
 }) => {
   const {modalState, modalRef, onSetModalState} = useModalState({animationTargetElement})
   return (modalState !== unmounted) && (
     <div className='modalContainer'>
       <div
         className={classNames('overlay', {
-          visible: [transitioningIn, open].includes(modalState)
+          visible: [transitioningIn, open].includes(modalState),
+          interactive: shouldCloseOnOverlayClick
         })}
         style={{
           transitionDuration: [transitioningIn, open].includes(modalState)
             ? `${animationDurationIn}ms`
             : `${animationDurationOut}ms`
         }}
+        {...(shouldCloseOnOverlayClick && ({
+          role: 'button',
+          tabIndex: 0,
+          onClick: () => {
+            if (shouldCloseOnOverlayClick) {
+              onSetModalState(transitioningOut)
+            }
+          }
+        }))}
       />
       <div
         ref={modalRef}
@@ -78,7 +89,8 @@ Modal.propTypes = {
   animationTargetElement: shape({
     current: instanceOf(Element)
   }).isRequired,
-  onModalHasClosed: func
+  onModalHasClosed: func,
+  shouldCloseOnOverlayClick: bool
 }
 
 export default Modal
