@@ -2,6 +2,8 @@ import React from 'react'
 import {shape, string} from 'prop-types'
 import classNames from 'classnames'
 
+import Avatar from 'components/avatar/avatar.presenter'
+
 import ExpenseSummary from '../expenseSummary/expenseSummary.presenter'
 
 import './expenseDetails.styles.css'
@@ -22,12 +24,10 @@ const ExpenseDetails = ({
       />
     </div>
     <div className='userSection'>
-      Show avatar (with initials)
-      {' '}
-      {selectedExpense.avatar}
-      {' | '}
-      Show name
-      {' '}
+      <Avatar
+        name={`${selectedExpense.user.first} ${selectedExpense.user.last}`}
+        avatarURL={selectedExpense.avatar}
+      />
       {selectedExpense.user.first}
       {' '}
       {selectedExpense.user.last}
