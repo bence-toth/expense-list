@@ -28,13 +28,27 @@ const ExpenseDetails = ({
         name={`${selectedExpense.user.first} ${selectedExpense.user.last}`}
         avatarURL={selectedExpense.user.avatar}
       />
-      {selectedExpense.user.first}
-      {' '}
-      {selectedExpense.user.last}
-      {' | '}
-      <a href='mailto:'>Send email</a>
-      {' '}
-      {selectedExpense.user.email}
+      <div className='userNameSection'>
+        <div className='name'>
+          {selectedExpense.user.first}
+          {' '}
+          {selectedExpense.user.last}
+        </div>
+        <div className='email'>
+          {selectedExpense.user.email}
+        </div>
+      </div>
+      <div className='sendEmailSection'>
+        <a
+          className='sendEmailButton'
+          href={`mailto:${selectedExpense.user.email}`}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          <i className='fas fa-paper-plane' />
+          <span>Send email</span>
+        </a>
+      </div>
     </div>
     <div className='attachmentSection'>
       No receipt was attached yet
