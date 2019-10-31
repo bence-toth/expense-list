@@ -26,7 +26,7 @@ const ExpenseDetails = ({
     <div className='userSection'>
       <Avatar
         name={`${selectedExpense.user.first} ${selectedExpense.user.last}`}
-        avatarURL={selectedExpense.avatar}
+        avatarURL={selectedExpense.user.avatar}
       />
       {selectedExpense.user.first}
       {' '}
