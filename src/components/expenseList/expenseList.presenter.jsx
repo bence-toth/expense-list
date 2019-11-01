@@ -97,7 +97,8 @@ ExpenseListPresenter.propTypes = {
       user: shape({
         first: string.isRequired,
         last: string.isRequired,
-        avatar: string
+        avatar: string,
+        email: string.isRequired
       }).isRequired,
       category: string,
       date: string.isRequired,

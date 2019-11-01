@@ -3,60 +3,6 @@
   overflow: hidden;
 }
 
-.expenseDetails .expense .expenseSummary {
-  height: 6.5rem;
-}
-
-.expenseDetails .expense .expenseSummary .left {
-  border-left-width: 0;
-}
-
-.expenseDetails .userSection {
-  height: 5rem;
-  background-color: hsl(0, 0%, 95%);
-  display: flex;
-  align-items: center;
-}
-
-.expenseDetails .userSection .userNameSection {
-  flex-grow: 1;
-  line-height: 1.35;
-  color: hsl(0, 0%, 50%);
-}
-
-.expenseDetails .userSection .userNameSection .name {
-  font-size: 1.25rem;
-}
-
-.expenseDetails .userSection .userNameSection .email {
-  font-size: 1rem;
-}
-
-.expenseDetails .userSection .sendEmailSection {
-  margin: 0 0.5rem;
-}
-
-.expenseDetails .userSection .sendEmailButton {
-  text-decoration: none;
-  color: hsl(0, 0%, 45%);
-  transition: color 350ms;
-  padding: 0.5rem;
-}
-
-.expenseDetails .userSection .sendEmailButton:hover {
-  color: var(--color-brand);
-}
-
-.expenseDetails .userSection .sendEmailButton > i {
-  margin-right: 0.5rem;
-}
-
-.expenseDetails .userSection .sendEmailButton > span {
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 0.035rem;
-}
-
 .expenseDetails .attachmentSection {
   height: 5rem;
   background-color: green;

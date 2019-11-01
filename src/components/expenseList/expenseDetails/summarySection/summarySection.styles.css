@@ -1,0 +1,7 @@
+.expenseDetails .expense .expenseSummary {
+  height: 6.5rem;
+}
+
+.expenseDetails .expense .expenseSummary .left {
+  border-left-width: 0;
+}
