@@ -9,6 +9,14 @@ import ExpenseSummary from '../expenseSummary/expenseSummary.presenter'
 import './expenseDetails.styles.css'
 
 const ExpenseDetails = ({
+  selectedExpense: {
+    user: {
+      first,
+      last,
+      avatar,
+      email
+    }
+  },
   selectedExpense
 }) => (
   <div className='expenseDetails'>
@@ -25,23 +33,23 @@ const ExpenseDetails = ({
     </div>
     <div className='userSection'>
       <Avatar
-        name={`${selectedExpense.user.first} ${selectedExpense.user.last}`}
-        avatarURL={selectedExpense.user.avatar}
+        name={`${first} ${last}`}
+        avatarURL={avatar}
       />
       <div className='userNameSection'>
         <div className='name'>
-          {selectedExpense.user.first}
+          {first}
           {' '}
-          {selectedExpense.user.last}
+          {last}
         </div>
         <div className='email'>
-          {selectedExpense.user.email}
+          {email}
         </div>
       </div>
       <div className='sendEmailSection'>
         <a
           className='sendEmailButton'
-          href={`mailto:${selectedExpense.user.email}`}
+          href={`mailto:${email}`}
           target='_blank'
           rel='noopener noreferrer'
         >
