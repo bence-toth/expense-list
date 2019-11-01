@@ -3,13 +3,13 @@ const getMagicNumber = ({id}) => parseInt(id.slice(-4), 16)
 
 // Add mock categories, use `null` sometimes
 const categories = ['transport', 'transport', 'transport', 'transport', 'plane', 'hotel', 'hotel', 'hotel', 'food', 'food', null]
-const addMockCategories = expense => ({
+const addMockCategory = expense => ({
   ...expense,
   category: categories[getMagicNumber(expense) % categories.length]
 })
 
 // Add mock user avatars, use `null` sometimes
-const addMockUserAvatars = (expense, expenseIndex) => ({
+const addMockUserAvatar = (expense, expenseIndex) => ({
   ...expense,
   user: {
     ...expense.user,
@@ -19,39 +19,14 @@ const addMockUserAvatars = (expense, expenseIndex) => ({
   }
 })
 
-// Sort expenses by date, oldest to newest
-const sortByDate = (left, right) => {
-  const leftDate = new Date(left.date)
-  const rightDate = new Date(right.date)
-  if (leftDate > rightDate) {
-    return 1
-  }
-  if (leftDate < rightDate) {
-    return -1
-  }
-  return 0
-}
-
 // Add month start date to expenses
-const generateGroupStartDate = expense => {
-  const date = new Date(expense.date)
-  const groupStartDate = new Date(0)
-  groupStartDate.setFullYear(date.getFullYear())
-  groupStartDate.setMonth(date.getMonth() + 1)
-  return {
-    ...expense,
-    groupStartDate
-  }
-}
+const generateGroupStartDate = expense => ({
+  ...expense,
+  groupStartDate: expense.date.slice(0, 'YYYY-MM'.length)
+})
 
-// Turn array of expenses to object of months with expenses in them
-const generateKey = ({groupStartDate}) => {
-  const year = groupStartDate.getFullYear()
-  const month = (`0${groupStartDate.getMonth()}`).slice(-2)
-  return `${year}-${month}`
-}
 const groupByGroupStartDate = (accumulator, expense) => {
-  const key = generateKey(expense)
+  const key = expense.groupStartDate
   return ({
     ...accumulator,
     [key]: accumulator[key]
@@ -70,11 +45,9 @@ const groupsToArray = groups =>
 
 // Compose all preparations
 const prepareExpenses = expenses => {
-  // eslint-disable-next-line fp/no-mutating-methods
-  const transformedExpenses = [...expenses]
-    .map(addMockCategories)
-    .map(addMockUserAvatars)
-    .sort(sortByDate)
+  const transformedExpenses = expenses
+    .map(addMockCategory)
+    .map(addMockUserAvatar)
     .map(generateGroupStartDate)
     .reduce(groupByGroupStartDate, {})
   return groupsToArray(transformedExpenses)

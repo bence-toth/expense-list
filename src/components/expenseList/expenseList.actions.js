@@ -4,4 +4,9 @@ const selectionActions = {
   unselectExpense: 'unselectExpense'
 }
 
-export default selectionActions
+const expensesActions = {
+  onRequestExpenses: 'onRequestExpenses',
+  onReceiveExpenses: 'onReceiveExpenses'
+}
+
+export {selectionActions, expensesActions}

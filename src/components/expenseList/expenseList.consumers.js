@@ -2,10 +2,25 @@ import {prepareExpenses} from './expenseList.consumers.utility'
 
 const api = 'http://localhost:3000'
 
-const fetchExpenses = async () => {
-  const response = await fetch(`${api}/expenses`)
+const pageSize = 15
+
+const fetchExpenses = async ({rawExpenses}) => {
+  const response = await fetch([
+    api,
+    '/expenses',
+    `?limit=${pageSize}`,
+    `&offset=${rawExpenses.length}`
+  ].join(''))
   const {expenses} = await response.json()
-  return prepareExpenses(expenses)
+  const allExpenses = [
+    ...rawExpenses,
+    ...expenses
+  ]
+  return {
+    rawExpenses: allExpenses,
+    expenses: prepareExpenses(allExpenses),
+    shouldFetchMore: expenses.length === pageSize
+  }
 }
 
 // eslint-disable-next-line import/prefer-default-export

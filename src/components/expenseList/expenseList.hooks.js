@@ -1,19 +1,42 @@
-import {useState, useRef, useReducer, useEffect} from 'react'
+import {useRef, useReducer, useEffect} from 'react'
 
-import {fetchExpenses} from './expenseList.consumers'
-import {selectionReducer, initialSelectionState} from './expenseList.reducer'
-
-const loadExpenses = async ({setExpenses}) => {
-  const expenses = await fetchExpenses()
-  setExpenses(expenses)
-}
+import {initialSelectionState, selectionReducer, initialExpensesState, expensesReducer} from './expenseList.reducer'
+import {onLoadExpenses} from './expenseList.actionCreators.async'
 
 const useExpenses = () => {
-  const [expenses, setExpenses] = useState(null)
+  const [
+    {
+      shouldFetchMore,
+      isFetching,
+      expenses,
+      rawExpenses
+    },
+    dispatchExpensesAction
+  ] = useReducer(expensesReducer, initialExpensesState)
+
   useEffect(() => {
-    loadExpenses({setExpenses})
+    onLoadExpenses({
+      dispatchExpensesAction,
+      rawExpenses
+    })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  return expenses
+
+  const onFetchMoreExpenses = () => {
+    if (shouldFetchMore && !isFetching) {
+      onLoadExpenses({
+        dispatchExpensesAction,
+        rawExpenses
+      })
+    }
+  }
+
+  return {
+    expenses,
+    isFetchingExpenses: isFetching,
+    shouldFetchMoreExpenses: shouldFetchMore,
+    onFetchMoreExpenses
+  }
 }
 
 const useExpenseSelection = () => {

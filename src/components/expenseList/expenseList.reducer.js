@@ -1,4 +1,4 @@
-import actions from './expenseList.actions'
+import {selectionActions, expensesActions} from './expenseList.actions'
 
 const initialSelectionState = {
   preselectedExpenseId: null,
@@ -6,19 +6,19 @@ const initialSelectionState = {
 }
 
 const selectionReducer = (state, action) => {
-  if (action.type === actions.preselectExpense) {
+  if (action.type === selectionActions.preselectExpense) {
     return {
       ...state,
       preselectedExpenseId: action.id
     }
   }
-  if (action.type === actions.selectExpense) {
+  if (action.type === selectionActions.selectExpense) {
     return {
       ...state,
       selectedExpenseId: action.id
     }
   }
-  if (action.type === actions.unselectExpense) {
+  if (action.type === selectionActions.unselectExpense) {
     return {
       ...state,
       selectedExpenseId: null
@@ -27,4 +27,34 @@ const selectionReducer = (state, action) => {
   return state
 }
 
-export {initialSelectionState, selectionReducer}
+const initialExpensesState = {
+  shouldFetchMore: true,
+  isFetching: false,
+  expenses: [],
+  rawExpenses: []
+}
+
+const expensesReducer = (state, action) => {
+  if (action.type === expensesActions.onRequestExpenses) {
+    return {
+      ...state,
+      isFetching: true
+    }
+  }
+  if (action.type === expensesActions.onReceiveExpenses) {
+    return {
+      isFetching: false,
+      shouldFetchMore: action.shouldFetchMore,
+      expenses: action.expenses,
+      rawExpenses: action.rawExpenses
+    }
+  }
+  return state
+}
+
+export {
+  initialSelectionState,
+  selectionReducer,
+  initialExpensesState,
+  expensesReducer
+}

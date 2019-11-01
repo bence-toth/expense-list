@@ -1,5 +1,5 @@
 import React from 'react'
-import {instanceOf, arrayOf, shape, string, func} from 'prop-types'
+import {instanceOf, arrayOf, shape, string, func, bool} from 'prop-types'
 import classNames from 'classnames'
 
 import Modal from 'components/modal/modal.presenter'
@@ -15,9 +15,12 @@ const ExpenseListPresenter = ({
   selectedExpenseRef,
   preselectedExpenseId,
   selectedExpenseId,
+  isFetchingExpenses,
+  shouldFetchMoreExpenses,
   onPreselectExpense,
   onSelectExpense,
-  onUnselectExpense
+  onUnselectExpense,
+  onFetchMoreExpenses
 }) => (
   <div className='expenses'>
     {expenses && (
@@ -66,6 +69,19 @@ const ExpenseListPresenter = ({
             </ul>
           </li>
         ))}
+        {isFetchingExpenses && (
+          <li>Wait for it...</li>
+        )}
+        {shouldFetchMoreExpenses && (
+          <li>
+            <button
+              type='button'
+              onClick={onFetchMoreExpenses}
+            >
+              Load more
+            </button>
+          </li>
+        )}
       </ul>
     )}
     {selectedExpenseId && (
@@ -112,7 +128,10 @@ ExpenseListPresenter.propTypes = {
   onSelectExpense: func.isRequired,
   onUnselectExpense: func.isRequired,
   preselectedExpenseId: string,
-  selectedExpenseId: string
+  selectedExpenseId: string,
+  isFetchingExpenses: bool,
+  shouldFetchMoreExpenses: bool,
+  onFetchMoreExpenses: func.isRequired
 }
 
 export default ExpenseListPresenter

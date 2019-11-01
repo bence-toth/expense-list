@@ -5,7 +5,12 @@ import {onPreselectExpense, onSelectExpense, onUnselectExpense} from './expenseL
 import ExpensesPresenter from './expenseList.presenter'
 
 const ExpenseListContainer = () => {
-  const expenses = useExpenses()
+  const {
+    expenses,
+    isFetchingExpenses,
+    shouldFetchMoreExpenses,
+    onFetchMoreExpenses
+  } = useExpenses()
   const {
     preselectedExpenseId,
     selectedExpenseId,
@@ -18,6 +23,9 @@ const ExpenseListContainer = () => {
       selectedExpenseRef={selectedExpenseRef}
       preselectedExpenseId={preselectedExpenseId}
       selectedExpenseId={selectedExpenseId}
+      isFetchingExpenses={isFetchingExpenses}
+      shouldFetchMoreExpenses={shouldFetchMoreExpenses}
+      onFetchMoreExpenses={onFetchMoreExpenses}
       onPreselectExpense={({id}) => {
         dispatchSelectionAction(onPreselectExpense({id}))
       }}

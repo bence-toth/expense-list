@@ -1,21 +1,38 @@
-import actions from './expenseList.actions'
+import {selectionActions, expensesActions} from './expenseList.actions'
 
 const onPreselectExpense = ({id}) => ({
-  type: actions.preselectExpense,
+  type: selectionActions.preselectExpense,
   id
 })
 
 const onSelectExpense = ({id}) => ({
-  type: actions.selectExpense,
+  type: selectionActions.selectExpense,
   id
 })
 
 const onUnselectExpense = () => ({
-  type: actions.unselectExpense
+  type: selectionActions.unselectExpense
+})
+
+const onRequestExpenses = () => ({
+  type: expensesActions.onRequestExpenses
+})
+
+const onReceiveExpenses = ({
+  expenses,
+  rawExpenses,
+  shouldFetchMore
+}) => ({
+  type: expensesActions.onReceiveExpenses,
+  expenses,
+  rawExpenses,
+  shouldFetchMore
 })
 
 export {
   onPreselectExpense,
   onSelectExpense,
-  onUnselectExpense
+  onUnselectExpense,
+  onRequestExpenses,
+  onReceiveExpenses
 }
