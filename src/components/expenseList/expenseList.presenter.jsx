@@ -10,6 +10,8 @@ import {formatMonth, generateGroupKeyFromDate, getSelectedExpense} from './expen
 
 import './expenseList.styles.css'
 
+const scrollToBottomDistanceThreshold = 15
+
 const ExpenseListPresenter = ({
   expenses,
   selectedExpenseRef,
@@ -22,7 +24,24 @@ const ExpenseListPresenter = ({
   onUnselectExpense,
   onFetchMoreExpenses
 }) => (
-  <div className='expenses'>
+  <div
+    className='expenses'
+    onScroll={({
+      target: {
+        scrollHeight,
+        scrollTop,
+        clientHeight
+      }
+    }) => {
+      if (shouldFetchMoreExpenses) {
+        const maxScrollTop = scrollHeight - clientHeight
+        const distanceFromBottom = maxScrollTop - scrollTop
+        if (distanceFromBottom <= scrollToBottomDistanceThreshold) {
+          onFetchMoreExpenses()
+        }
+      }
+    }}
+  >
     {expenses && (
       <ul className='expenseGroup'>
         {expenses.map(({groupStart, expenseItems}) => (
@@ -71,16 +90,6 @@ const ExpenseListPresenter = ({
         ))}
         {isFetchingExpenses && (
           <li>Wait for it...</li>
-        )}
-        {shouldFetchMoreExpenses && (
-          <li>
-            <button
-              type='button'
-              onClick={onFetchMoreExpenses}
-            >
-              Load more
-            </button>
-          </li>
         )}
       </ul>
     )}
