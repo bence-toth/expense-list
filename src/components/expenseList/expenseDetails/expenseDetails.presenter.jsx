@@ -3,6 +3,7 @@ import {shape, string} from 'prop-types'
 
 import UserSection from './userSection/userSection.presenter'
 import SummarySection from './summarySection/summarySection.presenter'
+import {addCommentToExpense} from './expenseDetails.consumers'
 
 import './expenseDetails.styles.css'
 
@@ -13,7 +14,8 @@ const ExpenseDetails = ({
       last,
       avatar,
       email
-    }
+    },
+    id
   },
   selectedExpense
 }) => (
@@ -43,6 +45,12 @@ const ExpenseDetails = ({
         <textarea />
         <button
           type='button'
+          onClick={() => {
+            addCommentToExpense({
+              expenseId: id,
+              comment: 'Some comment'
+            })
+          }}
         >
           Send
         </button>
@@ -53,19 +61,12 @@ const ExpenseDetails = ({
 
 ExpenseDetails.propTypes = {
   selectedExpense: shape({
-    amount: shape({
-      value: string.isRequired,
-      currency: string.isRequired
-    }).isRequired,
-    merchant: string.isRequired,
     user: shape({
       first: string.isRequired,
       last: string.isRequired,
       email: string.isRequired,
       avatar: string
     }).isRequired,
-    category: string,
-    date: string.isRequired,
     id: string.isRequired
   }).isRequired
 }
