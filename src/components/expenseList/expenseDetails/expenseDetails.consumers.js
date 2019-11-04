@@ -11,8 +11,7 @@ const addCommentToExpense = async ({expenseId, comment}) => {
     method: 'POST',
     body: formData
   })
-  const result = await response.json()
-  return result
+  return response.json()
 }
 
 // eslint-disable-next-line import/prefer-default-export
