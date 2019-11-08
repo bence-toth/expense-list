@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import {string} from 'prop-types'
 
+import {usePersistedComment} from './commentSection.hooks'
 import CommentSectionPresenter from './commentSection.presenter'
-import {addCommentToExpense} from './commentSection.consumers'
 
 import './commentSection.styles.css'
 
@@ -10,13 +10,10 @@ const CommentSection = ({
   expenseId,
   initialComment
 }) => {
-  const [comment, onEditComment] = useState(initialComment)
-  useEffect(() => {
-    addCommentToExpense({
-      expenseId,
-      comment
-    })
-  }, [comment, expenseId])
+  const [comment, onEditComment] = usePersistedComment({
+    initialComment,
+    expenseId
+  })
   return (
     <CommentSectionPresenter
       comment={comment}
