@@ -3,7 +3,7 @@ import {shape, string} from 'prop-types'
 
 import UserSection from './userSection/userSection.presenter'
 import SummarySection from './summarySection/summarySection.presenter'
-import {addCommentToExpense} from './expenseDetails.consumers'
+import CommentSection from './commentSection/commentSection.container'
 
 import './expenseDetails.styles.css'
 
@@ -15,7 +15,8 @@ const ExpenseDetails = ({
       avatar,
       email
     },
-    id
+    id,
+    comment
   },
   selectedExpense
 }) => (
@@ -32,30 +33,10 @@ const ExpenseDetails = ({
       No receipt was attached yet
       <input type='file' />
     </div>
-    <div className='commentsSection'>
-      <div className='comments'>
-        <article>
-          <p>Hello world!</p>
-        </article>
-        <article>
-          <p>Hello Pleo!</p>
-        </article>
-      </div>
-      <div className='addComment'>
-        <textarea />
-        <button
-          type='button'
-          onClick={() => {
-            addCommentToExpense({
-              expenseId: id,
-              comment: 'Some comment'
-            })
-          }}
-        >
-          Send
-        </button>
-      </div>
-    </div>
+    <CommentSection
+      expenseId={id}
+      initialComment={comment}
+    />
   </div>
 )
 
@@ -67,7 +48,8 @@ ExpenseDetails.propTypes = {
       email: string.isRequired,
       avatar: string
     }).isRequired,
-    id: string.isRequired
+    id: string.isRequired,
+    comment: string.isRequired
   }).isRequired
 }
 

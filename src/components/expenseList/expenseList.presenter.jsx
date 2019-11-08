@@ -127,7 +127,8 @@ ExpenseListPresenter.propTypes = {
       }).isRequired,
       category: string,
       date: string.isRequired,
-      id: string.isRequired
+      id: string.isRequired,
+      comment: string.isRequired
     }).isRequired).isRequired
   })),
   selectedExpenseRef: shape({

@@ -11,10 +11,10 @@ const generateGroupKeyFromDate = date =>
   `${date.getFullYear()}${date.getMonth()}`
 
 const getSelectedExpense = ({expenses, selectedExpenseId}) => {
-  const {id, amount, category, date, merchant, user} = expenses
+  const {id, amount, category, date, merchant, user, comment} = expenses
     .flatMap(({expenseItems}) => expenseItems)
     .find(({id: lookupId}) => (lookupId === selectedExpenseId))
-  return {id, amount, category, date, merchant, user}
+  return {id, amount, category, date, merchant, user, comment}
 }
 
 export {

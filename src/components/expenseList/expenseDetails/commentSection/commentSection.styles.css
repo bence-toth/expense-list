@@ -1,0 +1,12 @@
+.commentSection {
+  height: calc(100% - 6.5rem - 5rem - 5rem);
+}
+
+.commentSection .quill {
+  height: 100%;
+}
+
+.commentSection .ql-container {
+  /* stylelint-disable-next-line unit-blacklist */
+  height: calc(100% - 40px);
+}
