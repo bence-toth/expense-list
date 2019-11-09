@@ -22,7 +22,8 @@ const ExpenseListPresenter = ({
   onPreselectExpense,
   onSelectExpense,
   onUnselectExpense,
-  onFetchMoreExpenses
+  onFetchMoreExpenses,
+  onSetExpenseComment
 }) => (
   <div
     className='expenses'
@@ -104,6 +105,7 @@ const ExpenseListPresenter = ({
             expenses,
             selectedExpenseId
           })}
+          onSetExpenseComment={onSetExpenseComment}
         />
       </Modal>
     )}
@@ -141,7 +143,8 @@ ExpenseListPresenter.propTypes = {
   selectedExpenseId: string,
   isFetchingExpenses: bool,
   shouldFetchMoreExpenses: bool,
-  onFetchMoreExpenses: func.isRequired
+  onFetchMoreExpenses: func.isRequired,
+  onSetExpenseComment: func.isRequired
 }
 
 export default ExpenseListPresenter

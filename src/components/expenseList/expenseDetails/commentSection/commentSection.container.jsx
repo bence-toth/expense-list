@@ -1,5 +1,5 @@
 import React from 'react'
-import {string} from 'prop-types'
+import {string, func} from 'prop-types'
 
 import {usePersistedComment} from './commentSection.hooks'
 import CommentSectionPresenter from './commentSection.presenter'
@@ -8,7 +8,8 @@ import './commentSection.styles.css'
 
 const CommentSection = ({
   expenseId,
-  initialComment
+  initialComment,
+  onSetExpenseComment
 }) => {
   const [comment, onEditComment] = usePersistedComment({
     initialComment,
@@ -18,13 +19,16 @@ const CommentSection = ({
     <CommentSectionPresenter
       comment={comment}
       onEditComment={onEditComment}
+      onSetExpenseComment={onSetExpenseComment}
+      expenseId={expenseId}
     />
   )
 }
 
 CommentSection.propTypes = {
   expenseId: string.isRequired,
-  initialComment: string.isRequired
+  initialComment: string.isRequired,
+  onSetExpenseComment: func.isRequired
 }
 
 export default CommentSection

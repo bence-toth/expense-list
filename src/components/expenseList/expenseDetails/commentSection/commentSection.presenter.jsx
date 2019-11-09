@@ -18,12 +18,20 @@ const formats = ['bold', 'italic', 'underline', 'strike', 'list', 'bullet', 'lin
 
 const CommentSection = ({
   comment,
-  onEditComment
+  expenseId,
+  onEditComment,
+  onSetExpenseComment
 }) => (
   <div className='commentSection'>
     <ReactQuill
       value={comment}
-      onChange={onEditComment}
+      onChange={newComment => {
+        onEditComment(newComment)
+        onSetExpenseComment({
+          expenseId,
+          comment: newComment
+        })
+      }}
       formats={formats}
       modules={modules}
     />
@@ -32,7 +40,9 @@ const CommentSection = ({
 
 CommentSection.propTypes = {
   comment: string.isRequired,
-  onEditComment: func.isRequired
+  onEditComment: func.isRequired,
+  expenseId: string.isRequired,
+  onSetExpenseComment: func.isRequired
 }
 
 export default CommentSection

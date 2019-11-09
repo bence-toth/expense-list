@@ -6,7 +6,8 @@ const selectionActions = {
 
 const expensesActions = {
   onRequestExpenses: 'onRequestExpenses',
-  onReceiveExpenses: 'onReceiveExpenses'
+  onReceiveExpenses: 'onReceiveExpenses',
+  onUpdateExpenseComment: 'onUpdateExpenseComment'
 }
 
 export {selectionActions, expensesActions}

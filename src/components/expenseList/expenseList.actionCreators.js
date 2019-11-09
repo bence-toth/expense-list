@@ -18,6 +18,12 @@ const onRequestExpenses = () => ({
   type: expensesActions.onRequestExpenses
 })
 
+const onUpdateExpenseComment = ({expenseId, comment}) => ({
+  type: expensesActions.onUpdateExpenseComment,
+  expenseId,
+  comment
+})
+
 const onReceiveExpenses = ({
   expenses,
   rawExpenses,
@@ -34,5 +40,6 @@ export {
   onSelectExpense,
   onUnselectExpense,
   onRequestExpenses,
-  onReceiveExpenses
+  onReceiveExpenses,
+  onUpdateExpenseComment
 }

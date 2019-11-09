@@ -34,6 +34,16 @@ const initialExpensesState = {
   rawExpenses: []
 }
 
+const updateComment = action => (expense => {
+  if (expense.id === action.expenseId) {
+    return {
+      ...expense,
+      comment: action.comment
+    }
+  }
+  return expense
+})
+
 const expensesReducer = (state, action) => {
   if (action.type === expensesActions.onRequestExpenses) {
     return {
@@ -47,6 +57,16 @@ const expensesReducer = (state, action) => {
       shouldFetchMore: action.shouldFetchMore,
       expenses: action.expenses,
       rawExpenses: action.rawExpenses
+    }
+  }
+  if (action.type === expensesActions.onUpdateExpenseComment) {
+    return {
+      ...state,
+      rawExpenses: state.rawExpenses.map(updateComment(action)),
+      expenses: state.expenses.map(({expenseItems, ...rest}) => ({
+        ...rest,
+        expenseItems: expenseItems.map(updateComment(action))
+      }))
     }
   }
   return state

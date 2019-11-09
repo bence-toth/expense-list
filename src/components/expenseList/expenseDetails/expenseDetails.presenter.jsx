@@ -1,5 +1,5 @@
 import React from 'react'
-import {shape, string} from 'prop-types'
+import {shape, string, func} from 'prop-types'
 
 import UserSection from './userSection/userSection.presenter'
 import SummarySection from './summarySection/summarySection.presenter'
@@ -18,7 +18,8 @@ const ExpenseDetails = ({
     id,
     comment
   },
-  selectedExpense
+  selectedExpense,
+  onSetExpenseComment
 }) => (
   <div className='expenseDetails'>
     <SummarySection
@@ -36,6 +37,7 @@ const ExpenseDetails = ({
     <CommentSection
       expenseId={id}
       initialComment={comment}
+      onSetExpenseComment={onSetExpenseComment}
     />
   </div>
 )
@@ -50,7 +52,8 @@ ExpenseDetails.propTypes = {
     }).isRequired,
     id: string.isRequired,
     comment: string.isRequired
-  }).isRequired
+  }).isRequired,
+  onSetExpenseComment: func.isRequired
 }
 
 export default ExpenseDetails

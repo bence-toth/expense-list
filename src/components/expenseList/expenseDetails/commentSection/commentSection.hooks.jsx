@@ -23,7 +23,6 @@ const useDebounce = (functionToDebounce, delay, dependencies) => {
   return callback
 }
 
-// TODO: When closing and reopening expense, original comments loads and gets persisted
 const usePersistedComment = ({
   initialComment,
   expenseId
