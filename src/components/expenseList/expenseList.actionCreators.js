@@ -1,17 +1,17 @@
 import {selectionActions, expensesActions} from './expenseList.actions'
 
 const onPreselectExpense = ({id}) => ({
-  type: selectionActions.preselectExpense,
+  type: selectionActions.onPreselectExpense,
   id
 })
 
 const onSelectExpense = ({id}) => ({
-  type: selectionActions.selectExpense,
+  type: selectionActions.onSelectExpense,
   id
 })
 
 const onUnselectExpense = () => ({
-  type: selectionActions.unselectExpense
+  type: selectionActions.onUnselectExpense
 })
 
 const onRequestExpenses = () => ({

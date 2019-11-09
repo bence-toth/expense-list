@@ -1,7 +1,7 @@
 const selectionActions = {
-  preselectExpense: 'preselectExpense',
-  selectExpense: 'selectExpense',
-  unselectExpense: 'unselectExpense'
+  onPreselectExpense: 'onPreselectExpense',
+  onSelectExpense: 'onSelectExpense',
+  onUnselectExpense: 'onUnselectExpense'
 }
 
 const expensesActions = {

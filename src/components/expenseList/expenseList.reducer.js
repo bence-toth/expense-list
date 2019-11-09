@@ -6,19 +6,19 @@ const initialSelectionState = {
 }
 
 const selectionReducer = (state, action) => {
-  if (action.type === selectionActions.preselectExpense) {
+  if (action.type === selectionActions.onPreselectExpense) {
     return {
       ...state,
       preselectedExpenseId: action.id
     }
   }
-  if (action.type === selectionActions.selectExpense) {
+  if (action.type === selectionActions.onSelectExpense) {
     return {
       ...state,
       selectedExpenseId: action.id
     }
   }
-  if (action.type === selectionActions.unselectExpense) {
+  if (action.type === selectionActions.onUnselectExpense) {
     return {
       ...state,
       selectedExpenseId: null
