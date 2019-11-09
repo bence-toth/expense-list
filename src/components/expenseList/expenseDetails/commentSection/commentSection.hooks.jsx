@@ -38,4 +38,5 @@ const usePersistedComment = ({
   return [comment, onEditComment]
 }
 
+// eslint-disable-next-line import/prefer-default-export
 export {usePersistedComment}
