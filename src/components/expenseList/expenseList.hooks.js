@@ -1,7 +1,7 @@
 import {useRef, useReducer, useEffect} from 'react'
 
 import {initialSelectionState, selectionReducer, initialExpensesState, expensesReducer} from './expenseList.reducer'
-import {onUpdateExpenseComment} from './expenseList.actionCreators'
+import {onUpdateExpenseComment, onUpdateExpenseReceipts} from './expenseList.actionCreators'
 import {onLoadExpenses} from './expenseList.actionCreators.async'
 
 const useExpenses = () => {
@@ -39,12 +39,20 @@ const useExpenses = () => {
     }))
   }
 
+  const onSetExpenseReceipts = ({expenseId, receipts}) => {
+    dispatchExpensesAction(onUpdateExpenseReceipts({
+      expenseId,
+      receipts
+    }))
+  }
+
   return {
     expenses,
     isFetchingExpenses: isFetching,
     shouldFetchMoreExpenses: shouldFetchMore,
     onFetchMoreExpenses,
-    onSetExpenseComment
+    onSetExpenseComment,
+    onSetExpenseReceipts
   }
 }
 

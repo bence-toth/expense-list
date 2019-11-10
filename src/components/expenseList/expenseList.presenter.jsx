@@ -23,7 +23,8 @@ const ExpenseListPresenter = ({
   onSelectExpense,
   onUnselectExpense,
   onFetchMoreExpenses,
-  onSetExpenseComment
+  onSetExpenseComment,
+  onSetExpenseReceipts
 }) => (
   <div
     className='expenses'
@@ -106,6 +107,7 @@ const ExpenseListPresenter = ({
             selectedExpenseId
           })}
           onSetExpenseComment={onSetExpenseComment}
+          onSetExpenseReceipts={onSetExpenseReceipts}
         />
       </Modal>
     )}
@@ -130,7 +132,10 @@ ExpenseListPresenter.propTypes = {
       category: string,
       date: string.isRequired,
       id: string.isRequired,
-      comment: string.isRequired
+      comment: string.isRequired,
+      receipts: arrayOf(shape({
+        url: string.isRequired
+      }).isRequired)
     }).isRequired).isRequired
   })),
   selectedExpenseRef: shape({
@@ -144,7 +149,8 @@ ExpenseListPresenter.propTypes = {
   isFetchingExpenses: bool,
   shouldFetchMoreExpenses: bool,
   onFetchMoreExpenses: func.isRequired,
-  onSetExpenseComment: func.isRequired
+  onSetExpenseComment: func.isRequired,
+  onSetExpenseReceipts: func.isRequired
 }
 
 export default ExpenseListPresenter

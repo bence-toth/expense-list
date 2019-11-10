@@ -7,7 +7,8 @@ const selectionActions = {
 const expensesActions = {
   onRequestExpenses: 'onRequestExpenses',
   onReceiveExpenses: 'onReceiveExpenses',
-  onUpdateExpenseComment: 'onUpdateExpenseComment'
+  onUpdateExpenseComment: 'onUpdateExpenseComment',
+  onUpdateExpenseReceipts: 'onUpdateExpenseReceipts'
 }
 
 export {selectionActions, expensesActions}

@@ -1,0 +1,30 @@
+.expenseDetails .attachmentSection {
+  height: 5rem;
+  background-color: hsl(0, 0%, 100%);
+  display: flex;
+  align-items: center;
+  /* Trigger stacking context for label */
+  position: relative;
+}
+
+.expenseDetails .attachmentSection .iconContainer {
+  height: 100%;
+  width: 6rem;
+  text-align: center;
+  line-height: 5rem;
+  font-size: 1.75rem;
+}
+
+.expenseDetails .attachmentSection [type='file'] {
+  display: none;
+}
+
+.expenseDetails .attachmentSection [for='uploadReceipt'] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+  cursor: pointer;
+}

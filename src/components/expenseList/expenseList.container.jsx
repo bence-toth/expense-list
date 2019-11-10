@@ -10,7 +10,8 @@ const ExpenseListContainer = () => {
     isFetchingExpenses,
     shouldFetchMoreExpenses,
     onFetchMoreExpenses,
-    onSetExpenseComment
+    onSetExpenseComment,
+    onSetExpenseReceipts
   } = useExpenses()
   const {
     preselectedExpenseId,
@@ -28,6 +29,7 @@ const ExpenseListContainer = () => {
       shouldFetchMoreExpenses={shouldFetchMoreExpenses}
       onFetchMoreExpenses={onFetchMoreExpenses}
       onSetExpenseComment={onSetExpenseComment}
+      onSetExpenseReceipts={onSetExpenseReceipts}
       onPreselectExpense={({id}) => {
         dispatchSelectionAction(onPreselectExpense({id}))
       }}

@@ -44,6 +44,16 @@ const updateComment = action => (expense => {
   return expense
 })
 
+const updateReceipts = action => (expense => {
+  if (expense.id === action.expenseId) {
+    return {
+      ...expense,
+      receipts: action.receipts
+    }
+  }
+  return expense
+})
+
 const expensesReducer = (state, action) => {
   if (action.type === expensesActions.onRequestExpenses) {
     return {
@@ -66,6 +76,16 @@ const expensesReducer = (state, action) => {
       expenses: state.expenses.map(({expenseItems, ...rest}) => ({
         ...rest,
         expenseItems: expenseItems.map(updateComment(action))
+      }))
+    }
+  }
+  if (action.type === expensesActions.onUpdateExpenseReceipts) {
+    return {
+      ...state,
+      rawExpenses: state.rawExpenses.map(updateReceipts(action)),
+      expenses: state.expenses.map(({expenseItems, ...rest}) => ({
+        ...rest,
+        expenseItems: expenseItems.map(updateReceipts(action))
       }))
     }
   }
