@@ -1,5 +1,6 @@
 import React from 'react'
 import {string, func} from 'prop-types'
+import classNames from 'classnames'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 
@@ -35,6 +36,15 @@ const CommentSection = ({
       formats={formats}
       modules={modules}
     />
+    <div
+      className={classNames('placeholder', {
+        invisible: (
+          (comment.length > 0) && (comment !== '<p><br></p>')
+        )
+      })}
+    >
+      Add description
+    </div>
   </div>
 )
 
