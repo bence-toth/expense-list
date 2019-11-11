@@ -24,7 +24,8 @@ const ExpenseListPresenter = ({
   onUnselectExpense,
   onFetchMoreExpenses,
   onSetExpenseComment,
-  onSetExpenseReceipts
+  onSetExpenseReceipts,
+  currecyExchangeData
 }) => (
   <div
     className='expenses'

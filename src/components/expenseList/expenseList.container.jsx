@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {useExpenses, useExpenseSelection} from './expenseList.hooks'
+import {useExpenses, useExpenseSelection, useCurrencyConversion} from './expenseList.hooks'
 import {onPreselectExpense, onSelectExpense, onUnselectExpense} from './expenseList.actionCreators'
 import ExpensesPresenter from './expenseList.presenter'
 
@@ -19,8 +19,10 @@ const ExpenseListContainer = () => {
     selectedExpenseRef,
     dispatchSelectionAction
   } = useExpenseSelection()
+  const currecyExchangeData = useCurrencyConversion()
   return expenses && (
     <ExpensesPresenter
+      currecyExchangeData={currecyExchangeData}
       expenses={expenses}
       selectedExpenseRef={selectedExpenseRef}
       preselectedExpenseId={preselectedExpenseId}
