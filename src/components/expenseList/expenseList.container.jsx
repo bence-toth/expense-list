@@ -19,10 +19,10 @@ const ExpenseListContainer = () => {
     selectedExpenseRef,
     dispatchSelectionAction
   } = useExpenseSelection()
-  const currecyExchangeData = useCurrencyConversion()
+  const currencyExchangeData = useCurrencyConversion()
   return expenses && (
     <ExpensesPresenter
-      currecyExchangeData={currecyExchangeData}
+      currencyExchangeData={currencyExchangeData}
       expenses={expenses}
       selectedExpenseRef={selectedExpenseRef}
       preselectedExpenseId={preselectedExpenseId}
@@ -41,6 +41,7 @@ const ExpenseListContainer = () => {
       onUnselectExpense={() => {
         dispatchSelectionAction(onUnselectExpense())
       }}
+      defaultCurrency='EUR'
     />
   )
 }

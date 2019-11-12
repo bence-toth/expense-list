@@ -1,7 +1,8 @@
 import React from 'react'
-import {shape, string, bool} from 'prop-types'
+import {shape, string, bool, number} from 'prop-types'
+import classNames from 'classnames'
 
-import {formatFullDate, formatCurrency, getIconNameByCategory} from './expenseSummary.presenter.utility'
+import {formatFullDate, formatCurrency, getIconNameByCategory, convertCurrency} from './expenseSummary.presenter.utility'
 
 import './expenseSummary.styles.css'
 
@@ -11,7 +12,9 @@ const ExpenseSummary = ({
   user,
   date,
   amount,
-  isUserDisplayed = true
+  isUserDisplayed = true,
+  currencyExchangeData,
+  defaultCurrency
 }) => (
   <div className='expenseSummary'>
     <div className='left'>
@@ -36,6 +39,20 @@ const ExpenseSummary = ({
       </div>
     </div>
     <div className='right'>
+      {currencyExchangeData && (amount.currency !== defaultCurrency) && (
+        <div className={classNames('amount', 'converted')}>
+          {formatCurrency({
+            amount: convertCurrency({
+              from: amount.currency,
+              to: defaultCurrency,
+              amount: amount.value,
+              currencyExchangeData
+            }),
+            currency: defaultCurrency,
+            locale: 'en-GB'
+          })}
+        </div>
+      )}
       <div className='amount'>
         {formatCurrency({
           amount: amount.value,
@@ -60,7 +77,22 @@ ExpenseSummary.propTypes = {
   }).isRequired,
   category: string,
   date: string.isRequired,
-  isUserDisplayed: bool
+  isUserDisplayed: bool,
+  currencyExchangeData: shape({
+    DKK: shape({
+      EUR: number.isRequired,
+      GBP: number.isRequired
+    }).isRequired,
+    EUR: shape({
+      DKK: number.isRequired,
+      GBP: number.isRequired
+    }).isRequired,
+    GBP: shape({
+      DKK: number.isRequired,
+      EUR: number.isRequired
+    }).isRequired
+  }),
+  defaultCurrency: string.isRequired
 }
 
 export default ExpenseSummary

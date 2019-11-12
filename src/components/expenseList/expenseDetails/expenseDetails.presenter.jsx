@@ -1,5 +1,5 @@
 import React from 'react'
-import {shape, string, func, arrayOf} from 'prop-types'
+import {shape, string, func, arrayOf, number} from 'prop-types'
 
 import UserSection from './userSection/userSection.presenter'
 import SummarySection from './summarySection/summarySection.presenter'
@@ -22,11 +22,15 @@ const ExpenseDetails = ({
   },
   selectedExpense,
   onSetExpenseComment,
-  onSetExpenseReceipts
+  onSetExpenseReceipts,
+  currencyExchangeData,
+  defaultCurrency
 }) => (
   <div className='expenseDetails'>
     <SummarySection
       selectedExpense={selectedExpense}
+      currencyExchangeData={currencyExchangeData}
+      defaultCurrency={defaultCurrency}
     />
     <UserSection
       name={`${first} ${last}`}
@@ -61,7 +65,22 @@ ExpenseDetails.propTypes = {
     }).isRequired)
   }).isRequired,
   onSetExpenseComment: func.isRequired,
-  onSetExpenseReceipts: func.isRequired
+  onSetExpenseReceipts: func.isRequired,
+  currencyExchangeData: shape({
+    DKK: shape({
+      EUR: number.isRequired,
+      GBP: number.isRequired
+    }).isRequired,
+    EUR: shape({
+      DKK: number.isRequired,
+      GBP: number.isRequired
+    }).isRequired,
+    GBP: shape({
+      DKK: number.isRequired,
+      EUR: number.isRequired
+    }).isRequired
+  }),
+  defaultCurrency: string.isRequired
 }
 
 export default ExpenseDetails

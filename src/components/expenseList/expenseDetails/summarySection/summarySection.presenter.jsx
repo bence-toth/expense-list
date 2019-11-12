@@ -1,5 +1,5 @@
 import React from 'react'
-import {shape, string} from 'prop-types'
+import {shape, string, number} from 'prop-types'
 import classNames from 'classnames'
 
 import ExpenseSummary from '../../expenseSummary/expenseSummary.presenter'
@@ -7,7 +7,9 @@ import ExpenseSummary from '../../expenseSummary/expenseSummary.presenter'
 import './summarySection.styles.css'
 
 const SummarySection = ({
-  selectedExpense
+  selectedExpense,
+  currencyExchangeData,
+  defaultCurrency
 }) => (
   <div
     className={classNames(
@@ -17,6 +19,8 @@ const SummarySection = ({
   >
     <ExpenseSummary
       isUserDisplayed={false}
+      currencyExchangeData={currencyExchangeData}
+      defaultCurrency={defaultCurrency}
       {...selectedExpense}
     />
   </div>
@@ -36,7 +40,22 @@ SummarySection.propTypes = {
     category: string,
     date: string.isRequired,
     id: string.isRequired
-  }).isRequired
+  }).isRequired,
+  currencyExchangeData: shape({
+    DKK: shape({
+      EUR: number.isRequired,
+      GBP: number.isRequired
+    }).isRequired,
+    EUR: shape({
+      DKK: number.isRequired,
+      GBP: number.isRequired
+    }).isRequired,
+    GBP: shape({
+      DKK: number.isRequired,
+      EUR: number.isRequired
+    }).isRequired
+  }),
+  defaultCurrency: string.isRequired
 }
 
 export default SummarySection

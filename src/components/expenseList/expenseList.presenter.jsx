@@ -1,5 +1,5 @@
 import React from 'react'
-import {instanceOf, arrayOf, shape, string, func, bool} from 'prop-types'
+import {instanceOf, arrayOf, shape, string, func, bool, number} from 'prop-types'
 import classNames from 'classnames'
 
 import Modal from 'components/modal/modal.presenter'
@@ -25,7 +25,8 @@ const ExpenseListPresenter = ({
   onFetchMoreExpenses,
   onSetExpenseComment,
   onSetExpenseReceipts,
-  currecyExchangeData
+  currencyExchangeData,
+  defaultCurrency
 }) => (
   <div
     className='expenses'
@@ -84,6 +85,8 @@ const ExpenseListPresenter = ({
                       user={user}
                       date={date}
                       amount={amount}
+                      currencyExchangeData={currencyExchangeData}
+                      defaultCurrency={defaultCurrency}
                     />
                   </button>
                 </li>
@@ -109,6 +112,8 @@ const ExpenseListPresenter = ({
           })}
           onSetExpenseComment={onSetExpenseComment}
           onSetExpenseReceipts={onSetExpenseReceipts}
+          currencyExchangeData={currencyExchangeData}
+          defaultCurrency={defaultCurrency}
         />
       </Modal>
     )}
@@ -151,7 +156,22 @@ ExpenseListPresenter.propTypes = {
   shouldFetchMoreExpenses: bool,
   onFetchMoreExpenses: func.isRequired,
   onSetExpenseComment: func.isRequired,
-  onSetExpenseReceipts: func.isRequired
+  onSetExpenseReceipts: func.isRequired,
+  currencyExchangeData: shape({
+    DKK: shape({
+      EUR: number.isRequired,
+      GBP: number.isRequired
+    }).isRequired,
+    EUR: shape({
+      DKK: number.isRequired,
+      GBP: number.isRequired
+    }).isRequired,
+    GBP: shape({
+      DKK: number.isRequired,
+      EUR: number.isRequired
+    }).isRequired
+  }),
+  defaultCurrency: string.isRequired
 }
 
 export default ExpenseListPresenter

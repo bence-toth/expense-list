@@ -105,6 +105,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 1rem;
+  text-align: right;
 }
 
 .expense .expenseSummary .amount {
@@ -112,6 +113,14 @@
   font-weight: 600;
   color: hsl(0, 0%, 60%);
   font-family: 'Roboto Condensed', sans-serif;
+}
+
+.expense .expenseSummary .amount.converted + .amount {
+  font-size: 1rem;
+  margin-top: -1rem;
+  line-height: 1;
+  transform: translateY(100%) translateY(0.25rem);
+  color: hsl(0, 0%, 70%);
 }
 
 .expense .expenseSummary .merchant {

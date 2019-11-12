@@ -23,4 +23,11 @@ const getIconNameByCategory = category => ({
   food: 'fas fa-utensils'
 })[category] || 'fas fa-question'
 
-export {formatFullDate, formatCurrency, getIconNameByCategory}
+const convertCurrency = ({
+  from,
+  to,
+  amount,
+  currencyExchangeData
+}) => amount * currencyExchangeData[from][to]
+
+export {formatFullDate, formatCurrency, getIconNameByCategory, convertCurrency}

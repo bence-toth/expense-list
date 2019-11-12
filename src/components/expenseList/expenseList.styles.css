@@ -16,6 +16,7 @@
   background-color: hsl(0, 0%, 90%);
   font-weight: 600;
   color: var(--color-brand);
+  z-index: 1;
 }
 
 .expenses .expense {
