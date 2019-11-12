@@ -56,7 +56,14 @@ const ExpenseListPresenter = ({
               {formatMonth(({date: groupStart, locale: 'en-GB'}))}
             </div>
             <ul className='expenseList'>
-              {expenseItems.map(({id, amount, merchant, user, category, date}) => (
+              {expenseItems.map(({
+                id,
+                amount,
+                merchant,
+                user,
+                category,
+                date
+              }) => (
                 <li
                   key={id}
                   className={classNames('expense', category)}
