@@ -12,6 +12,7 @@ import './expenseList.styles.css'
 
 const scrollToBottomDistanceThreshold = 15
 
+// TODO: Break down to smaller components
 const ExpenseListPresenter = ({
   expenses,
   selectedExpenseRef,

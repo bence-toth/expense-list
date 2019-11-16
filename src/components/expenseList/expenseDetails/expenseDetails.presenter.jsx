@@ -3,7 +3,7 @@ import {shape, string, func, arrayOf, number} from 'prop-types'
 
 import UserSection from './userSection/userSection.presenter'
 import SummarySection from './summarySection/summarySection.presenter'
-import AttachmentSection from './attachmentSecion/attachmentSecion.presenter'
+import AttachmentSection from './attachmentSection/attachmentSection.container'
 import CommentSection from './commentSection/commentSection.container'
 
 import './expenseDetails.styles.css'

@@ -2,7 +2,20 @@
 const getMagicNumber = ({id}) => parseInt(id.slice(-4), 16)
 
 // Add mock categories, use `null` sometimes
-const categories = ['transport', 'transport', 'transport', 'transport', 'plane', 'hotel', 'hotel', 'hotel', 'food', 'food', null]
+const categories = [
+  'transport',
+  'transport',
+  'transport',
+  'transport',
+  'hotel',
+  'hotel',
+  'hotel',
+  'food',
+  'food',
+  'plane',
+  null
+]
+
 const addMockCategory = expense => ({
   ...expense,
   category: categories[getMagicNumber(expense) % categories.length]
@@ -13,7 +26,7 @@ const addMockUserAvatar = (expense, expenseIndex) => ({
   ...expense,
   user: {
     ...expense.user,
-    avatar: ((getMagicNumber(expense) % 10) > 0)
+    avatar: ((getMagicNumber(expense) % 5) > 0)
       ? `https://i.pravatar.cc/${150 + expenseIndex}`
       : null
   }
@@ -41,7 +54,6 @@ const groupsToArray = groups =>
     groupStart: new Date(date),
     expenseItems: groups[date]
   }))
-
 
 // Compose all preparations
 const prepareExpenses = expenses => {
