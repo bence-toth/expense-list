@@ -1,5 +1,5 @@
 import React from 'react'
-import {shape, func, bool, string} from 'prop-types'
+import {shape, func, bool, string, number} from 'prop-types'
 
 import ExpensesListContainer from './expenseList/expenseList.container'
 import ExpensesControls from './expensesControls/expensesControls.presenter'
@@ -12,7 +12,10 @@ const Expenses = ({
   categoryFilters,
   onSetCategoryFilters,
   currencyFilters,
-  onSetCurrencyFilters
+  onSetCurrencyFilters,
+  amountFilters,
+  onSetAmountFilters,
+  currencyExchangeData
 }) => (
   <>
     <div className='expensesControlsWrapper'>
@@ -23,6 +26,9 @@ const Expenses = ({
         onSetCategoryFilters={onSetCategoryFilters}
         currencyFilters={currencyFilters}
         onSetCurrencyFilters={onSetCurrencyFilters}
+        amountFilters={amountFilters}
+        onSetAmountFilters={onSetAmountFilters}
+        currencyExchangeData={currencyExchangeData}
       />
     </div>
     <div className='expensesListWrapper'>
@@ -30,6 +36,8 @@ const Expenses = ({
         categoryFilters={categoryFilters}
         currencyFilters={currencyFilters}
         searchQuery={searchQuery}
+        amountFilters={amountFilters}
+        currencyExchangeData={currencyExchangeData}
       />
     </div>
   </>
@@ -51,7 +59,26 @@ Expenses.propTypes = {
     GBP: bool,
     EUR: bool
   }).isRequired,
-  onSetCurrencyFilters: func.isRequired
+  onSetCurrencyFilters: func.isRequired,
+  amountFilters: shape({
+    min: number.isRequired,
+    max: number.isRequired
+  }).isRequired,
+  onSetAmountFilters: func.isRequired,
+  currencyExchangeData: shape({
+    DKK: shape({
+      EUR: number.isRequired,
+      GBP: number.isRequired
+    }).isRequired,
+    EUR: shape({
+      DKK: number.isRequired,
+      GBP: number.isRequired
+    }).isRequired,
+    GBP: shape({
+      DKK: number.isRequired,
+      EUR: number.isRequired
+    }).isRequired
+  })
 }
 
 export default Expenses

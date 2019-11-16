@@ -1,21 +1,20 @@
-import React, {useState} from 'react'
+import React from 'react'
 
+import {useExpenseFilters, useCurrencyConversion} from './expenses.hooks'
 import ExpensesPresenter from './expenses.presenter'
 
 const Expenses = () => {
-  const [searchQuery, onSetSearchQuery] = useState('')
-  const [categoryFilters, onSetCategoryFilters] = useState({
-    transport: true,
-    plane: true,
-    hotel: true,
-    food: true,
-    unknown: true
-  })
-  const [currencyFilters, onSetCurrencyFilters] = useState({
-    DKK: true,
-    GBP: true,
-    EUR: true
-  })
+  const {
+    searchQuery,
+    onSetSearchQuery,
+    amountFilters,
+    onSetAmountFilters,
+    categoryFilters,
+    onSetCategoryFilters,
+    currencyFilters,
+    onSetCurrencyFilters
+  } = useExpenseFilters()
+  const currencyExchangeData = useCurrencyConversion()
   return (
     <ExpensesPresenter
       searchQuery={searchQuery}
@@ -24,6 +23,9 @@ const Expenses = () => {
       onSetCategoryFilters={onSetCategoryFilters}
       currencyFilters={currencyFilters}
       onSetCurrencyFilters={onSetCurrencyFilters}
+      amountFilters={amountFilters}
+      onSetAmountFilters={onSetAmountFilters}
+      currencyExchangeData={currencyExchangeData}
     />
   )
 }

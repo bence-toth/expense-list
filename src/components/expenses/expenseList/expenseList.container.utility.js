@@ -38,6 +38,26 @@ const applySearchQueryFilter = searchQuery => (expenseGroup => ({
       })
 }))
 
+const applyAmountFilter = ({
+  amountFilters: {min, max},
+  currencyExchangeData
+}) => (expenseGroup => ({
+  ...expenseGroup,
+  expenseItems:
+    expenseGroup.expenseItems
+      .filter(({amount: {currency, value}}) => {
+        if (!currencyExchangeData) {
+          return true
+        }
+        const convertedValue = (
+          (currency === 'EUR')
+            ? value
+            : value * currencyExchangeData[currency].EUR
+        )
+        return (convertedValue >= min) && (convertedValue <= max)
+      })
+}))
+
 const isExpenseGroupNotEmpty =
   ({expenseItems}) => (expenseItems.length > 0)
 
@@ -45,12 +65,18 @@ const filterExpenses = ({
   expenses,
   categoryFilters,
   currencyFilters,
-  searchQuery
+  searchQuery,
+  amountFilters,
+  currencyExchangeData
 }) => (
   expenses
     .map(applyCategoryFilters(categoryFilters))
     .map(applyCurrencyFilters(currencyFilters))
     .map(applySearchQueryFilter(searchQuery))
+    .map(applyAmountFilter({
+      amountFilters,
+      currencyExchangeData
+    }))
     .filter(isExpenseGroupNotEmpty)
 )
 

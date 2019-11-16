@@ -1,9 +1,8 @@
-import {useRef, useReducer, useEffect, useState} from 'react'
+import {useRef, useReducer, useEffect} from 'react'
 
 import {initialSelectionState, selectionReducer, initialExpensesState, expensesReducer} from './expenseList.reducer'
 import {onUpdateExpenseComment, onUpdateExpenseReceipts} from './expenseList.actionCreators'
 import {onLoadExpenses} from './expenseList.actionCreators.async'
-import {fetchCurrencyExchangeData} from './expenseList.consumers'
 
 const useExpenses = () => {
   const [
@@ -74,19 +73,4 @@ const useExpenseSelection = () => {
   }
 }
 
-const useCurrencyConversion = () => {
-  const [
-    currencyExchangeData,
-    setCurrencyExchangeData
-  ] = useState(null)
-
-  useEffect(() => {
-    fetchCurrencyExchangeData().then(newCurrencyExchangeData => {
-      setCurrencyExchangeData(newCurrencyExchangeData)
-    })
-  }, [])
-
-  return currencyExchangeData
-}
-
-export {useExpenses, useExpenseSelection, useCurrencyConversion}
+export {useExpenses, useExpenseSelection}

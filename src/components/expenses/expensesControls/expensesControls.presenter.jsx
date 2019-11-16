@@ -1,5 +1,7 @@
 import React from 'react'
-import {shape, func, bool, string} from 'prop-types'
+import {shape, func, bool, string, number} from 'prop-types'
+import InputRange from 'react-input-range'
+import 'react-input-range/lib/css/index.css'
 
 import './expensesControls.styles.css'
 
@@ -9,9 +11,20 @@ const ExpensesControls = ({
   categoryFilters,
   onSetCategoryFilters,
   currencyFilters,
-  onSetCurrencyFilters
+  onSetCurrencyFilters,
+  amountFilters,
+  onSetAmountFilters,
+  currencyExchangeData
 }) => (
   <>
+    {currencyExchangeData && (
+      <InputRange
+        minValue={0}
+        maxValue={5000}
+        value={amountFilters}
+        onChange={onSetAmountFilters}
+      />
+    )}
     <input
       type='search'
       value={searchQuery}
@@ -102,7 +115,26 @@ ExpensesControls.propTypes = {
     GBP: bool,
     EUR: bool
   }).isRequired,
-  onSetCurrencyFilters: func.isRequired
+  onSetCurrencyFilters: func.isRequired,
+  amountFilters: shape({
+    min: number.isRequired,
+    max: number.isRequired
+  }).isRequired,
+  onSetAmountFilters: func.isRequired,
+  currencyExchangeData: shape({
+    DKK: shape({
+      EUR: number.isRequired,
+      GBP: number.isRequired
+    }).isRequired,
+    EUR: shape({
+      DKK: number.isRequired,
+      GBP: number.isRequired
+    }).isRequired,
+    GBP: shape({
+      DKK: number.isRequired,
+      EUR: number.isRequired
+    }).isRequired
+  })
 }
 
 export default ExpensesControls
