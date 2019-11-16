@@ -39,6 +39,11 @@
 .amountFilter .input-range__slider {
   background-color: var(--color-brand);
   border-color: var(--color-brand);
+  transition: transform 0.3s ease-out;
+}
+
+.amountFilter .input-range__slider:focus {
+  box-shadow: 0 0 1px 2px #7b9dd4;
 }
 
 .amountFilter .input-range__track--active {
