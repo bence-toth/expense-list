@@ -1,0 +1,46 @@
+.amountFilter {
+  margin-bottom: 2rem;
+  padding-bottom: 3rem;
+  border-bottom: var(--border-width-thin) solid hsl(0, 0%, 85%);
+}
+
+.amountFilter label {
+  font-weight: 600;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.amountFilter input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-family: Roboto, sans-serif;
+}
+
+.amountFilter .keyboardInputs {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.75rem;
+}
+
+.amountFilter .keyboardInputs .connector {
+  display: block;
+  padding: 0 0.5rem;
+}
+
+.amountFilter .input-range__label {
+  color: hsl(0, 0%, 50%);
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.amountFilter .input-range__slider {
+  background-color: var(--color-brand);
+  border-color: var(--color-brand);
+}
+
+.amountFilter .input-range__track--active {
+  background-color: var(--color-brand);
+}

@@ -1,7 +1,9 @@
 import React from 'react'
 import {shape, func, bool, string, number} from 'prop-types'
-import InputRange from 'react-input-range'
 import 'react-input-range/lib/css/index.css'
+
+import ExpenseSearch from './expenseSearch/expenseSearch.presenter'
+import AmountFilter from './amountFilter/amountFilter.presenter'
 
 import './expensesControls.styles.css'
 
@@ -17,21 +19,16 @@ const ExpensesControls = ({
   currencyExchangeData
 }) => (
   <>
+    <ExpenseSearch
+      searchQuery={searchQuery}
+      onSetSearchQuery={onSetSearchQuery}
+    />
     {currencyExchangeData && (
-      <InputRange
-        minValue={0}
-        maxValue={5000}
-        value={amountFilters}
-        onChange={onSetAmountFilters}
+      <AmountFilter
+        amountFilters={amountFilters}
+        onSetAmountFilters={onSetAmountFilters}
       />
     )}
-    <input
-      type='search'
-      value={searchQuery}
-      onChange={({target: {value}}) => {
-        onSetSearchQuery(value)
-      }}
-    />
     {Object.keys(categoryFilters).map(categoryFilter => (
       <button
         key={categoryFilter}

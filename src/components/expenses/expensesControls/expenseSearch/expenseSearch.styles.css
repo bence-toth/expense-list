@@ -1,0 +1,21 @@
+.expenseSearch label {
+  font-weight: 600;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.expenseSearch input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-family: Roboto, sans-serif;
+}
+
+.expenseSearch {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: var(--border-width-thin) solid hsl(0, 0%, 85%);
+}
