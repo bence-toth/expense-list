@@ -27,9 +27,11 @@ const ExpenseListPresenter = ({
   onSetExpenseComment,
   onSetExpenseReceipts,
   currencyExchangeData,
-  defaultCurrency
+  defaultCurrency,
+  scrollableAreaRef
 }) => (
   <div
+    ref={scrollableAreaRef}
     className='expenses'
     onScroll={({
       target: {
@@ -179,7 +181,10 @@ ExpenseListPresenter.propTypes = {
       EUR: number.isRequired
     }).isRequired
   }),
-  defaultCurrency: string.isRequired
+  defaultCurrency: string.isRequired,
+  scrollableAreaRef: shape({
+    current: instanceOf(Element)
+  }).isRequired
 }
 
 export default ExpenseListPresenter

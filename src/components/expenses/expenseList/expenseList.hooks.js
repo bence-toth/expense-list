@@ -56,6 +56,24 @@ const useExpenses = () => {
   }
 }
 
+const useAutoFetchMoreExpenses = ({
+  onFetchMoreExpenses,
+  numberOfFilteredExpenses
+}) => {
+  const scrollableArea = useRef(null)
+  useEffect(() => {
+    if (scrollableArea.current) {
+      const container = scrollableArea.current
+      const containerHeight = container.offsetHeight
+      const contentHeight = container.firstChild.offsetHeight
+      if (contentHeight < containerHeight) {
+        onFetchMoreExpenses()
+      }
+    }
+  }, [numberOfFilteredExpenses, onFetchMoreExpenses])
+  return scrollableArea
+}
+
 const useExpenseSelection = () => {
   const selectedExpenseRef = useRef(null)
   const [{
@@ -73,4 +91,4 @@ const useExpenseSelection = () => {
   }
 }
 
-export {useExpenses, useExpenseSelection}
+export {useExpenses, useExpenseSelection, useAutoFetchMoreExpenses}

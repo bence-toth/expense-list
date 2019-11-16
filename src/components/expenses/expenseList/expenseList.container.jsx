@@ -1,7 +1,7 @@
 import React from 'react'
 import {string, bool, number, shape} from 'prop-types'
 
-import {useExpenses, useExpenseSelection} from './expenseList.hooks'
+import {useExpenses, useExpenseSelection, useAutoFetchMoreExpenses} from './expenseList.hooks'
 import {onPreselectExpense, onSelectExpense, onUnselectExpense} from './expenseList.actionCreators'
 import {filterExpenses} from './expenseList.container.utility'
 import ExpensesPresenter from './expenseList.presenter'
@@ -27,17 +27,27 @@ const ExpenseListContainer = ({
     selectedExpenseRef,
     dispatchSelectionAction
   } = useExpenseSelection()
+  const filteredExpenses = filterExpenses({
+    expenses,
+    categoryFilters,
+    currencyFilters,
+    amountFilters,
+    currencyExchangeData,
+    searchQuery
+  })
+  const numberOfFilteredExpenses = (
+    filteredExpenses
+      .flatMap(({expenseItems}) => expenseItems)
+      .length
+  )
+  const scrollableAreaRef = useAutoFetchMoreExpenses({
+    onFetchMoreExpenses,
+    numberOfFilteredExpenses
+  })
   return expenses && (
     <ExpensesPresenter
       currencyExchangeData={currencyExchangeData}
-      expenses={filterExpenses({
-        expenses,
-        categoryFilters,
-        currencyFilters,
-        amountFilters,
-        currencyExchangeData,
-        searchQuery
-      })}
+      expenses={filteredExpenses}
       selectedExpenseRef={selectedExpenseRef}
       preselectedExpenseId={preselectedExpenseId}
       selectedExpenseId={selectedExpenseId}
@@ -56,6 +66,7 @@ const ExpenseListContainer = ({
         dispatchSelectionAction(onUnselectExpense())
       }}
       defaultCurrency='EUR'
+      scrollableAreaRef={scrollableAreaRef}
     />
   )
 }
