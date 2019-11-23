@@ -16,3 +16,13 @@ body {
 html, body, #root {
   height: 100%;
 }
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: hsl(0, 0%, 85%);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(0, 0%, 60%);
+}
