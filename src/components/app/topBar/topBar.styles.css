@@ -57,3 +57,7 @@ body {
 .topBar .settingsButton:hover {
   color: var(--color-brand);
 }
+
+.topBar .modalContainer {
+  z-index: 2;
+}

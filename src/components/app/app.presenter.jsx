@@ -1,4 +1,5 @@
 import React from 'react'
+import {arrayOf, func, string} from 'prop-types'
 
 import Expenses from 'components/expenses/expenses.container'
 
@@ -6,13 +7,39 @@ import TopBar from './topBar/topBar.presenter'
 
 import './app.styles.css'
 
-const App = () => (
+const App = ({
+  languages,
+  language,
+  onSetLanguage,
+  currencies,
+  preferredCurrency,
+  onSetPreferredCurrency
+}) => (
   <>
-    <TopBar />
+    <TopBar
+      languages={languages}
+      language={language}
+      onSetLanguage={onSetLanguage}
+      currencies={currencies}
+      preferredCurrency={preferredCurrency}
+      onSetPreferredCurrency={onSetPreferredCurrency}
+    />
     <main>
-      <Expenses />
+      <Expenses
+        language={language}
+        preferredCurrency={preferredCurrency}
+      />
     </main>
   </>
 )
+
+App.propTypes = {
+  languages: arrayOf(string).isRequired,
+  language: string.isRequired,
+  onSetLanguage: func.isRequired,
+  currencies: arrayOf(string).isRequired,
+  preferredCurrency: string.isRequired,
+  onSetPreferredCurrency: func.isRequired
+}
 
 export default App
