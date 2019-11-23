@@ -3,7 +3,7 @@ main {
   width: calc(100% - 2rem);
   max-width: 60rem;
   margin: 2rem auto;
-  height: calc(100% - 4rem);
+  height: calc(100% - var(--top-bar-height) - var(--card-spacing) - var(--card-spacing));
   display: flex;
   justify-content: space-between;
 }

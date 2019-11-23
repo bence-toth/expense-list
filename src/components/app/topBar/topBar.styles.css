@@ -1,0 +1,59 @@
+body {
+  --top-bar-height: 4rem;
+  --card-spacing: 2rem;
+}
+
+.topBar {
+  display: block;
+  height: var(--top-bar-height);
+  margin-bottom: var(--card-spacing);
+  border-bottom: var(--border-width-thin) solid hsl(0, 0%, 90%);
+  box-shadow: 0 0.05rem 0.1rem hsla(0, 0%, 0%, 2%), 0 0.05rem 0.1rem hsla(0, 0%, 0%, 4%);
+  background-color: hsl(0, 0%, 100%);
+}
+
+.topBarInnerWrapper {
+  margin: 0 auto;
+  max-width: calc(100% - 2rem);
+  width: 60rem;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.topBarInnerWrapper > div {
+  height: 100%;
+}
+
+.topBar .logoWrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+}
+
+.topBar .logo {
+  height: 50%;
+}
+
+.topBar .toolbarWrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 0.5rem;
+}
+
+.topBar .settingsButton {
+  background-color: transparent;
+  font-size: 1rem;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  border: 0;
+  color: hsl(0, 0%, 35%);
+  transition: color 0.2s;
+}
+
+.topBar .settingsButton:hover {
+  color: var(--color-brand);
+}
