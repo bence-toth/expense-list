@@ -5,6 +5,7 @@ import 'react-input-range/lib/css/index.css'
 import ExpenseSearch from './expenseSearch/expenseSearch.presenter'
 import AmountFilter from './amountFilter/amountFilter.presenter'
 import CurrencyFilter from './currencyFilter/currencyFilter.presenter'
+import CategoryFilter from './categoryFilter/categoryFilter.presenter'
 
 import './expensesControls.styles.css'
 
@@ -34,38 +35,10 @@ const ExpensesControls = ({
       currencyFilters={currencyFilters}
       onSetCurrencyFilters={onSetCurrencyFilters}
     />
-    {Object.keys(categoryFilters).map(categoryFilter => (
-      <button
-        key={categoryFilter}
-        type='button'
-        style={{
-          display: 'block',
-          width: '100%',
-          border: '3px solid',
-          borderColor: categoryFilters[categoryFilter] ? 'green' : 'red'
-        }}
-        onClick={() => {
-          const newCategoryFilters = {
-            ...categoryFilters,
-            [categoryFilter]: !categoryFilters[categoryFilter]
-          }
-          if (Object.values(newCategoryFilters).includes(true)) {
-            onSetCategoryFilters(newCategoryFilters)
-          }
-          else {
-            const allCategoriesVisible = Object
-              .keys(newCategoryFilters)
-              .reduce((keysSoFar, newKey) => ({
-                ...keysSoFar,
-                [newKey]: true
-              }), {})
-            onSetCategoryFilters(allCategoriesVisible)
-          }
-        }}
-      >
-        {categoryFilter}
-      </button>
-    ))}
+    <CategoryFilter
+      categoryFilters={categoryFilters}
+      onSetCategoryFilters={onSetCategoryFilters}
+    />
   </>
 )
 

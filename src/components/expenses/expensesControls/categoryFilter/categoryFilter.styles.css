@@ -1,0 +1,69 @@
+.categoryFilter {
+  padding-bottom: 2rem;
+}
+
+.categoryFilter label {
+  font-weight: 600;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.categoryFilter .filterButtonGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryFilterButton {
+  padding: 1rem;
+  flex-grow: 1;
+  border: 0;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  color: hsl(0, 0%, 55%);
+  background-color: hsl(0, 0%, 85%);
+  text-align: left;
+}
+
+.categoryFilterButton:last-child {
+  margin-bottom: 0;
+}
+
+.categoryFilterButton.selected {
+  background-color: hsl(0, 0%, 65%);
+  color: hsl(0, 0%, 100%);
+}
+
+.categoryFilterButton.selected.transport {
+  background-color: var(--color-category-transport);
+}
+
+.categoryFilterButton.selected.plane {
+  background-color: var(--color-category-plane);
+}
+
+.categoryFilterButton.selected.hotel {
+  background-color: var(--color-category-hotel);
+}
+
+.categoryFilterButton.selected.food {
+  background-color: var(--color-category-food);
+}
+
+.categoryFilterButton .icon {
+  display: inline-block;
+  text-align: center;
+  width: 1.25rem;
+  font-size: 1rem;
+  line-height: 1rem;
+  margin-right: 0.65rem;
+}
+
+.categoryFilterButton .categoryName {
+  text-transform: capitalize;
+}

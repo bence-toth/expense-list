@@ -11,7 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-left: 0.3rem solid hsl(0, 0%, 75%);
+  border-left: 0.3rem solid hsl(0, 0%, 65%);
 }
 
 .expense.transport .expenseSummary .left {
@@ -40,7 +40,7 @@
 }
 
 .expense .expenseSummary .categoryIcon {
-  background-color: hsl(0, 0%, 75%);
+  background-color: hsl(0, 0%, 65%);
   width: 3rem;
   height: 3rem;
   line-height: 3rem;
