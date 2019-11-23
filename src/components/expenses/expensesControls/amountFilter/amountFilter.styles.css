@@ -31,6 +31,10 @@
   padding: 0 0.5rem;
 }
 
+.amountFilter .rangeInput {
+  margin: 0 1rem;
+}
+
 .amountFilter .input-range__label {
   color: hsl(0, 0%, 50%);
   font-family: 'Roboto Condensed', sans-serif;

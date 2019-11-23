@@ -43,18 +43,20 @@ const AmountFilter = ({
         max={5000}
       />
     </div>
-    <InputRange
-      minValue={0}
-      maxValue={5000}
-      value={amountFilters}
-      onChange={onSetAmountFilters}
-      formatLabel={value => value.toLocaleString('en-GB', {
-        style: 'currency',
-        currency: 'EUR',
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0
-      })}
-    />
+    <div className='rangeInput'>
+      <InputRange
+        minValue={0}
+        maxValue={5000}
+        value={amountFilters}
+        onChange={onSetAmountFilters}
+        formatLabel={value => value.toLocaleString('en-GB', {
+          style: 'currency',
+          currency: 'EUR',
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0
+        })}
+      />
+    </div>
   </div>
 )
 
