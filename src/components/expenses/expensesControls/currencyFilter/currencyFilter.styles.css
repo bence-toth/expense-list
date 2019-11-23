@@ -1,0 +1,40 @@
+.currencyFilter {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: var(--border-width-thin) solid hsl(0, 0%, 85%);
+}
+
+.currencyFilter label {
+  font-weight: 600;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.currencyFilter .filterButtonGroup {
+  display: flex;
+}
+
+.currencyFilterButton {
+  padding: 1rem;
+  flex-grow: 1;
+  border: 0;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-right: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  color: hsl(0, 0%, 25%);
+  background-color: hsl(0, 0%, 85%);
+}
+
+.currencyFilterButton:last-child {
+  margin-right: 0;
+}
+
+.currencyFilterButton.selected {
+  color: hsl(0, 0%, 100%);
+  background-color: var(--color-brand);
+}
