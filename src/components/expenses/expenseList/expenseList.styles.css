@@ -13,10 +13,12 @@
   position: sticky;
   top: 0;
   padding: 0.5rem 1rem;
-  background-color: hsl(0, 0%, 90%);
+  background-color: hsl(0, 0%, 95%);
   font-weight: 600;
   color: var(--color-brand);
   z-index: 1;
+  text-align: center;
+  border-bottom: var(--border-width-thin) solid hsl(0, 0%, 90%);
 }
 
 .expenses .expense {
