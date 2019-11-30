@@ -3,7 +3,7 @@ import {arrayOf, func, string} from 'prop-types'
 
 import Expenses from 'components/expenses/expenses.container'
 
-import TopBar from './topBar/topBar.presenter'
+import TopBar from './topBar/topBar.container'
 
 import './app.styles.css'
 

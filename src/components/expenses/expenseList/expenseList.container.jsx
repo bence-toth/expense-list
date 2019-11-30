@@ -4,7 +4,7 @@ import {string, bool, number, shape} from 'prop-types'
 import {useExpenses, useExpenseSelection, useAutoFetchMoreExpenses} from './expenseList.hooks'
 import {onPreselectExpense, onSelectExpense, onUnselectExpense} from './expenseList.actionCreators'
 import {filterExpenses} from './expenseList.container.utility'
-import ExpensesPresenter from './expenseList.presenter'
+import ExpenseListPresenter from './expenseList.presenter'
 
 const ExpenseListContainer = ({
   categoryFilters,
@@ -45,7 +45,7 @@ const ExpenseListContainer = ({
     numberOfFilteredExpenses
   })
   return expenses && (
-    <ExpensesPresenter
+    <ExpenseListPresenter
       currencyExchangeData={currencyExchangeData}
       expenses={filteredExpenses}
       selectedExpenseRef={selectedExpenseRef}
