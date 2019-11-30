@@ -17,6 +17,7 @@ const Modal = ({
   onModalHasClosed,
   shouldCloseOnOverlayClick
 }) => {
+  // TODO: Split to container and presenter
   const {modalState, modalRef, onSetModalState} = useModalState({animationTargetElement})
   return (modalState !== unmounted) && (
     <div className='modalContainer'>
