@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 import {useUserSettings} from './app.hooks'
 import AppPresenter from './app.presenter'
@@ -12,6 +12,9 @@ const App = () => {
     preferredCurrency,
     onSetPreferredCurrency
   } = useUserSettings()
+  useEffect(() => {
+    document.documentElement.lang = locale
+  }, [locale])
   return (
     <AppPresenter
       locales={locales}

@@ -46,7 +46,6 @@ const useUserSettings = () => {
   if (!currencies.includes(onGetPreferredCurrency())) {
     onSetPreferredCurrency(currencies[0])
   }
-  // TODO: Update lang attribute on <html> when locale changes
   return {
     locales,
     locale: onGetLanguage() || locales[0],
