@@ -2,6 +2,7 @@ import React from 'react'
 import {string} from 'prop-types'
 
 import {generateInitials, generateBackgroundColor} from './avatar.presenter.utility'
+
 import './avatar.styles.css'
 
 const Avatar = ({

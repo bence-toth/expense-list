@@ -1,6 +1,8 @@
 import React from 'react'
 import {func, string} from 'prop-types'
 
+import copy from './expenseSearch.locales'
+
 import './expenseSearch.styles.css'
 
 const ExpenseSearch = ({
@@ -10,7 +12,7 @@ const ExpenseSearch = ({
   <div className='expenseSearch'>
     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
     <label htmlFor='expenseSearch'>
-      Search in expenses
+      {copy['en-GB'].searchInExpenses()}
     </label>
     <input
       id='expenseSearch'

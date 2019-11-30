@@ -3,11 +3,13 @@ import {arrayOf, string, func, shape, bool, instanceOf} from 'prop-types'
 
 import Modal from 'components/modal/modal.presenter'
 
+import copy from './topBar.locales'
+
 import './topBar.styles.css'
 
 const TopBarPresenter = ({
-  languages,
-  // language,
+  locales,
+  // locale,
   onSetLanguage,
   currencies,
   // preferredCurrency,
@@ -47,15 +49,16 @@ const TopBarPresenter = ({
         onModalHasClosed={onHideUserSettings}
         shouldCloseOnOverlayClick
       >
-        {languages.map(languageOption => (
+        {locales.map(localeOption => (
           <button
-            key={languageOption}
+            key={localeOption}
             type='button'
             onClick={() => {
-              onSetLanguage(languageOption)
+              onSetLanguage(localeOption)
             }}
+            lang={localeOption}
           >
-            {languageOption}
+            {copy['en-GB'][localeOption]()}
           </button>
         ))}
         <hr />
@@ -76,11 +79,11 @@ const TopBarPresenter = ({
 )
 
 TopBarPresenter.propTypes = {
-  languages: arrayOf(string).isRequired,
-  language: string.isRequired,
+  locales: arrayOf(string).isRequired,
+  // locale: string.isRequired,
   onSetLanguage: func.isRequired,
   currencies: arrayOf(string).isRequired,
-  preferredCurrency: string.isRequired,
+  // preferredCurrency: string.isRequired,
   onSetPreferredCurrency: func.isRequired,
   isUserSettingsOpen: bool,
   onShowUserSettings: func.isRequired,

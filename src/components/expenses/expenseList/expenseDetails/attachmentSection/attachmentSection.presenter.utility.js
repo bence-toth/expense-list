@@ -1,18 +1,22 @@
-const receiptsAttached = ({numberOfReceipts}) => {
+import copy from './attachmentSection.locales'
+
+const receiptsAttached = ({numberOfReceipts, locale}) => {
   if (numberOfReceipts === 0) {
-    return 'No receipt was attached yet.'
+    return copy[locale].noReceiptAttached()
   }
   if (numberOfReceipts === 1) {
-    return '1 receipt was attached.'
+    return copy[locale].oneReceiptAttached()
   }
-  return `${numberOfReceipts} receipts were attached.`
+  return copy[locale].multipleReceiptsAttached({
+    numberOfReceipts
+  })
 }
 
-const clickToAttach = ({numberOfReceipts}) => {
+const clickToAttach = ({numberOfReceipts, locale}) => {
   if (numberOfReceipts === 0) {
-    return 'Click to upload receipt.'
+    return copy[locale].clickToUploadReceipt()
   }
-  return 'Click to upload another one.'
+  return copy[locale].clickToUploadAnotherReceipt()
 }
 
 export {receiptsAttached, clickToAttach}

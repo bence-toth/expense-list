@@ -2,6 +2,8 @@ import React from 'react'
 import {func, shape, bool} from 'prop-types'
 import classNames from 'classnames'
 
+import copy from './currencyFilter.locales'
+
 import './currencyFilter.styles.css'
 
 const CurrencyFilter = ({
@@ -11,7 +13,7 @@ const CurrencyFilter = ({
   <div className='currencyFilter'>
     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
     <label htmlFor='minAmount'>
-      Filter on currency
+      {copy['en-GB'].filterOnCurrency()}
     </label>
     <div className='filterButtonGroup'>
       {Object.keys(currencyFilters).map(currencyFilter => (

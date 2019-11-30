@@ -3,6 +3,8 @@ import {string} from 'prop-types'
 
 import Avatar from 'components/avatar/avatar.presenter'
 
+import copy from './userSection.locales'
+
 import './userSection.styles.css'
 
 const UserSection = ({
@@ -31,7 +33,9 @@ const UserSection = ({
         rel='noopener noreferrer'
       >
         <i className='fas fa-paper-plane' />
-        <span>Send email</span>
+        <span>
+          {copy['en-GB'].sendEmail()}
+        </span>
       </a>
     </div>
   </div>

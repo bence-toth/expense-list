@@ -4,18 +4,10 @@ import classNames from 'classnames'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 
+import copy from './commentSection.locales'
+import {reactQuillConfiguration} from './commentSection.data'
+
 import './commentSection.styles.css'
-
-const modules = {
-  toolbar: [
-    ['bold', 'italic', 'underline', 'strike'],
-    [{list: 'ordered'}, {list: 'bullet'}],
-    ['link'],
-    ['clean']
-  ]
-}
-
-const formats = ['bold', 'italic', 'underline', 'strike', 'list', 'bullet', 'link']
 
 const CommentSection = ({
   comment,
@@ -33,8 +25,8 @@ const CommentSection = ({
           comment: newComment
         })
       }}
-      formats={formats}
-      modules={modules}
+      formats={reactQuillConfiguration.formats}
+      modules={reactQuillConfiguration.modules}
     />
     <div
       className={classNames('placeholder', {
@@ -43,7 +35,7 @@ const CommentSection = ({
         )
       })}
     >
-      Add description
+      {copy['en-GB'].addDescription()}
     </div>
   </div>
 )

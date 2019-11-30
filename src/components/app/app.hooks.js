@@ -26,15 +26,15 @@ const useLocalStorage = key => {
 }
 
 const useUserSettings = () => {
-  const languages = [
+  const locales = [
     'en-GB',
     'en-US',
     'dk-DK'
   ]
   const [onGetLanguage, onSetLanguage] =
-    useLocalStorage('user_setting_language')
-  if (!languages.includes(onGetLanguage())) {
-    onSetLanguage(languages[0])
+    useLocalStorage('user_setting_locale')
+  if (!locales.includes(onGetLanguage())) {
+    onSetLanguage(locales[0])
   }
   const currencies = [
     'EUR',
@@ -46,9 +46,10 @@ const useUserSettings = () => {
   if (!currencies.includes(onGetPreferredCurrency())) {
     onSetPreferredCurrency(currencies[0])
   }
+  // TODO: Update lang attribute on <html> when locale changes
   return {
-    languages,
-    language: onGetLanguage() || languages[0],
+    locales,
+    locale: onGetLanguage() || locales[0],
     onSetLanguage,
     currencies,
     preferredCurrency: onGetPreferredCurrency() || currencies[0],

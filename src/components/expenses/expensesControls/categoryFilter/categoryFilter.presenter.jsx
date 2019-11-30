@@ -3,6 +3,7 @@ import {func, shape, bool} from 'prop-types'
 import classNames from 'classnames'
 
 import {getIconNameByCategory} from './categoryFilter.presenter.utility'
+import copy from './categoryFilter.locales'
 
 import './categoryFilter.styles.css'
 
@@ -13,7 +14,7 @@ const CategoryFilter = ({
   <div className='categoryFilter'>
     {/* eslint-disable-next-line jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control */}
     <label>
-      Filter on category
+      {copy['en-GB'].filterOnCategory()}
     </label>
     <div className='filterButtonGroup'>
       {Object.keys(categoryFilters).map(category => (
@@ -44,7 +45,7 @@ const CategoryFilter = ({
         >
           <i className={classNames('icon', getIconNameByCategory(category))} />
           <span className='categoryName'>
-            {category}
+            {copy['en-GB'][category]()}
           </span>
         </button>
       ))}

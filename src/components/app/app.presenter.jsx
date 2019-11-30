@@ -8,8 +8,8 @@ import TopBar from './topBar/topBar.container'
 import './app.styles.css'
 
 const App = ({
-  languages,
-  language,
+  locales,
+  locale,
   onSetLanguage,
   currencies,
   preferredCurrency,
@@ -17,8 +17,8 @@ const App = ({
 }) => (
   <>
     <TopBar
-      languages={languages}
-      language={language}
+      locales={locales}
+      locale={locale}
       onSetLanguage={onSetLanguage}
       currencies={currencies}
       preferredCurrency={preferredCurrency}
@@ -26,7 +26,7 @@ const App = ({
     />
     <main>
       <Expenses
-        language={language}
+        locale={locale}
         preferredCurrency={preferredCurrency}
       />
     </main>
@@ -34,8 +34,8 @@ const App = ({
 )
 
 App.propTypes = {
-  languages: arrayOf(string).isRequired,
-  language: string.isRequired,
+  locales: arrayOf(string).isRequired,
+  locale: string.isRequired,
   onSetLanguage: func.isRequired,
   currencies: arrayOf(string).isRequired,
   preferredCurrency: string.isRequired,

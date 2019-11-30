@@ -5,8 +5,8 @@ import AppPresenter from './app.presenter'
 
 const App = () => {
   const {
-    languages,
-    language,
+    locales,
+    locale,
     onSetLanguage,
     currencies,
     preferredCurrency,
@@ -14,8 +14,8 @@ const App = () => {
   } = useUserSettings()
   return (
     <AppPresenter
-      languages={languages}
-      language={language}
+      locales={locales}
+      locale={locale}
       onSetLanguage={onSetLanguage}
       currencies={currencies}
       preferredCurrency={preferredCurrency}

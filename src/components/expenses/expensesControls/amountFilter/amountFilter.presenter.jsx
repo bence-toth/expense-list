@@ -2,6 +2,8 @@ import React from 'react'
 import {func, number, shape} from 'prop-types'
 import InputRange from 'react-input-range'
 
+import copy from './amountFilter.locales'
+
 import './amountFilter.styles.css'
 
 const AmountFilter = ({
@@ -11,7 +13,9 @@ const AmountFilter = ({
   <div className='amountFilter'>
     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
     <label htmlFor='minAmount'>
-      Filter on expense amount (€)
+      {copy['en-GB'].filterOnExpenseAmount({
+        currency: 'EUR'
+      })}
     </label>
     <div className='keyboardInputs'>
       <input

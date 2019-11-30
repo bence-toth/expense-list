@@ -4,8 +4,8 @@ import {arrayOf, string, func} from 'prop-types'
 import TopBarPresenter from './topBar.presenter'
 
 const TopBarContainer = ({
-  languages,
-  language,
+  locales,
+  locale,
   onSetLanguage,
   currencies,
   preferredCurrency,
@@ -21,8 +21,8 @@ const TopBarContainer = ({
   const userSettingsButtonRef = useRef(null)
   return (
     <TopBarPresenter
-      languages={languages}
-      language={language}
+      locales={locales}
+      locale={locale}
       onSetLanguage={onSetLanguage}
       currencies={currencies}
       preferredCurrency={preferredCurrency}
@@ -36,8 +36,8 @@ const TopBarContainer = ({
 }
 
 TopBarContainer.propTypes = {
-  languages: arrayOf(string).isRequired,
-  language: string.isRequired,
+  locales: arrayOf(string).isRequired,
+  locale: string.isRequired,
   onSetLanguage: func.isRequired,
   currencies: arrayOf(string).isRequired,
   preferredCurrency: string.isRequired,

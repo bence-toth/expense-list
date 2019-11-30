@@ -2,6 +2,7 @@ import React from 'react'
 import {func, number} from 'prop-types'
 
 import {receiptsAttached, clickToAttach} from './attachmentSection.presenter.utility'
+import copy from './attachmentSection.locales'
 
 import './attachmentSection.styles.css'
 
@@ -16,8 +17,18 @@ const AttachmentSection = ({
       <i className='fas fa-paperclip' />
     </div>
     <div className='receiptDescription'>
-      <p>{receiptsAttached({numberOfReceipts})}</p>
-      <p>{clickToAttach({numberOfReceipts})}</p>
+      <p>
+        {receiptsAttached({
+          numberOfReceipts,
+          locale: 'en-GB'
+        })}
+      </p>
+      <p>
+        {clickToAttach({
+          numberOfReceipts,
+          locale: 'en-GB'
+        })}
+      </p>
     </div>
     <input
       type='file'
@@ -26,7 +37,7 @@ const AttachmentSection = ({
     />
     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
     <label htmlFor={fileInputId}>
-      Upload receipt
+      {copy['en-GB'].uploadReceipt()}
     </label>
   </div>
 )

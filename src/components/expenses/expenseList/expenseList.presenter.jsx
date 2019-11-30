@@ -105,7 +105,10 @@ const ExpenseListPresenter = ({
           </li>
         ))}
         {isFetchingExpenses && (
-          <li>Wait for it...</li>
+          <li>
+            Wait for it...
+            {/* TODO: Add spinner here instead of text */}
+          </li>
         )}
       </ul>
     )}

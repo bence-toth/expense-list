@@ -3,6 +3,7 @@ import {shape, string, bool, number} from 'prop-types'
 import classNames from 'classnames'
 
 import {formatFullDate, formatCurrency, getIconNameByCategory, convertCurrency} from './expenseSummary.presenter.utility'
+import copy from './expenseSummary.locales'
 
 import './expenseSummary.styles.css'
 
@@ -22,7 +23,9 @@ const ExpenseSummary = ({
         <div className='categoryIcon'>
           <i className={getIconNameByCategory(category)} />
         </div>
-        <div className='categoryName'>{category || 'Unknown'}</div>
+        <div className='categoryName'>
+          {copy['en-GB'][category || 'unknown']()}
+        </div>
       </div>
       <div className='merchantAndUser'>
         <div className='merchant'>
