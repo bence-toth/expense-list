@@ -13,7 +13,8 @@ const CommentSection = ({
   comment,
   expenseId,
   onEditComment,
-  onSetExpenseComment
+  onSetExpenseComment,
+  locale
 }) => (
   <div className='commentSection'>
     <ReactQuill
@@ -35,7 +36,7 @@ const CommentSection = ({
         )
       })}
     >
-      {copy['en-GB'].addDescription()}
+      {copy[locale].addDescription()}
     </div>
   </div>
 )
@@ -44,7 +45,8 @@ CommentSection.propTypes = {
   comment: string.isRequired,
   onEditComment: func.isRequired,
   expenseId: string.isRequired,
-  onSetExpenseComment: func.isRequired
+  onSetExpenseComment: func.isRequired,
+  locale: string.isRequired
 }
 
 export default CommentSection

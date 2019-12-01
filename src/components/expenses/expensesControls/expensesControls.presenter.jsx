@@ -18,26 +18,33 @@ const ExpensesControls = ({
   onSetCurrencyFilters,
   amountFilters,
   onSetAmountFilters,
-  currencyExchangeData
+  currencyExchangeData,
+  locale,
+  preferredCurrency
 }) => (
   <>
     <ExpenseSearch
       searchQuery={searchQuery}
       onSetSearchQuery={onSetSearchQuery}
+      locale={locale}
     />
     {currencyExchangeData && (
       <AmountFilter
         amountFilters={amountFilters}
         onSetAmountFilters={onSetAmountFilters}
+        locale={locale}
+        preferredCurrency={preferredCurrency}
       />
     )}
     <CurrencyFilter
       currencyFilters={currencyFilters}
       onSetCurrencyFilters={onSetCurrencyFilters}
+      locale={locale}
     />
     <CategoryFilter
       categoryFilters={categoryFilters}
       onSetCategoryFilters={onSetCategoryFilters}
+      locale={locale}
     />
   </>
 )
@@ -77,7 +84,9 @@ ExpensesControls.propTypes = {
       DKK: number.isRequired,
       EUR: number.isRequired
     }).isRequired
-  })
+  }),
+  locale: string.isRequired,
+  preferredCurrency: string.isRequired
 }
 
 export default ExpensesControls

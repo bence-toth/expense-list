@@ -7,7 +7,8 @@ import AttachmentSectionPresenter from './attachmentSection.presenter'
 const AttachmentSection = ({
   expenseId,
   onSetExpenseReceipts,
-  numberOfReceipts
+  numberOfReceipts,
+  locale
 }) => (
   <AttachmentSectionPresenter
     numberOfReceipts={numberOfReceipts}
@@ -24,13 +25,15 @@ const AttachmentSection = ({
         })
       }
     }}
+    locale={locale}
   />
 )
 
 AttachmentSection.propTypes = {
   expenseId: string.isRequired,
   onSetExpenseReceipts: func.isRequired,
-  numberOfReceipts: number
+  numberOfReceipts: number,
+  locale: string.isRequired
 }
 
 export default AttachmentSection

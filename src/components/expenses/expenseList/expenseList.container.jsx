@@ -11,7 +11,10 @@ const ExpenseListContainer = ({
   currencyFilters,
   searchQuery,
   amountFilters,
-  currencyExchangeData
+  currencyExchangeData,
+  locale,
+  preferredCurrency
+
 }) => {
   const {
     expenses,
@@ -33,7 +36,8 @@ const ExpenseListContainer = ({
     currencyFilters,
     amountFilters,
     currencyExchangeData,
-    searchQuery
+    searchQuery,
+    preferredCurrency
   })
   const numberOfFilteredExpenses = (
     filteredExpenses
@@ -65,8 +69,9 @@ const ExpenseListContainer = ({
       onUnselectExpense={() => {
         dispatchSelectionAction(onUnselectExpense())
       }}
-      defaultCurrency='EUR'
+      preferredCurrency={preferredCurrency}
       scrollableAreaRef={scrollableAreaRef}
+      locale={locale}
     />
   )
 }
@@ -102,7 +107,9 @@ ExpenseListContainer.propTypes = {
       DKK: number.isRequired,
       EUR: number.isRequired
     }).isRequired
-  })
+  }),
+  locale: string.isRequired,
+  preferredCurrency: string.isRequired
 }
 
 export default ExpenseListContainer

@@ -15,7 +15,8 @@ const ExpenseSummary = ({
   amount,
   isUserDisplayed = true,
   currencyExchangeData,
-  defaultCurrency
+  preferredCurrency,
+  locale
 }) => (
   <div className='expenseSummary'>
     <div className='left'>
@@ -24,7 +25,7 @@ const ExpenseSummary = ({
           <i className={getIconNameByCategory(category)} />
         </div>
         <div className='categoryName'>
-          {copy['en-GB'][category || 'unknown']()}
+          {copy[locale][category || 'unknown']()}
         </div>
       </div>
       <div className='merchantAndUser'>
@@ -37,22 +38,22 @@ const ExpenseSummary = ({
           </div>
         )}
         <div className='date'>
-          {formatFullDate(({date, locale: 'en-GB'}))}
+          {formatFullDate(({date, locale}))}
         </div>
       </div>
     </div>
     <div className='right'>
-      {currencyExchangeData && (amount.currency !== defaultCurrency) && (
+      {currencyExchangeData && (amount.currency !== preferredCurrency) && (
         <div className={classNames('amount', 'converted')}>
           {formatCurrency({
             amount: convertCurrency({
               from: amount.currency,
-              to: defaultCurrency,
+              to: preferredCurrency,
               amount: amount.value,
               currencyExchangeData
             }),
-            currency: defaultCurrency,
-            locale: 'en-GB'
+            currency: preferredCurrency,
+            locale
           })}
         </div>
       )}
@@ -60,7 +61,7 @@ const ExpenseSummary = ({
         {formatCurrency({
           amount: amount.value,
           currency: amount.currency,
-          locale: 'en-GB'
+          locale
         })}
       </div>
     </div>
@@ -95,7 +96,8 @@ ExpenseSummary.propTypes = {
       EUR: number.isRequired
     }).isRequired
   }),
-  defaultCurrency: string.isRequired
+  preferredCurrency: string.isRequired,
+  locale: string.isRequired
 }
 
 export default ExpenseSummary

@@ -9,7 +9,8 @@ import './summarySection.styles.css'
 const SummarySection = ({
   selectedExpense,
   currencyExchangeData,
-  defaultCurrency
+  preferredCurrency,
+  locale
 }) => (
   <div
     className={classNames(
@@ -20,7 +21,8 @@ const SummarySection = ({
     <ExpenseSummary
       isUserDisplayed={false}
       currencyExchangeData={currencyExchangeData}
-      defaultCurrency={defaultCurrency}
+      preferredCurrency={preferredCurrency}
+      locale={locale}
       {...selectedExpense}
     />
   </div>
@@ -55,7 +57,8 @@ SummarySection.propTypes = {
       EUR: number.isRequired
     }).isRequired
   }),
-  defaultCurrency: string.isRequired
+  preferredCurrency: string.isRequired,
+  locale: string.isRequired
 }
 
 export default SummarySection

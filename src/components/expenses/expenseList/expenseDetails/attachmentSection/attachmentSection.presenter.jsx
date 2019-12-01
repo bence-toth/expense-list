@@ -1,5 +1,5 @@
 import React from 'react'
-import {func, number} from 'prop-types'
+import {func, number, string} from 'prop-types'
 
 import {receiptsAttached, clickToAttach} from './attachmentSection.presenter.utility'
 import copy from './attachmentSection.locales'
@@ -10,7 +10,8 @@ const fileInputId = 'uploadReceipt'
 
 const AttachmentSection = ({
   onAttachmentChange,
-  numberOfReceipts
+  numberOfReceipts,
+  locale
 }) => (
   <div className='attachmentSection'>
     <div className='iconContainer'>
@@ -20,13 +21,13 @@ const AttachmentSection = ({
       <p>
         {receiptsAttached({
           numberOfReceipts,
-          locale: 'en-GB'
+          locale
         })}
       </p>
       <p>
         {clickToAttach({
           numberOfReceipts,
-          locale: 'en-GB'
+          locale
         })}
       </p>
     </div>
@@ -37,14 +38,15 @@ const AttachmentSection = ({
     />
     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
     <label htmlFor={fileInputId}>
-      {copy['en-GB'].uploadReceipt()}
+      {copy[locale].uploadReceipt()}
     </label>
   </div>
 )
 
 AttachmentSection.propTypes = {
   onAttachmentChange: func.isRequired,
-  numberOfReceipts: number
+  numberOfReceipts: number,
+  locale: string.isRequired
 }
 
 export default AttachmentSection

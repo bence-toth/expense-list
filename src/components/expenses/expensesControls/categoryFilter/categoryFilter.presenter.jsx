@@ -1,5 +1,5 @@
 import React from 'react'
-import {func, shape, bool} from 'prop-types'
+import {func, shape, bool, string} from 'prop-types'
 import classNames from 'classnames'
 
 import {getIconNameByCategory} from './categoryFilter.presenter.utility'
@@ -9,12 +9,13 @@ import './categoryFilter.styles.css'
 
 const CategoryFilter = ({
   categoryFilters,
-  onSetCategoryFilters
+  onSetCategoryFilters,
+  locale
 }) => (
   <div className='categoryFilter'>
     {/* eslint-disable-next-line jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control */}
     <label>
-      {copy['en-GB'].filterOnCategory()}
+      {copy[locale].filterOnCategory()}
     </label>
     <div className='filterButtonGroup'>
       {Object.keys(categoryFilters).map(category => (
@@ -45,7 +46,7 @@ const CategoryFilter = ({
         >
           <i className={classNames('icon', getIconNameByCategory(category))} />
           <span className='categoryName'>
-            {copy['en-GB'][category]()}
+            {copy[locale][category]()}
           </span>
         </button>
       ))}
@@ -61,7 +62,8 @@ CategoryFilter.propTypes = {
     food: bool,
     unknown: bool
   }).isRequired,
-  onSetCategoryFilters: func.isRequired
+  onSetCategoryFilters: func.isRequired,
+  locale: string.isRequired
 }
 
 export default CategoryFilter

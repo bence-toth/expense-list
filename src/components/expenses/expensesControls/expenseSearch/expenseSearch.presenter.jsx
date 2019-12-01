@@ -7,12 +7,13 @@ import './expenseSearch.styles.css'
 
 const ExpenseSearch = ({
   searchQuery,
-  onSetSearchQuery
+  onSetSearchQuery,
+  locale
 }) => (
   <div className='expenseSearch'>
     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
     <label htmlFor='expenseSearch'>
-      {copy['en-GB'].searchInExpenses()}
+      {copy[locale].searchInExpenses()}
     </label>
     <input
       id='expenseSearch'
@@ -28,7 +29,8 @@ const ExpenseSearch = ({
 
 ExpenseSearch.propTypes = {
   searchQuery: string.isRequired,
-  onSetSearchQuery: func.isRequired
+  onSetSearchQuery: func.isRequired,
+  locale: string.isRequired
 }
 
 export default ExpenseSearch

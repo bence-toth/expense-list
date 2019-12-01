@@ -1,5 +1,6 @@
 import React from 'react'
 import {arrayOf, string, func, shape, bool, instanceOf} from 'prop-types'
+import classNames from 'classnames'
 
 import Modal from 'components/modal/modal.presenter'
 
@@ -9,10 +10,10 @@ import './topBar.styles.css'
 
 const TopBarPresenter = ({
   locales,
-  // locale,
+  locale,
   onSetLanguage,
   currencies,
-  // preferredCurrency,
+  preferredCurrency,
   onSetPreferredCurrency,
   isUserSettingsOpen,
   onShowUserSettings,
@@ -56,9 +57,11 @@ const TopBarPresenter = ({
             onClick={() => {
               onSetLanguage(localeOption)
             }}
-            lang={localeOption}
+            className={classNames({
+              selected: locale === localeOption
+            })}
           >
-            {copy['en-GB'][localeOption]()}
+            {copy[locale][localeOption]()}
           </button>
         ))}
         <hr />
@@ -69,6 +72,9 @@ const TopBarPresenter = ({
             onClick={() => {
               onSetPreferredCurrency(currencyOption)
             }}
+            className={classNames({
+              selected: preferredCurrency === currencyOption
+            })}
           >
             {currencyOption}
           </button>
@@ -80,10 +86,10 @@ const TopBarPresenter = ({
 
 TopBarPresenter.propTypes = {
   locales: arrayOf(string).isRequired,
-  // locale: string.isRequired,
+  locale: string.isRequired,
   onSetLanguage: func.isRequired,
   currencies: arrayOf(string).isRequired,
-  // preferredCurrency: string.isRequired,
+  preferredCurrency: string.isRequired,
   onSetPreferredCurrency: func.isRequired,
   isUserSettingsOpen: bool,
   onShowUserSettings: func.isRequired,

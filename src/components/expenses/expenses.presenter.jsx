@@ -15,7 +15,9 @@ const Expenses = ({
   onSetCurrencyFilters,
   amountFilters,
   onSetAmountFilters,
-  currencyExchangeData
+  currencyExchangeData,
+  locale,
+  preferredCurrency
 }) => (
   <>
     <div className='expensesControlsWrapper'>
@@ -29,6 +31,8 @@ const Expenses = ({
         amountFilters={amountFilters}
         onSetAmountFilters={onSetAmountFilters}
         currencyExchangeData={currencyExchangeData}
+        locale={locale}
+        preferredCurrency={preferredCurrency}
       />
     </div>
     <div className='expensesListWrapper'>
@@ -38,6 +42,8 @@ const Expenses = ({
         searchQuery={searchQuery}
         amountFilters={amountFilters}
         currencyExchangeData={currencyExchangeData}
+        locale={locale}
+        preferredCurrency={preferredCurrency}
       />
     </div>
   </>
@@ -78,7 +84,9 @@ Expenses.propTypes = {
       DKK: number.isRequired,
       EUR: number.isRequired
     }).isRequired
-  })
+  }),
+  locale: string.isRequired,
+  preferredCurrency: string.isRequired
 }
 
 export default Expenses

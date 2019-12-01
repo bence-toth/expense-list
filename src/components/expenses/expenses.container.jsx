@@ -1,9 +1,13 @@
 import React from 'react'
+import {string} from 'prop-types'
 
 import {useExpenseFilters, useCurrencyConversion} from './expenses.hooks'
 import ExpensesPresenter from './expenses.presenter'
 
-const Expenses = () => {
+const Expenses = ({
+  locale,
+  preferredCurrency
+}) => {
   const {
     searchQuery,
     onSetSearchQuery,
@@ -13,7 +17,9 @@ const Expenses = () => {
     onSetCategoryFilters,
     currencyFilters,
     onSetCurrencyFilters
-  } = useExpenseFilters()
+  } = useExpenseFilters({
+    preferredCurrency
+  })
   const currencyExchangeData = useCurrencyConversion()
   return (
     <ExpensesPresenter
@@ -26,8 +32,15 @@ const Expenses = () => {
       amountFilters={amountFilters}
       onSetAmountFilters={onSetAmountFilters}
       currencyExchangeData={currencyExchangeData}
+      locale={locale}
+      preferredCurrency={preferredCurrency}
     />
   )
+}
+
+Expenses.propTypes = {
+  locale: string.isRequired,
+  preferredCurrency: string.isRequired
 }
 
 export default Expenses

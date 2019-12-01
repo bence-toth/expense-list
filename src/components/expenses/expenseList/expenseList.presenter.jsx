@@ -27,8 +27,9 @@ const ExpenseListPresenter = ({
   onSetExpenseComment,
   onSetExpenseReceipts,
   currencyExchangeData,
-  defaultCurrency,
-  scrollableAreaRef
+  preferredCurrency,
+  scrollableAreaRef,
+  locale
 }) => (
   <div
     ref={scrollableAreaRef}
@@ -56,7 +57,7 @@ const ExpenseListPresenter = ({
             key={generateGroupKeyFromDate(groupStart)}
           >
             <div className='expenseGroupHeading'>
-              {formatMonth(({date: groupStart, locale: 'en-GB'}))}
+              {formatMonth(({date: groupStart, locale}))}
             </div>
             <ul className='expenseList'>
               {expenseItems.map(({
@@ -96,7 +97,8 @@ const ExpenseListPresenter = ({
                       date={date}
                       amount={amount}
                       currencyExchangeData={currencyExchangeData}
-                      defaultCurrency={defaultCurrency}
+                      preferredCurrency={preferredCurrency}
+                      locale={locale}
                     />
                   </button>
                 </li>
@@ -126,7 +128,8 @@ const ExpenseListPresenter = ({
           onSetExpenseComment={onSetExpenseComment}
           onSetExpenseReceipts={onSetExpenseReceipts}
           currencyExchangeData={currencyExchangeData}
-          defaultCurrency={defaultCurrency}
+          preferredCurrency={preferredCurrency}
+          locale={locale}
         />
       </Modal>
     )}
@@ -184,10 +187,11 @@ ExpenseListPresenter.propTypes = {
       EUR: number.isRequired
     }).isRequired
   }),
-  defaultCurrency: string.isRequired,
+  preferredCurrency: string.isRequired,
   scrollableAreaRef: shape({
     current: instanceOf(Element)
-  }).isRequired
+  }).isRequired,
+  locale: string.isRequired
 }
 
 export default ExpenseListPresenter

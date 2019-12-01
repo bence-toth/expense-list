@@ -40,7 +40,8 @@ const applySearchQueryFilter = searchQuery => (expenseGroup => ({
 
 const applyAmountFilter = ({
   amountFilters: {min, max},
-  currencyExchangeData
+  currencyExchangeData,
+  preferredCurrency
 }) => (expenseGroup => ({
   ...expenseGroup,
   expenseItems:
@@ -50,9 +51,9 @@ const applyAmountFilter = ({
           return true
         }
         const convertedValue = (
-          (currency === 'EUR')
+          (currency === preferredCurrency)
             ? value
-            : value * currencyExchangeData[currency].EUR
+            : value * currencyExchangeData[currency][preferredCurrency]
         )
         return (convertedValue >= min) && (convertedValue <= max)
       })
@@ -67,7 +68,8 @@ const filterExpenses = ({
   currencyFilters,
   searchQuery,
   amountFilters,
-  currencyExchangeData
+  currencyExchangeData,
+  preferredCurrency
 }) => (
   expenses
     .map(applyCategoryFilters(categoryFilters))
@@ -75,7 +77,8 @@ const filterExpenses = ({
     .map(applySearchQueryFilter(searchQuery))
     .map(applyAmountFilter({
       amountFilters,
-      currencyExchangeData
+      currencyExchangeData,
+      preferredCurrency
     }))
     .filter(isExpenseGroupNotEmpty)
 )

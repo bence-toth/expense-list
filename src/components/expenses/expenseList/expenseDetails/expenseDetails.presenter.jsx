@@ -24,28 +24,33 @@ const ExpenseDetails = ({
   onSetExpenseComment,
   onSetExpenseReceipts,
   currencyExchangeData,
-  defaultCurrency
+  preferredCurrency,
+  locale
 }) => (
   <div className='expenseDetails'>
     <SummarySection
       selectedExpense={selectedExpense}
       currencyExchangeData={currencyExchangeData}
-      defaultCurrency={defaultCurrency}
+      preferredCurrency={preferredCurrency}
+      locale={locale}
     />
     <UserSection
       name={`${first} ${last}`}
       avatar={avatar}
       email={email}
+      locale={locale}
     />
     <AttachmentSection
       expenseId={id}
       onSetExpenseReceipts={onSetExpenseReceipts}
       numberOfReceipts={receipts.length}
+      locale={locale}
     />
     <CommentSection
       expenseId={id}
       initialComment={comment}
       onSetExpenseComment={onSetExpenseComment}
+      locale={locale}
     />
   </div>
 )
@@ -80,7 +85,8 @@ ExpenseDetails.propTypes = {
       EUR: number.isRequired
     }).isRequired
   }),
-  defaultCurrency: string.isRequired
+  preferredCurrency: string.isRequired,
+  locale: string.isRequired
 }
 
 export default ExpenseDetails

@@ -1,11 +1,11 @@
 import {useEffect, useState} from 'react'
 import {fetchCurrencyExchangeData} from './expenses.consumers'
 
-const useExpenseFilters = () => {
+const useExpenseFilters = ({preferredCurrency}) => {
   const [searchQuery, onSetSearchQuery] = useState('')
   const [amountFilters, onSetAmountFilters] = useState({
     min: 0,
-    max: 5000 // EUR
+    max: (preferredCurrency === 'DKK') ? 36000 : 5000
   })
   const [categoryFilters, onSetCategoryFilters] = useState({
     transport: true,

@@ -10,7 +10,8 @@ import './userSection.styles.css'
 const UserSection = ({
   name,
   avatar,
-  email
+  email,
+  locale
 }) => (
   <div className='userSection'>
     <Avatar
@@ -34,7 +35,7 @@ const UserSection = ({
       >
         <i className='fas fa-paper-plane' />
         <span>
-          {copy['en-GB'].sendEmail()}
+          {copy[locale].sendEmail()}
         </span>
       </a>
     </div>
@@ -44,7 +45,8 @@ const UserSection = ({
 UserSection.propTypes = {
   name: string.isRequired,
   email: string.isRequired,
-  avatar: string
+  avatar: string,
+  locale: string.isRequired
 }
 
 export default UserSection

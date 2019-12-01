@@ -10,9 +10,9 @@ const locales = {
     'dk-DK': () => 'Danish'
   },
   'dk-DK': {
-    'en-GB': () => 'engelsk (UK)',
-    'en-US': () => 'engelsk (USA)',
-    'dk-DK': () => 'dansk'
+    'en-GB': () => 'Engelsk (UK)',
+    'en-US': () => 'Engelsk (USA)',
+    'dk-DK': () => 'Dansk'
   }
 }
 

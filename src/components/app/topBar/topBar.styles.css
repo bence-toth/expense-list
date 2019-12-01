@@ -61,3 +61,7 @@ body {
 .topBar .modalContainer {
   z-index: 2;
 }
+
+.topBar .selected {
+  border: 1rem solid var(--color-brand);
+}

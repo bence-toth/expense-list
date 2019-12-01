@@ -1,5 +1,5 @@
 import React from 'react'
-import {func, shape, bool} from 'prop-types'
+import {func, shape, bool, string} from 'prop-types'
 import classNames from 'classnames'
 
 import copy from './currencyFilter.locales'
@@ -8,12 +8,13 @@ import './currencyFilter.styles.css'
 
 const CurrencyFilter = ({
   currencyFilters,
-  onSetCurrencyFilters
+  onSetCurrencyFilters,
+  locale
 }) => (
   <div className='currencyFilter'>
     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
     <label htmlFor='minAmount'>
-      {copy['en-GB'].filterOnCurrency()}
+      {copy[locale].filterOnCurrency()}
     </label>
     <div className='filterButtonGroup'>
       {Object.keys(currencyFilters).map(currencyFilter => (
@@ -55,7 +56,8 @@ CurrencyFilter.propTypes = {
     GBP: bool,
     EUR: bool
   }).isRequired,
-  onSetCurrencyFilters: func.isRequired
+  onSetCurrencyFilters: func.isRequired,
+  locale: string.isRequired
 }
 
 export default CurrencyFilter

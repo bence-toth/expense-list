@@ -9,7 +9,8 @@ import './commentSection.styles.css'
 const CommentSection = ({
   expenseId,
   initialComment,
-  onSetExpenseComment
+  onSetExpenseComment,
+  locale
 }) => {
   const [comment, onEditComment] = usePersistedComment({
     initialComment,
@@ -21,6 +22,7 @@ const CommentSection = ({
       onEditComment={onEditComment}
       onSetExpenseComment={onSetExpenseComment}
       expenseId={expenseId}
+      locale={locale}
     />
   )
 }
@@ -28,7 +30,8 @@ const CommentSection = ({
 CommentSection.propTypes = {
   expenseId: string.isRequired,
   initialComment: string.isRequired,
-  onSetExpenseComment: func.isRequired
+  onSetExpenseComment: func.isRequired,
+  locale: string.isRequired
 }
 
 export default CommentSection

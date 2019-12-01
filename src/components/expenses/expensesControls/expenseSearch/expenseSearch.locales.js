@@ -2,7 +2,7 @@ const locales = {
   'en-GB': {
     searchInExpenses: () => 'Search in expenses'
   },
-  'en-Us': {
+  'en-US': {
     searchInExpenses: () => 'Search in expenses'
   },
   'dk-DK': {
