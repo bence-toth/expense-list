@@ -1,18 +1,16 @@
 import React from 'react'
 import {instanceOf, arrayOf, shape, string, func, bool, number} from 'prop-types'
-import classNames from 'classnames'
 
 import Modal from 'components/modal/modal.presenter'
 
-import ExpenseSummary from './expenseSummary/expenseSummary.presenter'
+import ExpenseGroup from './expenseGroup/expenseGroup.presenter'
 import ExpenseDetails from './expenseDetails/expenseDetails.presenter'
-import {formatMonth, generateGroupKeyFromDate, getSelectedExpense} from './expenseList.presenter.utility'
+import {generateGroupKeyFromDate, getSelectedExpense} from './expenseList.presenter.utility'
 
 import './expenseList.styles.css'
 
 const scrollToBottomDistanceThreshold = 15
 
-// TODO: Break down to smaller components
 const ExpenseListPresenter = ({
   expenses,
   selectedExpenseRef,
@@ -53,58 +51,19 @@ const ExpenseListPresenter = ({
     {expenses && (
       <ul className='expenseGroup'>
         {expenses.map(({groupStart, expenseItems}) => (
-          <li
+          <ExpenseGroup
             key={generateGroupKeyFromDate(groupStart)}
-          >
-            <div className='expenseGroupHeading'>
-              {formatMonth(({date: groupStart, locale}))}
-            </div>
-            <ul className='expenseList'>
-              {expenseItems.map(({
-                id,
-                amount,
-                merchant,
-                user,
-                category,
-                date
-              }) => (
-                <li
-                  key={id}
-                  className={classNames('expense', category)}
-                  {...((id === preselectedExpenseId) && {
-                    ref: selectedExpenseRef
-                  })}
-                >
-                  <button
-                    type='button'
-                    className='expenseButton'
-                    onFocus={() => {
-                      if (!selectedExpenseId) {
-                        onPreselectExpense({id})
-                      }
-                    }}
-                    onClick={() => {
-                      onPreselectExpense({id})
-                      requestAnimationFrame(() => {
-                        onSelectExpense({id})
-                      })
-                    }}
-                  >
-                    <ExpenseSummary
-                      category={category}
-                      merchant={merchant}
-                      user={user}
-                      date={date}
-                      amount={amount}
-                      currencyExchangeData={currencyExchangeData}
-                      preferredCurrency={preferredCurrency}
-                      locale={locale}
-                    />
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </li>
+            selectedExpenseRef={selectedExpenseRef}
+            preselectedExpenseId={preselectedExpenseId}
+            selectedExpenseId={selectedExpenseId}
+            onPreselectExpense={onPreselectExpense}
+            onSelectExpense={onSelectExpense}
+            currencyExchangeData={currencyExchangeData}
+            preferredCurrency={preferredCurrency}
+            locale={locale}
+            groupStart={groupStart}
+            expenseItems={expenseItems}
+          />
         ))}
         {isFetchingExpenses && (
           <li>

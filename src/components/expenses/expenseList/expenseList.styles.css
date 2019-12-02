@@ -4,32 +4,3 @@
   overflow: hidden;
   overflow-y: auto;
 }
-
-.expenses .expenseGroup, .expenses .expenseList {
-  list-style-type: none;
-}
-
-.expenses .expenseGroupHeading {
-  position: sticky;
-  top: 0;
-  padding: 0.5rem 1rem;
-  background-color: hsl(0, 0%, 95%);
-  font-weight: 600;
-  color: var(--color-brand);
-  z-index: 1;
-  text-align: center;
-  border-bottom: var(--border-width-thin) solid hsl(0, 0%, 90%);
-}
-
-.expenses .expense {
-  border-bottom: var(--border-width-thin) solid hsl(0, 0%, 90%);
-}
-
-.expenses .expenseButton {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  border: 0;
-  background-color: transparent;
-  text-align: left;
-}
