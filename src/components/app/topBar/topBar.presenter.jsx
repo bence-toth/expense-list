@@ -50,35 +50,44 @@ const TopBarPresenter = ({
         onModalHasClosed={onHideUserSettings}
         shouldCloseOnOverlayClick
       >
-        {locales.map(localeOption => (
-          <button
-            key={localeOption}
-            type='button'
-            onClick={() => {
-              onSetLanguage(localeOption)
-            }}
-            className={classNames({
-              selected: locale === localeOption
-            })}
-          >
-            {copy[locale][localeOption]()}
-          </button>
-        ))}
-        <hr />
-        {currencies.map(currencyOption => (
-          <button
-            key={currencyOption}
-            type='button'
-            onClick={() => {
-              onSetPreferredCurrency(currencyOption)
-            }}
-            className={classNames({
-              selected: preferredCurrency === currencyOption
-            })}
-          >
-            {currencyOption}
-          </button>
-        ))}
+        <div className='settingsModalInnerWrapper'>
+          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */}
+          <label>{copy[locale].language()}</label>
+          <div className='buttonGroup'>
+            {locales.map(localeOption => (
+              <button
+                key={localeOption}
+                type='button'
+                onClick={() => {
+                  onSetLanguage(localeOption)
+                }}
+                className={classNames({
+                  selected: locale === localeOption
+                })}
+              >
+                {copy[locale][localeOption]()}
+              </button>
+            ))}
+          </div>
+          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */}
+          <label>{copy[locale].preferredCurrency()}</label>
+          <div className='buttonGroup'>
+            {currencies.map(currencyOption => (
+              <button
+                key={currencyOption}
+                type='button'
+                onClick={() => {
+                  onSetPreferredCurrency(currencyOption)
+                }}
+                className={classNames({
+                  selected: preferredCurrency === currencyOption
+                })}
+              >
+                {currencyOption}
+              </button>
+            ))}
+          </div>
+        </div>
       </Modal>
     )}
   </header>
