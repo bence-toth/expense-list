@@ -1,7 +1,7 @@
 import React from 'react'
 import {instanceOf, arrayOf, shape, string, func, bool, number} from 'prop-types'
 
-import Modal from 'components/modal/modal.presenter'
+import Modal from 'components/modal/modal.container'
 
 import ExpenseGroup from './expenseGroup/expenseGroup.presenter'
 import ExpenseDetails from './expenseDetails/expenseDetails.presenter'

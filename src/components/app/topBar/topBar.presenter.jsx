@@ -1,7 +1,7 @@
 import React from 'react'
 import {arrayOf, string, func, shape, bool, instanceOf} from 'prop-types'
 
-import Modal from 'components/modal/modal.presenter'
+import Modal from 'components/modal/modal.container'
 
 import UserSettingsModal from './userSettingsModal/userSettingsModal.presenter'
 
