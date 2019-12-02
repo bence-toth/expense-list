@@ -1,9 +1,9 @@
 import React, {useState, useRef} from 'react'
 import {arrayOf, string, func} from 'prop-types'
 
-import TopBarPresenter from './topBar.presenter'
+import Presenter from './topBar.presenter'
 
-const TopBarContainer = ({
+const TopBar = ({
   locales,
   locale,
   onSetLanguage,
@@ -20,7 +20,7 @@ const TopBarContainer = ({
   }
   const userSettingsButtonRef = useRef(null)
   return (
-    <TopBarPresenter
+    <Presenter
       locales={locales}
       locale={locale}
       onSetLanguage={onSetLanguage}
@@ -35,7 +35,9 @@ const TopBarContainer = ({
   )
 }
 
-TopBarContainer.propTypes = {
+TopBar.displayName = 'TopBarContainer'
+
+TopBar.propTypes = {
   locales: arrayOf(string).isRequired,
   locale: string.isRequired,
   onSetLanguage: func.isRequired,
@@ -44,4 +46,4 @@ TopBarContainer.propTypes = {
   onSetPreferredCurrency: func.isRequired
 }
 
-export default TopBarContainer
+export default TopBar

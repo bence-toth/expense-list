@@ -42,6 +42,8 @@ const UserSection = ({
   </div>
 )
 
+UserSection.displayName = 'UserSectionPresenter'
+
 UserSection.propTypes = {
   name: string.isRequired,
   email: string.isRequired,

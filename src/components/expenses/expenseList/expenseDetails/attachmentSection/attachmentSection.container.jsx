@@ -2,7 +2,7 @@ import React from 'react'
 import {string, func, number} from 'prop-types'
 
 import {addReceiptToExpense} from './attachmentSection.consumers'
-import AttachmentSectionPresenter from './attachmentSection.presenter'
+import Presenter from './attachmentSection.presenter'
 
 const AttachmentSection = ({
   expenseId,
@@ -10,7 +10,7 @@ const AttachmentSection = ({
   numberOfReceipts,
   locale
 }) => (
-  <AttachmentSectionPresenter
+  <Presenter
     numberOfReceipts={numberOfReceipts}
     onAttachmentChange={({target: {files}}) => {
       if (files.length > 0) {
@@ -28,6 +28,8 @@ const AttachmentSection = ({
     locale={locale}
   />
 )
+
+AttachmentSection.displayName = 'AttachmentSectionContainer'
 
 AttachmentSection.propTypes = {
   expenseId: string.isRequired,

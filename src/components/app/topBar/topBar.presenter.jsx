@@ -7,7 +7,7 @@ import UserSettingsModal from './userSettingsModal/userSettingsModal.presenter'
 
 import './topBar.styles.css'
 
-const TopBarPresenter = ({
+const TopBar = ({
   locales,
   locale,
   onSetLanguage,
@@ -62,7 +62,9 @@ const TopBarPresenter = ({
   </header>
 )
 
-TopBarPresenter.propTypes = {
+TopBar.displayName = 'TopBarPresenter'
+
+TopBar.propTypes = {
   locales: arrayOf(string).isRequired,
   locale: string.isRequired,
   onSetLanguage: func.isRequired,
@@ -77,4 +79,4 @@ TopBarPresenter.propTypes = {
   }).isRequired
 }
 
-export default TopBarPresenter
+export default TopBar

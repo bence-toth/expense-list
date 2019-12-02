@@ -1,7 +1,7 @@
 import React from 'react'
 import {node, number, instanceOf, shape, func, bool} from 'prop-types'
 
-import ModalPresenter from './modal.presenter'
+import Presenter from './modal.presenter'
 import {useModalState, modalStates} from './modal.hooks'
 
 import './modal.styles.css'
@@ -22,7 +22,7 @@ const Modal = ({
     onSetModalState
   } = useModalState({animationTargetElement})
   return (modalState !== unmounted) && (
-    <ModalPresenter
+    <Presenter
       modalState={modalState}
       shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
       animationDurationIn={animationDurationIn}
@@ -33,9 +33,11 @@ const Modal = ({
       onModalHasClosed={onModalHasClosed}
     >
       {children}
-    </ModalPresenter>
+    </Presenter>
   )
 }
+
+Modal.displayName = 'ModalContainer'
 
 Modal.propTypes = {
   children: node,

@@ -69,6 +69,8 @@ const AmountFilter = ({
   )
 }
 
+AmountFilter.displayName = 'AmountFilterPresenter'
+
 AmountFilter.propTypes = {
   amountFilters: shape({
     min: number.isRequired,

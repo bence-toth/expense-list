@@ -54,6 +54,8 @@ const CategoryFilter = ({
   </div>
 )
 
+CategoryFilter.displayName = 'CategoryFilterPresenter'
+
 CategoryFilter.propTypes = {
   categoryFilters: shape({
     transport: bool,

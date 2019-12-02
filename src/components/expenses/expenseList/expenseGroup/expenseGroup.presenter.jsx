@@ -71,6 +71,8 @@ const ExpenseGroup = ({
   </li>
 )
 
+ExpenseGroup.displayName = 'ExpenseGroupPresenter'
+
 ExpenseGroup.propTypes = {
   groupStart: instanceOf(Date).isRequired,
   expenseItems: arrayOf(shape({

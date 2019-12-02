@@ -41,6 +41,8 @@ const CommentSection = ({
   </div>
 )
 
+CommentSection.displayName = 'CommentSectionPresenter'
+
 CommentSection.propTypes = {
   comment: string.isRequired,
   onEditComment: func.isRequired,

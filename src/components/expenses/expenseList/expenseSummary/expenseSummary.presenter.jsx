@@ -68,6 +68,8 @@ const ExpenseSummary = ({
   </div>
 )
 
+ExpenseSummary.displayName = 'ExpenseSummaryPresenter'
+
 ExpenseSummary.propTypes = {
   amount: shape({
     value: string.isRequired,

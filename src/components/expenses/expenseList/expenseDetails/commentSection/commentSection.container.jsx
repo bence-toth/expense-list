@@ -2,7 +2,7 @@ import React from 'react'
 import {string, func} from 'prop-types'
 
 import {usePersistedComment} from './commentSection.hooks'
-import CommentSectionPresenter from './commentSection.presenter'
+import Presenter from './commentSection.presenter'
 
 import './commentSection.styles.css'
 
@@ -17,7 +17,7 @@ const CommentSection = ({
     expenseId
   })
   return (
-    <CommentSectionPresenter
+    <Presenter
       comment={comment}
       onEditComment={onEditComment}
       onSetExpenseComment={onSetExpenseComment}
@@ -26,6 +26,8 @@ const CommentSection = ({
     />
   )
 }
+
+CommentSection.displayName = 'CommentSectionContainer'
 
 CommentSection.propTypes = {
   expenseId: string.isRequired,

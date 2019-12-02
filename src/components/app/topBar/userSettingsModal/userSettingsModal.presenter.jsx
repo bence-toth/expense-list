@@ -54,6 +54,8 @@ const UserSettingsModal = ({
   </div>
 )
 
+UserSettingsModal.displayName = 'UserSettingsModalPresenter'
+
 UserSettingsModal.propTypes = {
   locales: arrayOf(string).isRequired,
   locale: string.isRequired,

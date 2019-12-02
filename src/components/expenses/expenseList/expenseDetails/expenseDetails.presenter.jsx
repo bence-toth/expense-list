@@ -55,6 +55,8 @@ const ExpenseDetails = ({
   </div>
 )
 
+ExpenseDetails.displayName = 'ExpenseDetailsPresenter'
+
 ExpenseDetails.propTypes = {
   selectedExpense: shape({
     user: shape({

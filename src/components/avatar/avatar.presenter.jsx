@@ -30,6 +30,8 @@ const Avatar = ({
   </div>
 )
 
+Avatar.displayName = 'AvatarPresenter'
+
 Avatar.propTypes = {
   avatarURL: string,
   name: string.isRequired

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 
 import {useUserSettings} from './app.hooks'
-import AppPresenter from './app.presenter'
+import Presenter from './app.presenter'
 
 const App = () => {
   const {
@@ -16,7 +16,7 @@ const App = () => {
     document.documentElement.lang = locale
   }, [locale])
   return (
-    <AppPresenter
+    <Presenter
       locales={locales}
       locale={locale}
       onSetLanguage={onSetLanguage}
@@ -26,5 +26,7 @@ const App = () => {
     />
   )
 }
+
+App.displayName = 'AppContainer'
 
 export default App

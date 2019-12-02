@@ -2,7 +2,7 @@ import React from 'react'
 import {string} from 'prop-types'
 
 import {useExpenseFilters, useCurrencyConversion} from './expenses.hooks'
-import ExpensesPresenter from './expenses.presenter'
+import Presenter from './expenses.presenter'
 
 const Expenses = ({
   locale,
@@ -22,7 +22,7 @@ const Expenses = ({
   })
   const currencyExchangeData = useCurrencyConversion()
   return (
-    <ExpensesPresenter
+    <Presenter
       searchQuery={searchQuery}
       onSetSearchQuery={onSetSearchQuery}
       categoryFilters={categoryFilters}
@@ -37,6 +37,8 @@ const Expenses = ({
     />
   )
 }
+
+Expenses.displayName = 'ExpensesContainer'
 
 Expenses.propTypes = {
   locale: string.isRequired,

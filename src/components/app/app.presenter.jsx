@@ -33,6 +33,8 @@ const App = ({
   </>
 )
 
+App.displayName = 'AppPresenter'
+
 App.propTypes = {
   locales: arrayOf(string).isRequired,
   locale: string.isRequired,

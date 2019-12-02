@@ -82,6 +82,8 @@ const Modal = ({
   </div>
 )
 
+Modal.displayName = 'ModalPresenter'
+
 Modal.propTypes = {
   children: node,
   animationDurationIn: number,

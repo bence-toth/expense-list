@@ -49,6 +49,8 @@ const ExpensesControls = ({
   </>
 )
 
+ExpensesControls.displayName = 'ExpensesControlsPresenter'
+
 ExpensesControls.propTypes = {
   searchQuery: string.isRequired,
   onSetSearchQuery: func.isRequired,

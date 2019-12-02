@@ -43,6 +43,8 @@ const AttachmentSection = ({
   </div>
 )
 
+AttachmentSection.displayName = 'AttachmentSectionPresenter'
+
 AttachmentSection.propTypes = {
   onAttachmentChange: func.isRequired,
   numberOfReceipts: number,

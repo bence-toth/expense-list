@@ -50,6 +50,8 @@ const CurrencyFilter = ({
   </div>
 )
 
+CurrencyFilter.displayName = 'CurrencyFilterPresenter'
+
 CurrencyFilter.propTypes = {
   currencyFilters: shape({
     DKK: bool,

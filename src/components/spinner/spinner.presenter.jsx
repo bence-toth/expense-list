@@ -14,6 +14,8 @@ const Spinner = ({
   />
 )
 
+Spinner.displayName = 'SpinnerPresenter'
+
 Spinner.propTypes = {
   size: oneOf(['tiny', 'small', 'normal', 'big']),
   thickness: oneOf(['thin', 'normal', 'thick'])

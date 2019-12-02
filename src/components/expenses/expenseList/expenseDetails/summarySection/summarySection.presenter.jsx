@@ -28,6 +28,8 @@ const SummarySection = ({
   </div>
 )
 
+SummarySection.displayName = 'SummarySectionPresenter'
+
 SummarySection.propTypes = {
   selectedExpense: shape({
     amount: shape({

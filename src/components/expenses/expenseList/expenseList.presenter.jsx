@@ -12,7 +12,7 @@ import './expenseList.styles.css'
 
 const scrollToBottomDistanceThreshold = 15
 
-const ExpenseListPresenter = ({
+const ExpenseList = ({
   expenses,
   selectedExpenseRef,
   preselectedExpenseId,
@@ -95,7 +95,9 @@ const ExpenseListPresenter = ({
   </div>
 )
 
-ExpenseListPresenter.propTypes = {
+ExpenseList.displayName = 'ExpenseListPresenter'
+
+ExpenseList.propTypes = {
   expenses: arrayOf(shape({
     groupStart: instanceOf(Date).isRequired,
     expenseItems: arrayOf(shape({
@@ -153,4 +155,4 @@ ExpenseListPresenter.propTypes = {
   locale: string.isRequired
 }
 
-export default ExpenseListPresenter
+export default ExpenseList

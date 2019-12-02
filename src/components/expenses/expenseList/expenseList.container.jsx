@@ -4,9 +4,9 @@ import {string, bool, number, shape} from 'prop-types'
 import {useExpenses, useExpenseSelection, useAutoFetchMoreExpenses} from './expenseList.hooks'
 import {onPreselectExpense, onSelectExpense, onUnselectExpense} from './expenseList.actionCreators'
 import {filterExpenses} from './expenseList.container.utility'
-import ExpenseListPresenter from './expenseList.presenter'
+import Presenter from './expenseList.presenter'
 
-const ExpenseListContainer = ({
+const ExpenseList = ({
   categoryFilters,
   currencyFilters,
   searchQuery,
@@ -14,7 +14,6 @@ const ExpenseListContainer = ({
   currencyExchangeData,
   locale,
   preferredCurrency
-
 }) => {
   const {
     expenses,
@@ -49,7 +48,7 @@ const ExpenseListContainer = ({
     numberOfFilteredExpenses
   })
   return expenses && (
-    <ExpenseListPresenter
+    <Presenter
       currencyExchangeData={currencyExchangeData}
       expenses={filteredExpenses}
       selectedExpenseRef={selectedExpenseRef}
@@ -76,7 +75,9 @@ const ExpenseListContainer = ({
   )
 }
 
-ExpenseListContainer.propTypes = {
+ExpenseList.displayName = 'ExpenseListContainer'
+
+ExpenseList.propTypes = {
   searchQuery: string.isRequired,
   categoryFilters: shape({
     transport: bool,
@@ -112,4 +113,4 @@ ExpenseListContainer.propTypes = {
   preferredCurrency: string.isRequired
 }
 
-export default ExpenseListContainer
+export default ExpenseList

@@ -27,6 +27,8 @@ const ExpenseSearch = ({
   </div>
 )
 
+ExpenseSearch.displayName = 'ExpenseSearchPresenter'
+
 ExpenseSearch.propTypes = {
   searchQuery: string.isRequired,
   onSetSearchQuery: func.isRequired,
