@@ -1,0 +1,53 @@
+.topBar .settingsModalInnerWrapper {
+  padding: 2rem 1rem;
+}
+
+.topBar .settingsModalInnerWrapper label {
+  font-weight: 600;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.buttonGroup {
+  display: flex;
+}
+
+.topBar .buttonGroup:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.buttonGroup > button {
+  flex-basis: 0;
+  flex-grow: 1;
+  padding: 1rem;
+  border: 0;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-right: var(--border-width-thin);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  color: hsl(0, 0%, 55%);
+  background-color: hsl(0, 0%, 85%);
+}
+
+.buttonGroup > button:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.buttonGroup > button:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.buttonGroup > button:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+
+.buttonGroup > .selected {
+  color: hsl(0, 0%, 100%);
+  background-color: var(--color-brand);
+}

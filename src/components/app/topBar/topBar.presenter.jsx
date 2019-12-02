@@ -1,10 +1,9 @@
 import React from 'react'
 import {arrayOf, string, func, shape, bool, instanceOf} from 'prop-types'
-import classNames from 'classnames'
 
 import Modal from 'components/modal/modal.presenter'
 
-import copy from './topBar.locales'
+import UserSettingsModal from './userSettingsModal/userSettingsModal.presenter'
 
 import './topBar.styles.css'
 
@@ -50,44 +49,14 @@ const TopBarPresenter = ({
         onModalHasClosed={onHideUserSettings}
         shouldCloseOnOverlayClick
       >
-        <div className='settingsModalInnerWrapper'>
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */}
-          <label>{copy[locale].language()}</label>
-          <div className='buttonGroup'>
-            {locales.map(localeOption => (
-              <button
-                key={localeOption}
-                type='button'
-                onClick={() => {
-                  onSetLanguage(localeOption)
-                }}
-                className={classNames({
-                  selected: locale === localeOption
-                })}
-              >
-                {copy[locale][localeOption]()}
-              </button>
-            ))}
-          </div>
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */}
-          <label>{copy[locale].preferredCurrency()}</label>
-          <div className='buttonGroup'>
-            {currencies.map(currencyOption => (
-              <button
-                key={currencyOption}
-                type='button'
-                onClick={() => {
-                  onSetPreferredCurrency(currencyOption)
-                }}
-                className={classNames({
-                  selected: preferredCurrency === currencyOption
-                })}
-              >
-                {currencyOption}
-              </button>
-            ))}
-          </div>
-        </div>
+        <UserSettingsModal
+          locales={locales}
+          locale={locale}
+          onSetLanguage={onSetLanguage}
+          currencies={currencies}
+          preferredCurrency={preferredCurrency}
+          onSetPreferredCurrency={onSetPreferredCurrency}
+        />
       </Modal>
     )}
   </header>
