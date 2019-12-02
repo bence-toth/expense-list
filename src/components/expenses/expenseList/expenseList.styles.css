@@ -4,3 +4,27 @@
   overflow: hidden;
   overflow-y: auto;
 }
+
+@keyframes fadeIn {
+
+  0% {
+    opacity: 0;
+  }
+
+  90% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.expenses .spinnerWrapper {
+  /* Show spinner only after a second of waiting */
+  animation: fadeIn 1s linear;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

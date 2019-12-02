@@ -2,6 +2,7 @@ import React from 'react'
 import {instanceOf, arrayOf, shape, string, func, bool, number} from 'prop-types'
 
 import Modal from 'components/modal/modal.container'
+import Spinner from 'components/spinner/spinner.presenter'
 
 import ExpenseGroup from './expenseGroup/expenseGroup.presenter'
 import ExpenseDetails from './expenseDetails/expenseDetails.presenter'
@@ -66,9 +67,8 @@ const ExpenseListPresenter = ({
           />
         ))}
         {isFetchingExpenses && (
-          <li>
-            Wait for it...
-            {/* TODO: Add spinner here instead of text */}
+          <li className='spinnerWrapper'>
+            <Spinner />
           </li>
         )}
       </ul>
