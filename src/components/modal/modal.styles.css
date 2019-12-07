@@ -32,14 +32,20 @@
   transition-property: top, left, width, height, opacity;
   opacity: 0;
   box-shadow: 0 0.1rem 0.2rem hsla(0, 0%, 0%, 4%), 0 0.1rem 0.2rem hsla(0, 0%, 0%, 8%);
+  overflow: hidden;
 }
 
-.modal.open {
+.modal.transitioningIn, .modal.open {
   top: calc(25rem / 2);
   left: calc((100% - 40rem) / 2);
   width: 40rem;
   height: calc(100vh - 25rem);
   opacity: 1;
+  overflow: hidden;
+}
+
+.modal.open {
+  overflow: visible;
 }
 
 .closeModalButton {

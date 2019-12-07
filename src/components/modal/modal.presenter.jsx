@@ -44,7 +44,8 @@ const Modal = ({
     <div
       ref={modalRef}
       className={classNames('modal', {
-        open: [transitioningIn, open].includes(modalState)
+        transitioningIn: modalState === transitioningIn,
+        open: modalState === open
       })}
       style={
         [transitioningIn, open].includes(modalState)
