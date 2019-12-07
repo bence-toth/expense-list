@@ -4,6 +4,7 @@ import {arrayOf, string, func, shape, bool, instanceOf} from 'prop-types'
 import Modal from 'components/modal/modal.container'
 
 import UserSettingsModal from './userSettingsModal/userSettingsModal.presenter'
+import copy from './topBar.locales'
 
 import './topBar.styles.css'
 
@@ -47,6 +48,7 @@ const TopBar = ({
       <Modal
         animationTargetElement={userSettingsButtonRef}
         onModalHasClosed={onHideUserSettings}
+        title={copy[locale].userSettings()}
         shouldCloseOnOverlayClick
       >
         <UserSettingsModal

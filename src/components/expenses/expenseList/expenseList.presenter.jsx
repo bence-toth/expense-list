@@ -7,6 +7,7 @@ import Spinner from 'components/spinner/spinner.presenter'
 import ExpenseGroup from './expenseGroup/expenseGroup.presenter'
 import ExpenseDetails from './expenseDetails/expenseDetails.presenter'
 import {generateGroupKeyFromDate, getSelectedExpense} from './expenseList.presenter.utility'
+import copy from './expenseList.locales'
 
 import './expenseList.styles.css'
 
@@ -75,6 +76,7 @@ const ExpenseList = ({
     )}
     {selectedExpenseId && (
       <Modal
+        title={copy[locale].expenseDetails()}
         animationTargetElement={selectedExpenseRef}
         onModalHasClosed={onUnselectExpense}
         shouldCloseOnOverlayClick

@@ -1,5 +1,5 @@
 import React from 'react'
-import {node, number, instanceOf, shape, func, bool} from 'prop-types'
+import {node, number, instanceOf, shape, func, bool, string} from 'prop-types'
 
 import Presenter from './modal.presenter'
 import {useModalState, modalStates} from './modal.hooks'
@@ -14,7 +14,8 @@ const Modal = ({
   animationDurationOut = 300,
   animationTargetElement: {current: animationTargetElement},
   onModalHasClosed,
-  shouldCloseOnOverlayClick
+  shouldCloseOnOverlayClick,
+  title
 }) => {
   const {
     modalState,
@@ -31,6 +32,7 @@ const Modal = ({
       modalRef={modalRef}
       animationTargetElement={animationTargetElement}
       onModalHasClosed={onModalHasClosed}
+      title={title}
     >
       {children}
     </Presenter>
@@ -47,7 +49,8 @@ Modal.propTypes = {
     current: instanceOf(Element)
   }).isRequired,
   onModalHasClosed: func,
-  shouldCloseOnOverlayClick: bool
+  shouldCloseOnOverlayClick: bool,
+  title: string.isRequired
 }
 
 export default Modal

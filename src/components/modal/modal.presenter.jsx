@@ -1,5 +1,5 @@
 import React from 'react'
-import {node, number, instanceOf, shape, func, bool, oneOf} from 'prop-types'
+import {node, number, instanceOf, shape, func, bool, oneOf, string} from 'prop-types'
 import classNames from 'classnames'
 
 import {modalStates} from './modal.hooks'
@@ -10,6 +10,7 @@ import './modal.styles.css'
 const {unmounted, transitioningIn, open, transitioningOut} = modalStates
 
 const Modal = ({
+  title,
   modalState,
   shouldCloseOnOverlayClick,
   animationDurationIn,
@@ -69,16 +70,19 @@ const Modal = ({
         }
       }}
     >
+      <header className='modalHeader'>
+        <h2>{title}</h2>
+        <button
+          className='closeModalButton'
+          type='button'
+          onClick={() => {
+            onSetModalState(transitioningOut)
+          }}
+        >
+          <i className='fas fa-times' />
+        </button>
+      </header>
       {children}
-      <button
-        className='closeModalButton'
-        type='button'
-        onClick={() => {
-          onSetModalState(transitioningOut)
-        }}
-      >
-        <i className='far fa-times-circle' />
-      </button>
     </div>
   </div>
 )
@@ -86,6 +90,7 @@ const Modal = ({
 Modal.displayName = 'ModalPresenter'
 
 Modal.propTypes = {
+  title: string.isRequired,
   children: node,
   animationDurationIn: number,
   animationDurationOut: number,

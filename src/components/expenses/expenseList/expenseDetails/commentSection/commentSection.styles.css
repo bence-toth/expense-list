@@ -1,5 +1,5 @@
 .commentSection {
-  height: calc(100% - 6.5rem - 5rem - 5rem);
+  height: calc(100% - 3rem - 6.5rem - 5rem - 5rem);
   /* Trigger stacking context for placeholder */
   position: relative;
 }

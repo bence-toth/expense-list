@@ -39,7 +39,7 @@
   top: calc(25rem / 2);
   left: calc((100% - 40rem) / 2);
   width: 40rem;
-  height: calc(100vh - 25rem);
+  height: calc(100vh - 22rem);
   opacity: 1;
   overflow: hidden;
 }
@@ -48,15 +48,38 @@
   overflow: visible;
 }
 
-.closeModalButton {
-  width: 2rem;
-  height: 2rem;
+.modal > .modalHeader {
+  height: 3rem;
+  background-color: hsl(0, 0%, 80%);
+  color: hsl(0, 0%, 20%);
+  border-bottom: var(--border-width-thin) solid hsl(0, 0%, 70%);
+}
+
+.modal > .modalHeader h2 {
+  line-height: 3rem;
+  font-size: 1rem;
+  padding: 0 1rem;
+}
+
+.modal > .modalHeader .closeModalButton {
+  width: 3rem;
+  height: 3rem;
   position: absolute;
   top: 0;
-  right: -2.5rem;
+  right: 0;
+  color: hsl(0, 0%, 20%);
   font-size: 2rem;
   background-color: transparent;
   border: 0;
-  color: hsl(0, 0%, 100%);
   cursor: pointer;
+  transition: color 350ms;
+}
+
+.modal > .modalHeader .closeModalButton:hover {
+  color: var(--color-brand);
+}
+
+.modal > .modalHeader .closeModalButton > i {
+  transform: scale(0.65);
+  transition: color 0.2s;
 }
