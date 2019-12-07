@@ -14,3 +14,25 @@ html {
 body {
   font-family: Roboto, sans-serif;
 }
+
+/*
+  CSS Breakpoints used in media queries
+  -------------------------------------
+
+  Breakpoint #1: `860px`
+    - Card spacing disappears
+    - Card borders collapse
+
+  Breakpoint #2: `800px`
+    - Rem switches from 16px to 14px
+    - UI scales down
+
+  Breakpoint #3: `680px`
+    - Expense controls turns from a sidebar to a drawer
+    - Top menu gets new button for showing/hiding expense controls
+    - Modals go full screen
+
+  Breakpoint #4: `420px`
+    - Rem switches from 14px to 12px
+    - UI scales down
+*/

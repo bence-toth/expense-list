@@ -3,6 +3,16 @@ body {
   --card-spacing: 2rem;
 }
 
+/* stylelint-disable unit-blacklist */
+
+@media (max-width: 860px) {
+  /* stylelint-enable unit-blacklist */
+
+  body {
+    --card-spacing: 0;
+  }
+}
+
 .topBar {
   display: block;
   height: var(--top-bar-height);
@@ -64,7 +74,7 @@ body {
 
 .topBar .modal.transitioningIn, .topBar .modal.open {
   top: calc(50% - 8rem);
-  left: calc((100% - 20rem) / 2);
+  left: calc((100% - 30rem) / 2);
   width: 30rem;
   height: 16rem;
 }

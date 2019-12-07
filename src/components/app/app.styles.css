@@ -1,9 +1,21 @@
 main {
+  position: relative;
   --controls-width: 20rem;
   width: calc(100% - 2rem);
   max-width: 60rem;
-  margin: 2rem auto;
+  margin: var(--card-spacing) auto;
   height: calc(100% - var(--top-bar-height) - var(--card-spacing) - var(--card-spacing));
   display: flex;
   justify-content: space-between;
+}
+
+/* stylelint-disable unit-blacklist */
+
+@media (max-width: 860px) {
+  /* stylelint-enable unit-blacklist */
+
+  main {
+    width: 100%;
+    height: calc(100% - var(--top-bar-height));
+  }
 }
