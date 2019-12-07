@@ -1,5 +1,6 @@
 import React from 'react'
 import {arrayOf, string, func, shape, bool, instanceOf} from 'prop-types'
+import classNames from 'classnames'
 
 import Modal from 'components/modal/modal.container'
 
@@ -18,7 +19,9 @@ const TopBar = ({
   isUserSettingsOpen,
   onShowUserSettings,
   onHideUserSettings,
-  userSettingsButtonRef
+  userSettingsButtonRef,
+  isExpensesControlsSidebarVisible,
+  onToggleExpensesControlsSidebar
 }) => (
   <header className='topBar'>
     <div className='topBarInnerWrapper'>
@@ -34,9 +37,18 @@ const TopBar = ({
       <div>
         <div className='toolbarWrapper'>
           <button
+            type='button'
+            className={classNames('toolbarButton', 'mobile', {
+              active: isExpensesControlsSidebarVisible
+            })}
+            onClick={onToggleExpensesControlsSidebar}
+          >
+            <i className='fas fa-sliders-h' />
+          </button>
+          <button
             ref={userSettingsButtonRef}
             type='button'
-            className='settingsButton'
+            className='toolbarButton'
             onClick={onShowUserSettings}
           >
             <i className='icon fas fa-cog' />
@@ -78,7 +90,9 @@ TopBar.propTypes = {
   onHideUserSettings: func.isRequired,
   userSettingsButtonRef: shape({
     current: instanceOf(Element)
-  }).isRequired
+  }).isRequired,
+  isExpensesControlsSidebarVisible: bool,
+  onToggleExpensesControlsSidebar: func.isRequired
 }
 
 export default TopBar

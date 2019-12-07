@@ -53,7 +53,7 @@ body {
   padding-right: 0.5rem;
 }
 
-.topBar .settingsButton {
+.topBar .toolbarButton {
   background-color: transparent;
   font-size: 1rem;
   width: 2rem;
@@ -64,8 +64,26 @@ body {
   transition: color 0.2s;
 }
 
-.topBar .settingsButton:hover {
+.topBar .toolbarButton:hover {
   color: var(--color-brand);
+}
+
+.topBar .toolbarButton.active {
+  color: var(--color-brand);
+}
+
+.topBar .toolbarButton.mobile {
+  display: none;
+}
+
+/* stylelint-disable unit-blacklist */
+
+@media (max-width: 680px) {
+  /* stylelint-enable unit-blacklist */
+
+  .topBar .toolbarButton.mobile {
+    display: block;
+  }
 }
 
 .topBar .modalContainer {

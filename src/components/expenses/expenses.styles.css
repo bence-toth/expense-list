@@ -46,7 +46,16 @@
     height: 100%;
     position: absolute;
     z-index: 2;
-    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 350ms, transform 350ms;
+    transform: scale(0.95);
+  }
+
+  .expensesControlsWrapper.visibleOnMobile {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
   }
 
   .expensesListWrapper {

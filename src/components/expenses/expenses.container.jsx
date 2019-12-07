@@ -1,12 +1,13 @@
 import React from 'react'
-import {string} from 'prop-types'
+import {string, bool} from 'prop-types'
 
 import {useExpenseFilters, useCurrencyConversion} from './expenses.hooks'
 import Presenter from './expenses.presenter'
 
 const Expenses = ({
   locale,
-  preferredCurrency
+  preferredCurrency,
+  isExpensesControlsSidebarVisible
 }) => {
   const {
     searchQuery,
@@ -34,6 +35,7 @@ const Expenses = ({
       currencyExchangeData={currencyExchangeData}
       locale={locale}
       preferredCurrency={preferredCurrency}
+      isExpensesControlsSidebarVisible={isExpensesControlsSidebarVisible}
     />
   )
 }
@@ -42,7 +44,8 @@ Expenses.displayName = 'ExpensesContainer'
 
 Expenses.propTypes = {
   locale: string.isRequired,
-  preferredCurrency: string.isRequired
+  preferredCurrency: string.isRequired,
+  isExpensesControlsSidebarVisible: bool
 }
 
 export default Expenses

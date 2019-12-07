@@ -1,6 +1,6 @@
 .amountFilter {
-  margin-bottom: 2rem;
-  padding-bottom: 3rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 2.5rem;
   border-bottom: var(--border-width-thin) solid hsl(0, 0%, 85%);
 }
 

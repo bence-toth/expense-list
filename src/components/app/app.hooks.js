@@ -56,5 +56,15 @@ const useUserSettings = () => {
   }
 }
 
-// eslint-disable-next-line import/prefer-default-export
-export {useUserSettings}
+const useFlag = (defaultValue = true) => {
+  const [flag, onSetFlag] = useState(defaultValue)
+  const onToggleFlag = () => {
+    onSetFlag(!flag)
+  }
+  return [
+    flag,
+    onToggleFlag
+  ]
+}
+
+export {useUserSettings, useFlag}

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 
-import {useUserSettings} from './app.hooks'
+import {useUserSettings, useFlag} from './app.hooks'
 import Presenter from './app.presenter'
 
 const App = () => {
@@ -12,6 +12,10 @@ const App = () => {
     preferredCurrency,
     onSetPreferredCurrency
   } = useUserSettings()
+  const [
+    isExpensesControlsSidebarVisible,
+    onToggleExpensesControlsSidebar
+  ] = useFlag(false)
   useEffect(() => {
     document.documentElement.lang = locale
   }, [locale])
@@ -23,6 +27,8 @@ const App = () => {
       currencies={currencies}
       preferredCurrency={preferredCurrency}
       onSetPreferredCurrency={onSetPreferredCurrency}
+      isExpensesControlsSidebarVisible={isExpensesControlsSidebarVisible}
+      onToggleExpensesControlsSidebar={onToggleExpensesControlsSidebar}
     />
   )
 }

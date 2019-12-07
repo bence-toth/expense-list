@@ -1,5 +1,5 @@
 import React from 'react'
-import {arrayOf, func, string} from 'prop-types'
+import {arrayOf, func, string, bool} from 'prop-types'
 
 import Expenses from 'components/expenses/expenses.container'
 
@@ -13,7 +13,9 @@ const App = ({
   onSetLanguage,
   currencies,
   preferredCurrency,
-  onSetPreferredCurrency
+  onSetPreferredCurrency,
+  isExpensesControlsSidebarVisible,
+  onToggleExpensesControlsSidebar
 }) => (
   <>
     <TopBar
@@ -23,11 +25,14 @@ const App = ({
       currencies={currencies}
       preferredCurrency={preferredCurrency}
       onSetPreferredCurrency={onSetPreferredCurrency}
+      isExpensesControlsSidebarVisible={isExpensesControlsSidebarVisible}
+      onToggleExpensesControlsSidebar={onToggleExpensesControlsSidebar}
     />
     <main>
       <Expenses
         locale={locale}
         preferredCurrency={preferredCurrency}
+        isExpensesControlsSidebarVisible={isExpensesControlsSidebarVisible}
       />
     </main>
   </>
@@ -41,7 +46,9 @@ App.propTypes = {
   onSetLanguage: func.isRequired,
   currencies: arrayOf(string).isRequired,
   preferredCurrency: string.isRequired,
-  onSetPreferredCurrency: func.isRequired
+  onSetPreferredCurrency: func.isRequired,
+  isExpensesControlsSidebarVisible: bool,
+  onToggleExpensesControlsSidebar: func.isRequired
 }
 
 export default App

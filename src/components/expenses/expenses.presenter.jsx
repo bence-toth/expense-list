@@ -1,5 +1,6 @@
 import React from 'react'
 import {shape, func, bool, string, number} from 'prop-types'
+import classNames from 'classnames'
 
 import ExpensesListContainer from './expenseList/expenseList.container'
 import ExpensesControls from './expensesControls/expensesControls.presenter'
@@ -17,10 +18,15 @@ const Expenses = ({
   onSetAmountFilters,
   currencyExchangeData,
   locale,
-  preferredCurrency
+  preferredCurrency,
+  isExpensesControlsSidebarVisible
 }) => (
   <>
-    <div className='expensesControlsWrapper'>
+    <div
+      className={classNames('expensesControlsWrapper', {
+        visibleOnMobile: isExpensesControlsSidebarVisible
+      })}
+    >
       <ExpensesControls
         searchQuery={searchQuery}
         onSetSearchQuery={onSetSearchQuery}
@@ -88,7 +94,8 @@ Expenses.propTypes = {
     }).isRequired
   }),
   locale: string.isRequired,
-  preferredCurrency: string.isRequired
+  preferredCurrency: string.isRequired,
+  isExpensesControlsSidebarVisible: bool
 }
 
 export default Expenses

@@ -1,4 +1,17 @@
 .expensesControlsWrapper {
   padding: 2rem;
   color: hsl(0, 0%, 35%);
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+/* stylelint-disable unit-blacklist */
+
+@media (max-width: 680px) {
+  /* stylelint-enable unit-blacklist */
+
+  .expensesControls {
+    max-width: 24rem;
+    margin: 0 auto;
+  }
 }

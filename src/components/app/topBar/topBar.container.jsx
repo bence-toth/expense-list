@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react'
-import {arrayOf, string, func} from 'prop-types'
+import {arrayOf, string, func, bool} from 'prop-types'
 
 import Presenter from './topBar.presenter'
 
@@ -9,7 +9,9 @@ const TopBar = ({
   onSetLanguage,
   currencies,
   preferredCurrency,
-  onSetPreferredCurrency
+  onSetPreferredCurrency,
+  isExpensesControlsSidebarVisible,
+  onToggleExpensesControlsSidebar
 }) => {
   const [isUserSettingsOpen, onSetUserSettings] = useState(false)
   const onShowUserSettings = () => {
@@ -31,6 +33,8 @@ const TopBar = ({
       onShowUserSettings={onShowUserSettings}
       onHideUserSettings={onHideUserSettings}
       userSettingsButtonRef={userSettingsButtonRef}
+      isExpensesControlsSidebarVisible={isExpensesControlsSidebarVisible}
+      onToggleExpensesControlsSidebar={onToggleExpensesControlsSidebar}
     />
   )
 }
@@ -43,7 +47,9 @@ TopBar.propTypes = {
   onSetLanguage: func.isRequired,
   currencies: arrayOf(string).isRequired,
   preferredCurrency: string.isRequired,
-  onSetPreferredCurrency: func.isRequired
+  onSetPreferredCurrency: func.isRequired,
+  isExpensesControlsSidebarVisible: bool,
+  onToggleExpensesControlsSidebar: func.isRequired
 }
 
 export default TopBar

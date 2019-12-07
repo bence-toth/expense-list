@@ -22,7 +22,7 @@ const ExpensesControls = ({
   locale,
   preferredCurrency
 }) => (
-  <>
+  <div className='expensesControls'>
     <ExpenseSearch
       searchQuery={searchQuery}
       onSetSearchQuery={onSetSearchQuery}
@@ -46,7 +46,7 @@ const ExpensesControls = ({
       onSetCategoryFilters={onSetCategoryFilters}
       locale={locale}
     />
-  </>
+  </div>
 )
 
 ExpensesControls.displayName = 'ExpensesControlsPresenter'

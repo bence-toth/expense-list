@@ -1,3 +1,10 @@
+
+.expenseSearch {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: var(--border-width-thin) solid hsl(0, 0%, 85%);
+}
+
 .expenseSearch label {
   font-weight: 600;
   display: block;
@@ -12,10 +19,4 @@
   padding: 0.5rem;
   font-size: 1rem;
   font-family: Roboto, sans-serif;
-}
-
-.expenseSearch {
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
-  border-bottom: var(--border-width-thin) solid hsl(0, 0%, 85%);
 }
