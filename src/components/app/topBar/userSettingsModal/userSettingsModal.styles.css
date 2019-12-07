@@ -1,5 +1,7 @@
 .topBar .settingsModalInnerWrapper {
   padding: 2rem 1rem;
+  max-width: 32rem;
+  margin: 0 auto;
 }
 
 .topBar .settingsModalInnerWrapper label {

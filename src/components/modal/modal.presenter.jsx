@@ -59,7 +59,10 @@ const Modal = ({
           }
       }
       onTransitionEnd={({target, propertyName}) => {
-        if ((propertyName === 'left') && (target === modalRef.current)) {
+        if (
+          ['left', 'top', 'width', 'height'].includes(propertyName)
+            && (target === modalRef.current)
+        ) {
           if (modalState === transitioningIn) {
             onSetModalState(open)
           }
