@@ -1,7 +1,7 @@
 import React from 'react'
 import {arrayOf, func, string, bool} from 'prop-types'
 
-import Expenses from 'components/expenses/expenses.container'
+import Expenses from './expenses/expenses.container'
 
 import TopBar from './topBar/topBar.container'
 
