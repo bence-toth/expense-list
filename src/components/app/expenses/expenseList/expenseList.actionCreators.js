@@ -18,6 +18,17 @@ const onRequestExpenses = () => ({
   type: expensesActions.onRequestExpenses
 })
 
+const onReceiveExpenses = ({
+  expenses,
+  rawExpenses,
+  shouldFetchMore
+}) => ({
+  type: expensesActions.onReceiveExpenses,
+  expenses,
+  rawExpenses,
+  shouldFetchMore
+})
+
 const onUpdateExpenseReceipts = ({
   expenseId,
   receipts
@@ -34,17 +45,6 @@ const onUpdateExpenseComment = ({
   type: expensesActions.onUpdateExpenseComment,
   expenseId,
   comment
-})
-
-const onReceiveExpenses = ({
-  expenses,
-  rawExpenses,
-  shouldFetchMore
-}) => ({
-  type: expensesActions.onReceiveExpenses,
-  expenses,
-  rawExpenses,
-  shouldFetchMore
 })
 
 export {

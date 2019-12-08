@@ -1,4 +1,5 @@
 import {selectionActions, expensesActions} from './expenseList.actions'
+import {updateComment, updateReceipts} from './expenseList.reducer.utility'
 
 const initialSelectionState = {
   preselectedExpenseId: null,
@@ -33,26 +34,6 @@ const initialExpensesState = {
   expenses: [],
   rawExpenses: []
 }
-
-const updateComment = action => (expense => {
-  if (expense.id === action.expenseId) {
-    return {
-      ...expense,
-      comment: action.comment
-    }
-  }
-  return expense
-})
-
-const updateReceipts = action => (expense => {
-  if (expense.id === action.expenseId) {
-    return {
-      ...expense,
-      receipts: action.receipts
-    }
-  }
-  return expense
-})
 
 const expensesReducer = (state, action) => {
   if (action.type === expensesActions.onRequestExpenses) {
