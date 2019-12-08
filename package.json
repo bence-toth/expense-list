@@ -6,9 +6,20 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "react-scripts test --watchAll=false --coverage",
     "lint": "npm run eslint ; npm run stylelint",
     "eslint": "node ./node_modules/eslint/bin/eslint.js src/**/*.js src/**/*.jsx",
     "stylelint": "./node_modules/stylelint/bin/stylelint.js \"src/**/*.css\""
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.utility.js",
+      "src/**/*.actionCreators.js",
+      "src/**/*.reducer.js"
+    ],
+    "coverageReporters": [
+      "text"
+    ]
   },
   "dependencies": {
     "@reach/router": "^1.2.1",
