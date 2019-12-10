@@ -74,6 +74,12 @@ const ExpenseList = ({
         )}
       </ul>
     )}
+    {(!expenses || (expenses.length === 0)) && !isFetchingExpenses && (
+      <div className='emptyState'>
+        <p className='headline'>{copy[locale].noMatches()}</p>
+        <p>{copy[locale].refineFilters()}</p>
+      </div>
+    )}
     {selectedExpenseId && (
       <Modal
         title={copy[locale].expenseDetails()}

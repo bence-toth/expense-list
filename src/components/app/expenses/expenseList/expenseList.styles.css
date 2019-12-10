@@ -41,3 +41,14 @@
     left: 0;
   }
 }
+
+.expenses > .emptyState {
+  text-align: center;
+  color: hsl(0, 0%, 40%);
+  padding: 2rem 1rem;
+}
+
+.expenses > .emptyState .headline {
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
