@@ -52,7 +52,7 @@ const applyAmountFilter = ({
         }
         const convertedValue = (
           (currency === preferredCurrency)
-            ? value
+            ? +value
             : value * currencyExchangeData[currency][preferredCurrency]
         )
         return (convertedValue >= min) && (convertedValue <= max)

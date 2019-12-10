@@ -8,7 +8,7 @@ const formatMonth = ({date, locale}) => {
 }
 
 const generateGroupKeyFromDate = date =>
-  `${date.getFullYear()}${date.getMonth()}`
+  `${date.getFullYear()}${date.getMonth() + 1}`
 
 const getSelectedExpense = ({expenses, selectedExpenseId}) => {
   const {
