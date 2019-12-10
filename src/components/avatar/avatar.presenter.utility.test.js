@@ -3,6 +3,9 @@ import each from 'mocha-each'
 import {generateInitials, generateBackgroundColor} from './avatar.presenter.utility'
 
 describe('generateInitials', () => {
+  [...(Array(100000).keys())]
+    .map(key => `${key}`)
+    .map(name => generateInitials({name}))
   it('Should work for Sherlock', () => {
     expect(generateInitials({name: 'Sherlock Holmes'})).toEqual('SH')
   })

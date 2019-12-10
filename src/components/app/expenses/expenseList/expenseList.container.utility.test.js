@@ -3,9 +3,9 @@ import {filterExpenses} from './expenseList.container.utility'
 
 describe('filterExpenses', () => {
   const currencyExchangeData = {
-    DKK: {EUR: 0.133813277, GBP: 0.1125008363},
-    EUR: {DKK: 7.4731, GBP: 0.84073},
-    GBP: {DKK: 8.8888228087, EUR: 1.1894425083}
+    DKK: {EUR: 0.1338, GBP: 0.1125},
+    EUR: {DKK: 7.4731, GBP: 0.8407},
+    GBP: {DKK: 8.8888, EUR: 1.1894}
   }
 
   it('should apply currency filters', () => {

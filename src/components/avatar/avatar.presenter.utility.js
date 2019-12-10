@@ -18,19 +18,23 @@ const generateBackgroundColor = ({name}) => {
   const brandColorHueValue = 345
   const minDistanceFromBrandColor = 50
   const forbiddenIntervalLength = 360 - (2 * minDistanceFromBrandColor)
-  const forbiddenIntervalStart = (brandColorHueValue - minDistanceFromBrandColor) % 360
-  const forbiddenIntervalEnd = (brandColorHueValue + minDistanceFromBrandColor) % 360
   // Chebyshev polynomials!
   const randomNumber = (parseInt(md5(name).slice(0, 4), 16)) % forbiddenIntervalLength
-  if (forbiddenIntervalStart < forbiddenIntervalEnd) {
-    // If the forbidden interval does not cross the 359|0 line
-    const hue = (
-      (randomNumber < forbiddenIntervalStart)
-        ? randomNumber
-        : randomNumber + (2 * forbiddenIntervalLength)
-    )
-    return generateHslColor({hue})
-  }
+  const forbiddenIntervalEnd = (brandColorHueValue + minDistanceFromBrandColor) % 360
+  // NOTE: You may need to uncomment this if you change `brandColorHueValue`
+
+  // const forbiddenIntervalStart = (brandColorHueValue - minDistanceFromBrandColor) % 360
+
+  // // If the forbidden interval does not cross the 359|0 line
+  // if (forbiddenIntervalStart < forbiddenIntervalEnd) {
+  //   const hue = (
+  //     (randomNumber < forbiddenIntervalStart)
+  //       ? randomNumber
+  //       : randomNumber + (2 * forbiddenIntervalLength)
+  //   )
+  //   return generateHslColor({hue})
+  // }
+
   // If the forbidden interval crosses the 359|0 line
   const hue = forbiddenIntervalEnd + randomNumber
   return generateHslColor({hue})
