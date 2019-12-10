@@ -124,35 +124,3 @@ describe('getSelectedExpense', () => {
     expect(actual).toEqual(expected)
   })
 })
-
-// const getSelectedExpense = ({expenses, selectedExpenseId}) => {
-//   const {
-//     id,
-//     amount,
-//     category,
-//     date,
-//     merchant,
-//     user,
-//     comment,
-//     receipts
-//   } = expenses
-//     .flatMap(({expenseItems}) => expenseItems)
-//     .find(({id: lookupId}) => (lookupId === selectedExpenseId))
-//   return {
-//     id,
-//     amount,
-//     category,
-//     date,
-//     merchant,
-//     user,
-//     comment,
-//     receipts
-//   }
-// }
-
-
-
-
-// formatMonth = ({date, locale}) =>
-// generateGroupKeyFromDate = date =>
-// getSelectedExpense = ({expenses, selectedExpenseId}) =>

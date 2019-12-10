@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import each from 'mocha-each'
 
 import {prepareExpenses} from './expenseList.consumers.utility'

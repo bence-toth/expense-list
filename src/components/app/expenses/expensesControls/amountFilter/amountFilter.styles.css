@@ -47,7 +47,7 @@
 }
 
 .amountFilter .input-range__slider:focus {
-  box-shadow: 0 0 1px 2px #7b9dd4;
+  box-shadow: 0 0 0.1rem 0.2rem hsl(217, 51%, 66%);
 }
 
 .amountFilter .input-range__track--active {
