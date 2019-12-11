@@ -48,7 +48,7 @@ const TopBar = ({
           <button
             ref={userSettingsButtonRef}
             type='button'
-            className='toolbarButton'
+            className='toolbarButton settings'
             onClick={onShowUserSettings}
           >
             <i className='icon fas fa-cog' />

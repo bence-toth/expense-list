@@ -39,6 +39,7 @@ const AmountFilter = ({
           –
         </span>
         <input
+          id='maxAmount'
           type='number'
           value={amountFilters.max}
           onChange={({target: {value}}) => {

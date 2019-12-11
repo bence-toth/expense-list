@@ -17,7 +17,7 @@ const UserSettingsModal = ({
   <div className='settingsModalInnerWrapper'>
     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */}
     <label>{copy[locale].language()}</label>
-    <div className='buttonGroup'>
+    <div className='buttonGroup language'>
       {locales.map(localeOption => (
         <button
           key={localeOption}
@@ -35,7 +35,7 @@ const UserSettingsModal = ({
     </div>
     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */}
     <label>{copy[locale].preferredCurrency()}</label>
-    <div className='buttonGroup'>
+    <div className='buttonGroup currency'>
       {currencies.map(currencyOption => (
         <button
           key={currencyOption}
