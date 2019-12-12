@@ -3,9 +3,6 @@ import each from 'mocha-each'
 import {generateInitials, generateBackgroundColor} from './avatar.presenter.utility'
 
 describe('generateInitials', () => {
-  [...(Array(100000).keys())]
-    .map(key => `${key}`)
-    .map(name => generateInitials({name}))
   it('Should work for Sherlock', () => {
     expect(generateInitials({name: 'Sherlock Holmes'})).toEqual('SH')
   })
@@ -39,15 +36,18 @@ describe('generateBackgroundColor', () => {
     })
 
   it('Should generate the same color for the same name', () => {
-    const [name1, name2, name3] = names
     const areAllTheSame = colors => colors
       .every((color, _, [firstColor]) => (color === firstColor))
+
+    const [name1, name2, name3] = names
     const colorsArray1 = Array(100).fill()
       .map(() => generateBackgroundColor({name: name1}))
     expect(areAllTheSame(colorsArray1)).toEqual(true)
+
     const colorsArray2 = Array(100).fill()
       .map(() => generateBackgroundColor({name: name2}))
     expect(areAllTheSame(colorsArray2)).toEqual(true)
+
     const colorsArray3 = Array(100).fill()
       .map(() => generateBackgroundColor({name: name3}))
     expect(areAllTheSame(colorsArray3)).toEqual(true)
