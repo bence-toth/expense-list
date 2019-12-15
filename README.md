@@ -102,6 +102,8 @@ I had several ideas I wanted to implement in order to reach that goal, some of t
 If I were to improve the solution, I would revisit the following:
 - Error handling should be introduced primarily around network communication. Using [Error Boundaries](https://reactjs.org/docs/error-boundaries.html) around bigger components could also be a good idea. Additionally, some kind of contract testing or schema verification should be introduced.
 
+- The receipts section could be nicer: It should show file names, upload times and probably even previews.
+
 - Jest tests should be extended to React components using either [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) or [Enzyme](https://airbnb.io/enzyme/).
 
 - The reusable components (`Avatar`, `Modal`, `Spinner`) should have documentation, I would use [Storybook](https://storybook.js.org/) for that, with [StoryShots](https://storybook.js.org/docs/testing/structural-testing/#using-storyshots) for Jest snapshot tests.
