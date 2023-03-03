@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@agillic/eslint-config": "0.0.5",
-    "cypress": "^3.7.0",
+    "cypress": "^12.7.0",
     "eslint": "^6.5.1",
     "mocha-each": "^2.0.1",
     "stylelint": "^11.1.1"
